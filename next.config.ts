@@ -1,17 +1,10 @@
 import path from "node:path";
 import type { NextConfig } from "next";
 
-function getSupabaseHost(): string | undefined {
-  const urlString = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  if (!urlString) return undefined;
-
-  try {
-    const formattedUrl = urlString.startsWith("http") ? urlString : `https://${urlString}`;
-    return new URL(formattedUrl).hostname;
-  } catch (err) {
-    console.warn("Invalid NEXT_PUBLIC_SUPABASE_URL format in next.config.ts:", urlString);
-    return undefined;
-  }
+function getSupabaseHost(): string {
+  const raw = process.env.NEXT_PUBLIC_SUPABASE_URL || "ufzroumxehomggrxsoin.supabase.co";
+  const cleaned = raw.replace(/^https?:\/\//, "").replace(/\/.*$/, "").replace(/^['"]|['"]$/g, "").trim();
+  return cleaned || "ufzroumxehomggrxsoin.supabase.co";
 }
 
 const supabaseHost = getSupabaseHost();
@@ -20,9 +13,18 @@ const nextConfig: NextConfig = {
   turbopack: { root: path.resolve(process.cwd()) },
 
   images: {
-    remotePatterns: supabaseHost
-      ? [{ protocol: "https", hostname: supabaseHost, pathname: "/storage/v1/object/public/**" }]
-      : [],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: supabaseHost,
+        pathname: "/storage/v1/object/public/**",
+      },
+      {
+        protocol: "https",
+        hostname: "ufzroumxehomggrxsoin.supabase.co",
+        pathname: "/storage/v1/object/public/**",
+      },
+    ],
   },
 
   poweredByHeader: false,
