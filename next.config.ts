@@ -6,11 +6,10 @@ function getSupabaseHost(): string | undefined {
   if (!urlString) return undefined;
 
   try {
-    // Automatically prepends https:// if missing before passing to URL constructor
     const formattedUrl = urlString.startsWith("http") ? urlString : `https://${urlString}`;
     return new URL(formattedUrl).hostname;
   } catch (err) {
-    console.warn("Invalid NEXT_PUBLIC_SUPABASE_URL in next.config.ts:", urlString);
+    console.warn("Invalid NEXT_PUBLIC_SUPABASE_URL format in next.config.ts:", urlString);
     return undefined;
   }
 }
