@@ -1,27 +1,40 @@
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
-function getSupabaseUrl(): string {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  if (!url || url.trim() === "") {
-    return "https://ufzroumxehomggrxsoin.supabase.co";
+function getCleanUrl(): string {
+  const raw = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://ufzroumxehomggrxsoin.supabase.co";
+  // Strip outer quotes and extra whitespace if present
+  let cleaned = raw.replace(/^['"]|['"]$/g, "").trim();
+  if (!cleaned.startsWith("http://") && !cleaned.startsWith("https://")) {
+    cleaned = `https://${cleaned}`;
   }
-  return url.startsWith("http") ? url : `https://${url}`;
+  return cleaned;
 }
 
-function getSupabaseAnonKey(): string {
-  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!key || key.trim() === "") {
-    return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmenJvdW14ZWhvbWdncnhzb2luIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzczMDAwMDAsImV4cCI6MjA5MjY3NjAwMH0.placeholder";
-  }
-  return key;
+function getCleanKey(): string {
+  const raw = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "placeholder-key";
+  return raw.replace(/^['"]|['"]$/g, "").trim();
 }
 
-const supabaseUrl = getSupabaseUrl();
-const supabaseAnonKey = getSupabaseAnonKey();
+let clientInstance: SupabaseClient | null = null;
 
-export const supabase: SupabaseClient = createClient(supabaseUrl, supabaseAnonKey);
+export function getSupabaseClient(): SupabaseClient {
+  if (!clientInstance) {
+    clientInstance = createClient(getCleanUrl(), getCleanKey());
+  }
+  return clientInstance;
+}
+
+// Proxy exported as `supabase` so existing code like `supabase.from(...)` continues to work seamlessly
+export const supabase = new Proxy({} as SupabaseClient, {
+  get(_target, prop: keyof SupabaseClient) {
+    const client = getSupabaseClient();
+    const value = client[prop];
+    return typeof value === "function" ? value.bind(client) : value;
+  },
+});
 
 export function createServerSupabase(): SupabaseClient {
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || supabaseAnonKey;
-  return createClient(supabaseUrl, serviceRoleKey);
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || getCleanKey();
+  const cleanServiceKey = serviceKey.replace(/^['"]|['"]$/g, "").trim();
+  return createClient(getCleanUrl(), cleanServiceKey);
 }
