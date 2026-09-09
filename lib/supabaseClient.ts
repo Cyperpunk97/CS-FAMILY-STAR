@@ -12,3 +12,8 @@ if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_A
 }
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+export function createServerSupabase() {
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || supabaseAnonKey;
+  return createClient(supabaseUrl, serviceRoleKey);
+}
