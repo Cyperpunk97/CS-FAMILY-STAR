@@ -1,26 +1,146 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * Design tokens.
+ *
+ * Two things were broken before this file was rewritten:
+ *   1. `font-family: Arial` on `body` overrode the Geist fonts that layout.tsx
+ *      downloads, so the app paid for two webfonts and rendered neither.
+ *   2. A `prefers-color-scheme: dark` block flipped the body background to near
+ *      black while every surface was hardcoded light, so dark-mode users got a
+ *      light app on a dark page. The app now commits to its warm light theme.
+ */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  /* Surfaces */
+  --color-surface: #faf8f5;
+  --color-surface-sunken: #f2eeea;
+  --color-card: #ffffff;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Brand — deep maroon */
+  --color-brand-50: #fdf4f4;
+  --color-brand-100: #fbe7e7;
+  --color-brand-200: #f5cfcf;
+  --color-brand-400: #c2565a;
+  --color-brand-600: #9b2c2c;
+  --color-brand-700: #822727;
+  --color-brand-800: #6b2020;
+  --color-brand-900: #571a1a;
+
+  /* Accent — star amber */
+  --color-star: #f59e0b;
+  --color-star-soft: #fffbeb;
+
+  /* Ink — every value clears WCAG AA (4.5:1) on both card and surface, so no
+     text in the app depends on a failing grey. */
+  --color-ink: #1c1917;       /* 16.1:1 on white */
+  --color-ink-soft: #57534e;  /*  7.5:1 */
+  --color-ink-faint: #6b6560; /*  5.3:1 — the lightest text allowed */
+  --color-hairline: #e8e2db;
+
+  /* Category hues */
+  --color-cat-cafe: #6d4aa8;
+  --color-cat-restaurant: #a34b09;
+  --color-cat-fastfood: #0f6f68;
+
+  --radius-card: 1.125rem;
+
+  /* Motion. One spring curve everywhere, so the app feels like one thing. */
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-fade-in: fade-in 0.18s ease-out both;
+  --animate-rise: rise 0.26s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-sheet-up: sheet-up 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-pop: pop 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --animate-shimmer: shimmer 1.4s linear infinite;
+  --animate-expand: expand 0.24s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes sheet-up {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
+  @keyframes pop {
+    0%   { transform: scale(1); }
+    45%  { transform: scale(1.32); }
+    100% { transform: scale(1); }
+  }
+  @keyframes shimmer {
+    from { background-position: -200% 0; }
+    to   { background-position: 200% 0; }
+  }
+  @keyframes expand {
+    from { opacity: 0; transform: translateY(-6px) scaleY(0.96); transform-origin: top; }
+    to   { opacity: 1; transform: translateY(0) scaleY(1); }
   }
 }
 
+:root {
+  /* Deliberately light-only, so form controls and scrollbars match the theme. */
+  color-scheme: light;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  /* Geist, loaded in layout.tsx, with a real fallback stack behind it. */
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Horizontal filter rails scroll; the scrollbar itself is noise. */
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+/*
+ * Staggered list entrance. Each card sets `--i` to its index and the delay is
+ * capped so item 90 does not wait three seconds to appear.
+ */
+@utility stagger {
+  animation: rise 0.34s var(--ease-spring) both;
+  animation-delay: calc(min(var(--i, 0) * 28ms, 340ms));
+}
+
+@utility skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-sunken) 25%,
+    color-mix(in oklab, var(--color-surface-sunken) 60%, white) 50%,
+    var(--color-surface-sunken) 75%
+  );
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+}
+
+/*
+ * Respect a user's request for less motion. Animations are decoration here —
+ * nothing in the UI depends on one running to become usable.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible keyboard focus everywhere, without a ring on mouse clicks. */
+:focus-visible {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
