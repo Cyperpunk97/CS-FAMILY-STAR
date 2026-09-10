@@ -10,7 +10,11 @@ function getSupabaseHost(): string {
 const supabaseHost = getSupabaseHost();
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  // Do not use output: "standalone" on Vercel; it causes ENOENT: next-server.js.nft.json
+  // Only enable if explicitly building a standalone container outside Vercel
+  ...(process.env.BUILD_STANDALONE === "true" && !process.env.VERCEL
+    ? { output: "standalone" as const }
+    : {}),
   turbopack: { root: path.resolve(process.cwd()) },
 
   images: {
