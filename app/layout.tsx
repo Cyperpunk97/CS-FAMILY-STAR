@@ -14,17 +14,17 @@ const geistSans = Geist({
 
 export const metadata: Metadata = {
   title: {
-    default: "CS Family Star — FUE Campus Food Guide",
+    default: "CS Family Star — FUE Campus Food Guide & Memories",
     template: "%s · CS Family Star",
   },
   description:
-    "Student ratings, prices, distances and directions for 100 cafes, restaurants and fast food spots around the Future University in Egypt campus in New Cairo.",
+    "Student ratings, prices, distances, and outing memories for cafes, restaurants and campus spots around the Future University in Egypt in New Cairo.",
   applicationName: "CS Family Star",
-  keywords: ["FUE", "Future University in Egypt", "New Cairo", "food", "student reviews"],
+  keywords: ["FUE", "Future University in Egypt", "New Cairo", "food", "student reviews", "outing memories"],
   openGraph: {
-    title: "CS Family Star — FUE Campus Food Guide",
+    title: "CS Family Star — FUE Campus Food Guide & Memories",
     description:
-      "Student ratings, prices and directions for 100 food spots around the FUE campus.",
+      "Student ratings, prices, and outing memories for food spots around the FUE campus.",
     type: "website",
     locale: "en_EG",
   },
@@ -39,7 +39,11 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={`${geistSans.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">

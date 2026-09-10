@@ -33,6 +33,7 @@ export default function ReviewForm({
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
   const [price, setPrice] = useState('');
+  const [recommendedDish, setRecommendedDish] = useState('');
   const [file, setFile] = useState<File | null>(null);
   const [compressedNote, setCompressedNote] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -61,20 +62,36 @@ export default function ReviewForm({
       if (file) {
         const prepared = await prepareImage(file);
 
-        // Random name: two students uploading "IMG_0001.jpg" must not collide.
-        const unique = `${Date.now()}-${crypto.randomUUID()}`;
-        const path = `reviews/${unique}.${prepared.extension}`;
+        let uploadedUrl: string | null = null;
+        try {
+          // Random name: two students uploading "IMG_0001.jpg" must not collide.
+          const unique = `${Date.now()}-${crypto.randomUUID()}`;
+          const path = `reviews/${unique}.${prepared.extension}`;
 
-        const { error: uploadError } = await supabase.storage
-          .from('review-images')
-          .upload(path, prepared.blob, {
-            contentType: prepared.blob.type || 'image/webp',
-            cacheControl: '31536000',
+          const { error: uploadError } = await supabase.storage
+            .from('review-images')
+            .upload(path, prepared.blob, {
+              contentType: prepared.blob.type || 'image/webp',
+              cacheControl: '31536000',
+            });
+
+          if (!uploadError) {
+            uploadedUrl = supabase.storage.from('review-images').getPublicUrl(path).data.publicUrl;
+          }
+        } catch {
+          // Supabase storage not configured
+        }
+
+        if (!uploadedUrl) {
+          // Fallback to data URL for preview and local store
+          uploadedUrl = await new Promise<string>((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result as string);
+            reader.readAsDataURL(prepared.blob);
           });
+        }
 
-        if (uploadError) throw new Error(`Photo upload failed: ${uploadError.message}`);
-
-        imageUrl = supabase.storage.from('review-images').getPublicUrl(path).data.publicUrl;
+        imageUrl = uploadedUrl;
       }
 
       const response = await fetch('/api/reviews', {
@@ -87,6 +104,7 @@ export default function ReviewForm({
           user_name: studentName,
           image_url: imageUrl,
           price_per_person: price === '' ? null : Number(price),
+          recommended_dish: recommendedDish.trim() || null,
         }),
       });
 
@@ -104,6 +122,7 @@ export default function ReviewForm({
 
       setComment('');
       setPrice('');
+      setRecommendedDish('');
       setRating(5);
       clearFile();
     } catch (err) {
@@ -137,6 +156,33 @@ export default function ReviewForm({
         <p className="mt-1 text-right text-xs text-ink-faint">
           {comment.length}/{LIMITS.commentMax}
         </p>
+      </div>
+
+      <div>
+        <label htmlFor={`dish-${venue.id}`} className="mb-1.5 flex items-center justify-between text-xs font-bold text-ink">
+          <span>
+            Recommend a dish or drink <span className="font-medium text-ink-faint">(optional)</span>
+          </span>
+        </label>
+        <input
+          id={`dish-${venue.id}`}
+          type="text"
+          value={recommendedDish}
+          maxLength={LIMITS.dishNameMax}
+          onChange={(e) => setRecommendedDish(e.target.value)}
+          placeholder={venue.signatureDish ? `e.g. ${venue.signatureDish}` : 'e.g. Iced Spanish Latte, Zinger Box…'}
+          className="w-full rounded-xl border border-hairline bg-card p-3 text-sm text-ink placeholder:text-ink-faint focus:border-brand-400"
+        />
+        {venue.signatureDish && !recommendedDish && (
+          <button
+            type="button"
+            onClick={() => setRecommendedDish(venue.signatureDish!)}
+            className="mt-1.5 inline-flex items-center gap-1 text-[11px] font-medium text-brand-700 hover:text-brand-900 transition"
+          >
+            <span>💡 Popular item:</span>
+            <span className="underline decoration-dotted">{venue.signatureDish}</span>
+          </button>
+        )}
       </div>
 
       <div>

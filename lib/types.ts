@@ -55,6 +55,7 @@ export interface Venue {
    */
   logoWidth: number | null;
   logoHeight: number | null;
+  signatureDish?: string | null;
 }
 
 /** Widest a logo may be before the square list avatar falls back to a monogram. */
@@ -67,12 +68,14 @@ export interface VenueWithStats extends Venue {
   /** Mean EGP-per-person reported by students, or null if nobody has reported yet. */
   averagePrice: number | null;
   priceReportCount: number;
-  /** Straight-line metres from the FUE campus centre. */
+  /** Straight-line metres from the FUE campus centre or student's faculty. */
   distanceMeters: number;
   /** Google Maps pin for the exact coordinates. */
   mapsUrl: string;
   /** Google Maps walking directions from the user's current location. */
   directionsUrl: string;
+  /** Top crowd-recommended or signature dishes. */
+  topDishes?: string[];
 }
 
 export interface Review {
@@ -84,6 +87,7 @@ export interface Review {
   image_url: string | null;
   /** EGP the student spent per person, if they reported it. */
   price_per_person: number | null;
+  recommended_dish?: string | null;
   created_at: string;
 }
 
@@ -95,9 +99,20 @@ export const LIMITS = {
   userNameMax: 60,
   priceMin: 1,
   priceMax: 10_000,
+  dishNameMax: 60,
   /** Cap on review-image upload size (5 MB). */
   imageBytesMax: 5 * 1024 * 1024,
   reviewsPageSize: 50,
 } as const;
 
 export const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'] as const;
+
+export interface LeaderboardEntry {
+  userName: string;
+  reviewCount: number;
+  averageRatingGiven: number;
+  lastActive: string;
+  rank: number;
+  badge: string;
+  tier: 'bronze' | 'silver' | 'gold' | 'diamond';
+}

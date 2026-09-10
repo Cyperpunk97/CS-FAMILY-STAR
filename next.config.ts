@@ -10,6 +10,7 @@ function getSupabaseHost(): string {
 const supabaseHost = getSupabaseHost();
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   turbopack: { root: path.resolve(process.cwd()) },
 
   images: {
@@ -24,6 +25,16 @@ const nextConfig: NextConfig = {
         hostname: "ufzroumxehomggrxsoin.supabase.co",
         pathname: "/storage/v1/object/public/**",
       },
+      {
+        protocol: "https",
+        hostname: "upload.wikimedia.org",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "thumb.wikimedia.org",
+        pathname: "/**",
+      },
     ],
   },
 
@@ -37,7 +48,6 @@ const nextConfig: NextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
-          { key: "X-Frame-Options", value: "DENY" },
         ],
       },
     ];

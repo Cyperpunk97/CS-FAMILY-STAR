@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3000 -H 0.0.0.0",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3000 -H 0.0.0.0",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "osm:contacts": "node scripts/fetch-osm-contacts.mjs",
     "logos:fetch": "node scripts/fetch-wikimedia-logos.mjs",
+    "logos:wikipedia": "node scripts/fetch-wikipedia-logos.mjs",
     "venues:discover": "node scripts/discover-venues.mjs"
   },
   "dependencies": {

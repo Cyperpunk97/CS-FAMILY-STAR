@@ -17,6 +17,7 @@ export interface ValidReview {
   user_name: string;
   image_url: string | null;
   price_per_person: number | null;
+  recommended_dish: string | null;
 }
 
 export type ValidationResult =
@@ -119,6 +120,8 @@ export function parseReview(body: unknown): ValidationResult {
     price = Math.round(parsed);
   }
 
+  const recommendedDish = clean(input.recommended_dish, LIMITS.dishNameMax);
+
   return {
     ok: true,
     value: {
@@ -128,6 +131,7 @@ export function parseReview(body: unknown): ValidationResult {
       user_name: userName,
       image_url: imageUrl,
       price_per_person: price,
+      recommended_dish: recommendedDish || null,
     },
   };
 }

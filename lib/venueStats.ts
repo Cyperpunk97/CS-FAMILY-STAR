@@ -1,8 +1,10 @@
 import 'server-only';
 
-import { createServerSupabase } from './supabaseClient';
+import { createServerSupabase, isSupabaseConfigured } from './supabaseClient';
+import { getInMemoryReviewStats, getInMemoryTopDishes } from './inMemoryReviews';
 import { VENUES } from './venues';
 import { FUE_CAMPUS, haversineMeters, mapsDirectionsUrl, mapsPinUrl } from './geo';
+import { fetchWikipediaLogo, isWorldwideRestaurant } from './wikipediaLogos';
 import type { VenueWithStats } from './types';
 
 /**
@@ -33,7 +35,7 @@ const MAX_PAGES = 50;
  */
 const STATS_TIMEOUT_MS = 4000;
 
-type Db = ReturnType<typeof createServerSupabase>;
+type Db = NonNullable<ReturnType<typeof createServerSupabase>>;
 
 async function loadStats(db: Db): Promise<Map<string, Stats>> {
   const stats = new Map<string, Stats>();
@@ -77,8 +79,8 @@ async function loadStats(db: Db): Promise<Map<string, Stats>> {
         page--; // retry the same page without the column
         continue;
       }
-      console.error('Failed to load review stats:', error.message);
-      break;
+      console.warn('Supabase review stats query degraded, falling back to local store:', error.message);
+      return getInMemoryReviewStats();
     }
 
     const rows = (data ?? []) as unknown as {
@@ -121,23 +123,60 @@ export async function getVenuesWithStats(): Promise<VenueWithStats[]> {
   let stats = new Map<string, Stats>();
 
   try {
-    stats = await loadStats(createServerSupabase());
+    if (isSupabaseConfigured()) {
+      const db = createServerSupabase();
+      if (db) {
+        stats = await loadStats(db);
+      } else {
+        stats = getInMemoryReviewStats();
+      }
+    } else {
+      stats = getInMemoryReviewStats();
+    }
   } catch (err) {
-    // A database outage should degrade to "no ratings yet", not an empty app.
-    console.error('Review stats unavailable, serving venues without ratings:', err);
+    console.warn('Review stats unavailable from remote database, serving local store stats:', err);
+    stats = getInMemoryReviewStats();
   }
 
-  return VENUES.map((venue) => {
-    const s = stats.get(venue.id);
-    return {
-      ...venue,
-      averageRating: s && s.count > 0 ? Number((s.sum / s.count).toFixed(1)) : 0,
-      reviewCount: s?.count ?? 0,
-      averagePrice: s && s.priceCount > 0 ? Math.round(s.priceSum / s.priceCount) : null,
-      priceReportCount: s?.priceCount ?? 0,
-      distanceMeters: haversineMeters(FUE_CAMPUS, venue),
-      mapsUrl: mapsPinUrl(venue),
-      directionsUrl: mapsDirectionsUrl(venue),
-    };
-  });
+  const inMemoryDishes = getInMemoryTopDishes();
+
+  return Promise.all(
+    VENUES.map(async (venue) => {
+      const s = stats.get(venue.id);
+      const crowdDishes = inMemoryDishes.get(venue.id) ?? [];
+      const combinedDishes = venue.signatureDish
+        ? Array.from(new Set([venue.signatureDish, ...crowdDishes]))
+        : crowdDishes;
+
+      let logoUrl = venue.logoUrl;
+      let logoWidth = venue.logoWidth;
+      let logoHeight = venue.logoHeight;
+
+      // Auto-fetch logo from Wikipedia for worldwide restaurants only
+      if (!logoUrl && isWorldwideRestaurant(venue.brand)) {
+        const wikiInfo = await fetchWikipediaLogo(venue.brand);
+        if (wikiInfo) {
+          logoUrl = wikiInfo.logoUrl;
+          logoWidth = wikiInfo.logoWidth;
+          logoHeight = wikiInfo.logoHeight;
+        }
+      }
+
+      return {
+        ...venue,
+        logoUrl,
+        logoWidth,
+        logoHeight,
+        averageRating: s && s.count > 0 ? Number((s.sum / s.count).toFixed(1)) : 0,
+        reviewCount: s?.count ?? 0,
+        averagePrice: s && s.priceCount > 0 ? Math.round(s.priceSum / s.priceCount) : null,
+        priceReportCount: s?.priceCount ?? 0,
+        distanceMeters: haversineMeters(FUE_CAMPUS, venue),
+        mapsUrl: mapsPinUrl(venue),
+        directionsUrl: mapsDirectionsUrl(venue),
+        topDishes: combinedDishes,
+      };
+    })
+  );
 }
+

@@ -16,6 +16,7 @@ Delete any file here you are not comfortable shipping, and remove its entry from
 | `brioche-doree.jpg` | Brioche Doree | [Q2925606](https://www.wikidata.org/wiki/Q2925606) | Public domain | Groupe Le Duff | [Commons](https://commons.wikimedia.org/wiki/File:Brioche_Doree.jpg) |
 | `burger-king.png` | Burger King | [Q177054](https://www.wikidata.org/wiki/Q177054) | Public domain | Burger King | [Commons](https://commons.wikimedia.org/wiki/File:Burger_King_2020.svg) |
 | `caffe-pascucci.png` | Caffe Pascucci | [Q5017191](https://www.wikidata.org/wiki/Q5017191) | CC BY-SA 4.0 | Caffè Pascucci Torrefazione Spa | [Commons](https://commons.wikimedia.org/wiki/File:Pascucci_Logo.png) |
+| `caribou-coffee.png` | Caribou Coffee | [Q5039505](https://www.wikidata.org/wiki/Q5039505) | Public domain | Caribou Coffee | [Commons](https://commons.wikimedia.org/wiki/File:Caribou1.svg) |
 | `chilis.png` | Chili's | [Q1072948](https://www.wikidata.org/wiki/Q1072948) | Public domain | Brinker International | [Commons](https://commons.wikimedia.org/wiki/File:Chili%27s_Logo.svg) |
 | `cinnabon.png` | Cinnabon | [Q1092539](https://www.wikidata.org/wiki/Q1092539) | Public domain | Cinnabon | [Commons](https://commons.wikimedia.org/wiki/File:Cinnabon_logo.svg) |
 | `costa-coffee.png` | Costa Coffee | [Q608845](https://www.wikidata.org/wiki/Q608845) | Public domain | Anonoymous work for hire for CHI Polska | [Commons](https://commons.wikimedia.org/wiki/File:Costa_Coffee_Logo_white_on_red.png) |
@@ -30,4 +31,6 @@ Delete any file here you are not comfortable shipping, and remove its entry from
 | `paul-bakery-restaurant.png` | Paul Bakery & Restaurant | [Q3370417](https://www.wikidata.org/wiki/Q3370417) | CC BY-SA 3.0 | Amigone | [Commons](https://commons.wikimedia.org/wiki/File:Logo_Paul.png) |
 | `pizza-hut.png` | Pizza Hut | [Q191615](https://www.wikidata.org/wiki/Q191615) | Public domain | Yum! Brands | [Commons](https://commons.wikimedia.org/wiki/File:Pizza_Hut_2025.svg) |
 | `second-cup.webp` | Second Cup | [Q862180](https://www.wikidata.org/wiki/Q862180) | CC BY-SA 4.0 | JosquinFrascadore | [Commons](https://commons.wikimedia.org/wiki/File:Second-cup-logo-1.webp) |
+| `smash-burger.jpg` | Smash Burger | [Q7544258](https://www.wikidata.org/wiki/Q7544258) | Fair use / trademark | Smashburger Franchising LLC | [Commons](https://commons.wikimedia.org/wiki/File:Smashburgerlogo.jpg) |
 | `starbucks.png` | Starbucks | [Q37158](https://www.wikidata.org/wiki/Q37158) | Public domain | Unknown authorUnknown author | [Commons](https://commons.wikimedia.org/wiki/File:Starbucks_coffee_wordmark.png) |
+| `texas-chicken.png` | Texas Chicken | [Q1089906](https://www.wikidata.org/wiki/Q1089906) | Public domain | Church's Texas Chicken | [Commons](https://commons.wikimedia.org/wiki/File:Churchs-logo.svg) |

@@ -5,6 +5,75 @@ import type { CoordSource } from './types';
 /** Future University in Egypt, New Cairo — the origin every distance is measured from. */
 export const FUE_CAMPUS = { lat: 30.026, lng: 31.4911 } as const;
 
+export interface FacultyLocation {
+  id: string;
+  name: string;
+  shortName: string;
+  building: string;
+  lat: number;
+  lng: number;
+}
+
+/** Specific faculty buildings on the FUE campus for accurate walking calculations. */
+export const FUE_FACULTIES: FacultyLocation[] = [
+  {
+    id: 'fcit-cs',
+    name: 'Faculty of Computers & Information Technology',
+    shortName: 'CS / IT Building',
+    building: 'Building 1 (North-West)',
+    lat: 30.0268,
+    lng: 31.4902,
+  },
+  {
+    id: 'engineering',
+    name: 'Faculty of Engineering & Technology',
+    shortName: 'Engineering',
+    building: 'Building 2 (West Wing)',
+    lat: 30.0254,
+    lng: 31.4897,
+  },
+  {
+    id: 'pharmacy',
+    name: 'Faculty of Pharmaceutical Sciences',
+    shortName: 'Pharmacy',
+    building: 'Building 3 (East Wing)',
+    lat: 30.0265,
+    lng: 31.4923,
+  },
+  {
+    id: 'dental',
+    name: 'Faculty of Oral & Dental Medicine',
+    shortName: 'Dental Medicine',
+    building: 'Building 4 & Hospital (North)',
+    lat: 30.0273,
+    lng: 31.4915,
+  },
+  {
+    id: 'business',
+    name: 'Faculty of Commerce & Business Administration',
+    shortName: 'Business / Commerce',
+    building: 'Building 5 (South Wing)',
+    lat: 30.0248,
+    lng: 31.4910,
+  },
+  {
+    id: 'economics',
+    name: 'Faculty of Economics & Political Science',
+    shortName: 'Economics & Politics',
+    building: 'Building 6 (South-East)',
+    lat: 30.0251,
+    lng: 31.4921,
+  },
+  {
+    id: 'campus-center',
+    name: 'Main Campus Center & Plaza',
+    shortName: 'Campus Center',
+    building: 'Central Gate & Plaza',
+    lat: 30.0260,
+    lng: 31.4911,
+  },
+];
+
 const EARTH_RADIUS_M = 6_371_000;
 const toRad = (deg: number) => (deg * Math.PI) / 180;
 
@@ -104,10 +173,14 @@ export function mapsPinUrl(target: MapTarget): string {
   return `https://www.google.com/maps/search/?api=1&query=${destinationFor(target)}`;
 }
 
-export function mapsDirectionsUrl(target: MapTarget): string {
+export function mapsDirectionsUrl(
+  target: MapTarget,
+  origin?: { lat: number; lng: number }
+): string {
+  const originParam = origin ? `&origin=${origin.lat},${origin.lng}` : '';
   return `https://www.google.com/maps/dir/?api=1&destination=${destinationFor(
     target
-  )}&travelmode=walking`;
+  )}${originParam}&travelmode=walking`;
 }
 
 /** Keyless OpenStreetMap embed used for the small map preview in the venue sheet. */

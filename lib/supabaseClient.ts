@@ -1,5 +1,20 @@
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
+export function isSupabaseConfigured(): boolean {
+  const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const rawAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const rawServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  const url = rawUrl?.replace(/^['"]|['"]$/g, "").trim();
+  const key = (rawServiceKey || rawAnonKey)?.replace(/^['"]|['"]$/g, "").trim();
+
+  if (!url || !key) return false;
+  if (key === "placeholder-key" || key === "your-anon-key" || key.length < 15) return false;
+  if (url.includes("placeholder")) return false;
+
+  return true;
+}
+
 function getCleanUrl(): string {
   const raw = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://ufzroumxehomggrxsoin.supabase.co";
   // Strip outer quotes and extra whitespace if present
@@ -33,8 +48,12 @@ export const supabase = new Proxy({} as SupabaseClient, {
   },
 });
 
-export function createServerSupabase(): SupabaseClient {
+export function createServerSupabase(): SupabaseClient | null {
+  if (!isSupabaseConfigured()) {
+    return null;
+  }
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || getCleanKey();
   const cleanServiceKey = serviceKey.replace(/^['"]|['"]$/g, "").trim();
   return createClient(getCleanUrl(), cleanServiceKey);
 }
+

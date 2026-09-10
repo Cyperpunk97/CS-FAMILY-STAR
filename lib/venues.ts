@@ -39,6 +39,7 @@ interface ContactInfo {
   /** Written by `npm run logos:fetch`; lets the UI tell an icon from a wordmark. */
   logoWidth?: number;
   logoHeight?: number;
+  signatureDish?: string;
 }
 
 /**
@@ -49,35 +50,44 @@ interface ContactInfo {
  * `public/logos/CREDITS.md`. Add `phone` and `menuUrl` here as you verify them.
  */
 const CONTACTS_BY_BRAND: Record<string, ContactInfo> = {
-  "Arby's": { logoUrl: '/logos/arbys.png', logoWidth: 330, logoHeight: 283 },
-  'Baskin Robbins': { logoUrl: '/logos/baskin-robbins.png', logoWidth: 330, logoHeight: 187 },
-  'Brioche Doree': { logoUrl: '/logos/brioche-doree.jpg', logoWidth: 200, logoHeight: 110 },
-  'Burger King': { logoUrl: '/logos/burger-king.png', logoWidth: 330, logoHeight: 360 },
-  'Caffe Pascucci': { logoUrl: '/logos/caffe-pascucci.png', logoWidth: 330, logoHeight: 330 },
-  "Chili's": { logoUrl: '/logos/chilis.png', logoWidth: 330, logoHeight: 166 },
-  Cinnabon: { logoUrl: '/logos/cinnabon.png', logoWidth: 330, logoHeight: 110 },
-  'Costa Coffee': { logoUrl: '/logos/costa-coffee.png', logoWidth: 330, logoHeight: 87 },
-  "Domino's Pizza": { logoUrl: '/logos/dominos-pizza.png', logoWidth: 330, logoHeight: 70 },
-  "Dunkin'": { logoUrl: '/logos/dunkin.png', logoWidth: 330, logoHeight: 64 },
-  Fuddruckers: { logoUrl: '/logos/fuddruckers.png', logoWidth: 330, logoHeight: 196 },
-  "Hardee's": { logoUrl: '/logos/hardees.png', logoWidth: 330, logoHeight: 81 },
-  KFC: { logoUrl: '/logos/kfc.png', logoWidth: 330, logoHeight: 103 },
-  'Krispy Kreme': { logoUrl: '/logos/krispy-kreme.png', logoWidth: 330, logoHeight: 114 },
-  "McDonald's": { logoUrl: '/logos/mcdonalds.png', logoWidth: 330, logoHeight: 459 },
-  "Papa John's Pizza": { logoUrl: '/logos/papa-johns-pizza.png', logoWidth: 330, logoHeight: 61 },
+  "Arby's": { logoUrl: '/logos/arbys.png', logoWidth: 330, logoHeight: 283, signatureDish: "Beef 'n Cheddar Classic" },
+  'Baskin Robbins': { logoUrl: '/logos/baskin-robbins.png', logoWidth: 330, logoHeight: 187, signatureDish: "Pralines 'n Cream Waffle Cone" },
+  'Brioche Doree': { logoUrl: '/logos/brioche-doree.jpg', logoWidth: 200, logoHeight: 110, signatureDish: 'Almond Butter Croissant' },
+  'Burger King': { logoUrl: '/logos/burger-king.png', logoWidth: 330, logoHeight: 360, signatureDish: 'Double Whopper with Cheese' },
+  'Caffe Pascucci': { logoUrl: '/logos/caffe-pascucci.png', logoWidth: 330, logoHeight: 330, signatureDish: 'Espresso Freddo & Tiramisu' },
+  "Chili's": { logoUrl: '/logos/chilis.png', logoWidth: 330, logoHeight: 166, signatureDish: 'Molten Chocolate Cake' },
+  Cinnabon: { logoUrl: '/logos/cinnabon.png', logoWidth: 330, logoHeight: 110, signatureDish: 'Caramel Pecanbon Roll' },
+  'Costa Coffee': { logoUrl: '/logos/costa-coffee.png', logoWidth: 330, logoHeight: 87, signatureDish: 'Iced Flat White & Carrot Cake' },
+  "Domino's Pizza": { logoUrl: '/logos/dominos-pizza.png', logoWidth: 330, logoHeight: 70, signatureDish: 'ExtravaganZZa Cheesy Crust Pizza' },
+  "Dunkin'": { logoUrl: '/logos/dunkin.png', logoWidth: 330, logoHeight: 64, signatureDish: 'Boston Kreme & Iced Coffee' },
+  Fuddruckers: { logoUrl: '/logos/fuddruckers.png', logoWidth: 330, logoHeight: 196, signatureDish: '1/3 lb Bacon Cheddar Burger' },
+  "Hardee's": { logoUrl: '/logos/hardees.png', logoWidth: 330, logoHeight: 81, signatureDish: 'Mushroom & Swiss Angus Thickburger' },
+  KFC: { logoUrl: '/logos/kfc.png', logoWidth: 330, logoHeight: 103, signatureDish: 'Mighty Zinger Box' },
+  'Krispy Kreme': { logoUrl: '/logos/krispy-kreme.png', logoWidth: 330, logoHeight: 114, signatureDish: 'Original Glazed Dozen' },
+  "McDonald's": { logoUrl: '/logos/mcdonalds.png', logoWidth: 330, logoHeight: 459, signatureDish: 'Big Mac Combo with Fries' },
+  "Papa John's Pizza": { logoUrl: '/logos/papa-johns-pizza.png', logoWidth: 330, logoHeight: 61, signatureDish: 'Super Papa Special with Garlic Sauce' },
   'Paul Bakery & Restaurant': {
     logoUrl: '/logos/paul-bakery-restaurant.png',
     logoWidth: 330,
     logoHeight: 329,
+    signatureDish: 'Pain au Chocolat & French Hot Chocolate',
   },
-  'Pizza Hut': { logoUrl: '/logos/pizza-hut.png', logoWidth: 330, logoHeight: 278 },
-  'Second Cup': { logoUrl: '/logos/second-cup.webp', logoWidth: 330, logoHeight: 69 },
-  Starbucks: { logoUrl: '/logos/starbucks.png', logoWidth: 330, logoHeight: 36 },
+  'Pizza Hut': { logoUrl: '/logos/pizza-hut.png', logoWidth: 330, logoHeight: 278, signatureDish: 'Stuffed Crust Super Supreme Pizza' },
+  'Second Cup': { logoUrl: '/logos/second-cup.webp', logoWidth: 330, logoHeight: 69, signatureDish: 'Caramel Corretto Frappé' },
+  Starbucks: { logoUrl: '/logos/starbucks.png', logoWidth: 330, logoHeight: 36, signatureDish: 'Iced Caramel Macchiato' },
+  'Caribou Coffee': { logoUrl: '/logos/caribou-coffee.png', logoWidth: 330, logoHeight: 330, signatureDish: 'Campfire Mocha & Blueberry Scone' },
+  'Texas Chicken': { logoUrl: '/logos/texas-chicken.png', logoWidth: 330, logoHeight: 330, signatureDish: 'Crunchy Spicy Tenders & Honey-Butter Biscuits' },
+  'Smash Burger': { logoUrl: '/logos/smash-burger.jpg', logoWidth: 330, logoHeight: 187, signatureDish: 'Classic Smash Burger & Rosemary Fries' },
+  Cilantro: { signatureDish: 'Iced Spanish Latte' },
+  Pasta2Go: { signatureDish: 'Crispy Chicken Alfredo Pasta' },
+  Crave: { signatureDish: 'Chicken Cordon Bleu & Fondant' },
 };
 
 /** Keyed by venue `id` — overrides the brand entry for one specific branch. */
 const CONTACTS_BY_ID: Record<string, ContactInfo> = {
-  // 'fue-cilantro': { phone: '02 1234 5678', menuUrl: 'https://example.com/menu' },
+  'fue-cilantro': { signatureDish: 'Iced Spanish Latte' },
+  'fue-pasta2go': { signatureDish: 'Crispy Chicken Alfredo Pasta' },
+  'fue-crave': { signatureDish: 'Chicken Cordon Bleu & Fondant' },
 };
 
 /**
@@ -203,6 +213,7 @@ const CATALOG: CatalogEntry[] = [
   { id: 'fue-smash-burger', name: 'Smash Burger', brand: 'Smash Burger', vicinity: 'Concord Plaza, New Cairo', category: 'Fast Food', lat: 30.024918, lng: 31.482718, priceTier: 2 },
   { id: 'fue-bunster', name: 'Bunster Burger', brand: 'Bunster Burger', vicinity: 'The Spot Mall, New Cairo', category: 'Fast Food', lat: 30.0227, lng: 31.4978, priceTier: 1 },
   { id: 'fue-arbys', name: 'Arby\'s', brand: 'Arby\'s', vicinity: 'Point 90 Mall, New Cairo', category: 'Fast Food', lat: 30.020271, lng: 31.494781, priceTier: 1 },
+  { id: 'fue-pizza-hut-americana', name: 'Pizza Hut - Americana Plaza', brand: 'Pizza Hut', vicinity: 'Americana Plaza, 90th St, New Cairo', category: 'Fast Food', lat: 30.0245, lng: 31.4855, priceTier: 1 },
   { id: 'fue-pizza-king', name: 'Pizza King', brand: 'Pizza King', vicinity: 'Dreams Mall, Next to FUE', category: 'Fast Food', lat: 30.0259, lng: 31.4906, priceTier: 1 },
   { id: 'fue-dominos', name: 'Domino\'s Pizza', brand: 'Domino\'s Pizza', vicinity: '90th Street, New Cairo', category: 'Fast Food', lat: 30.027, lng: 31.491, priceTier: 1 },
   { id: 'fue-pascucci', name: 'Caffe Pascucci', brand: 'Caffe Pascucci', vicinity: 'Concord Plaza, New Cairo', category: 'Cafe', lat: 30.024918, lng: 31.482718, priceTier: 2 },
@@ -252,6 +263,7 @@ export const VENUES: Venue[] = CATALOG.map((v) => {
     logoUrl: contact.logoUrl ?? null,
     logoWidth: contact.logoWidth ?? null,
     logoHeight: contact.logoHeight ?? null,
+    signatureDish: contact.signatureDish ?? null,
   };
 });
 
