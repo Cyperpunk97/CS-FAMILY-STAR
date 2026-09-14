@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useId, useRef, useState } from 'react';
-import { Footprints, GraduationCap, Heart, RotateCcw, Search, SlidersHorizontal, X } from 'lucide-react';
+import { Clock, Footprints, GraduationCap, Heart, RotateCcw, Search, SlidersHorizontal, X } from 'lucide-react';
 import { CATEGORIES, type Category, type PriceTier } from '@/lib/types';
 import {
   SORT_OPTIONS,
@@ -243,6 +243,9 @@ export default function FilterBar({
           {filters.favoritesOnly && (
             <FilterPill label="Saved" onRemove={() => set('favoritesOnly', false)} />
           )}
+          {filters.openNowOnly && (
+            <FilterPill label="Open now" onRemove={() => set('openNowOnly', false)} />
+          )}
           <button
             type="button"
             onClick={onReset}
@@ -337,7 +340,24 @@ export default function FilterBar({
               />
               Saved only
             </button>
+
+            <button
+              type="button"
+              onClick={() => set('openNowOnly', !filters.openNowOnly)}
+              aria-pressed={filters.openNowOnly}
+              className={`${chip(filters.openNowOnly)} inline-flex items-center gap-1.5`}
+            >
+              <Clock className="h-3.5 w-3.5" aria-hidden="true" />
+              Open now
+            </button>
           </div>
+
+          {filters.openNowOnly && (
+            <p className="mt-2 text-xs text-ink-faint">
+              Only spots with verified opening hours can appear here. Anything whose
+              hours we do not know is hidden rather than guessed at.
+            </p>
+          )}
         </div>
       )}
     </div>

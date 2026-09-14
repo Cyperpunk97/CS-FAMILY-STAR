@@ -15,6 +15,24 @@ export const DEFAULT_CAIRO_AIDS = [7845, 7849, 9660, 7844, 7425, 7770, 8041, 757
 /** Ceiling on any outbound menu fetch. An unbounded one holds a route handler open. */
 const MENU_FETCH_TIMEOUT_MS = 8000;
 
+/**
+ * Normalises a raw Talabat price.
+ *
+ * Two things go wrong without this. Talabat serves prices as 32-bit floats, so
+ * `337.40` arrives as `337.3999938964844` and was rendered verbatim. And items with
+ * no fixed price — anything sold by the kilo — arrive as `0` or missing, which the
+ * old `Number(it.price) || 0` turned into a confident "0 EGP".
+ *
+ * Returns `null` for "no fixed price", which the UI renders as "Ask in store".
+ */
+export function parseMenuPrice(raw: unknown): number | null {
+  const value = typeof raw === 'string' ? Number(raw.replace(/[^\d.-]/g, '')) : Number(raw);
+  if (!Number.isFinite(value) || value <= 0) return null;
+
+  // Two decimal places, without the binary-float drift of toFixed round-tripping.
+  return Math.round(value * 100) / 100;
+}
+
 /** Talabat menu pages are well under this; anything larger is not a menu page. */
 const MENU_HTML_MAX_BYTES = 5 * 1024 * 1024;
 
@@ -270,7 +288,7 @@ export function transformTalabatMenu(
         id: `talabat-${restaurantId}-${it.id}`,
         name: it.name.trim(),
         description: it.description?.trim() || undefined,
-        price: Number(it.price) || 0,
+        price: parseMenuPrice(it.price),
         category: catName,
         isPopular: isPop || undefined,
         isSpicy: isSpicy || undefined,

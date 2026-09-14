@@ -21,6 +21,7 @@ import Modal from './Modal';
 import VenueAvatar from './VenueLogo';
 import { useRestaurantMenu } from '../hooks/useRestaurantMenu';
 import type { RestaurantMenu, VenueWithStats } from '@/lib/types';
+import { formatMenuPrice } from '@/lib/format';
 
 interface MenuModalProps {
   venue: VenueWithStats;
@@ -706,8 +707,14 @@ export default function MenuModal({ venue, open, onClose }: MenuModalProps) {
                           </div>
 
                           <div className="shrink-0 text-right">
-                            <span className="text-sm font-extrabold text-brand-700">
-                              {item.price} {menu.currency}
+                            <span
+                              className={
+                                item.price === null
+                                  ? 'text-xs font-bold text-ink-soft'
+                                  : 'text-sm font-extrabold text-brand-700'
+                              }
+                            >
+                              {formatMenuPrice(item.price, menu.currency)}
                             </span>
                           </div>
                         </div>

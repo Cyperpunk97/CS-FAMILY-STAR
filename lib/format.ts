@@ -19,6 +19,22 @@ export interface PriceInfo {
   tierSymbol: string;
 }
 
+/**
+ * Formats a single menu item's price.
+ *
+ * `null` means the item has no fixed price — grills sold by the kilo, mostly. Saying
+ * "Ask in store" is honest; showing "0 EGP" told students a veal kebab was free.
+ *
+ * Whole numbers print without decimals (`195 EGP`, not `195.00 EGP`); anything with
+ * piastres keeps two places (`337.40 EGP`).
+ */
+export function formatMenuPrice(price: number | null, currency = 'EGP'): string {
+  if (price === null) return 'Ask in store';
+
+  const text = Number.isInteger(price) ? String(price) : price.toFixed(2);
+  return `${text} ${currency}`;
+}
+
 export function priceInfo(venue: VenueWithStats): PriceInfo {
   const tierSymbol = '$'.repeat(venue.priceTier);
 

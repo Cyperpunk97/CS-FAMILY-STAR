@@ -903,7 +903,7 @@ export const DEFAULT_MENUS: Record<string, RestaurantMenu> = {
   'fue-bw-burger': {
     restaurantId: 'fue-bw-burger',
     restaurantName: 'B&W (Burgers & Wings) - FUE Food Court',
-    currency: 'LE',
+    currency: 'EGP',
     lastUpdated: '2026-09-14',
     note: 'FUE Student Food Court. Smash beef burgers, tossed crispy wings, fried & grilled chicken sandwiches, and creamy pastas.',
     categories: [

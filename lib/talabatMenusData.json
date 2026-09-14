@@ -2897,7 +2897,7 @@
         "id": "papa-johns-3643589516",
         "name": "Buy 1 Medium Pizza Get 1 Medium Pizza For Free",
         "description": "Buy 1 Medium Pizza And Get 1 Medium Pizza For Free",
-        "price": 0,
+        "price": null,
         "category": "Offers",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/71ED39A93E520C9D0CC6A7510A016D10?width=172&amp;height=172"
       },
@@ -2913,7 +2913,7 @@
         "id": "papa-johns-3643589515",
         "name": "Buy 2 Medium Pizza And Get 1 Medium Pizza For Free",
         "description": "Buy 2 Medium Pizza And Get 1 Medium Pizza For Free",
-        "price": 0,
+        "price": null,
         "category": "Offers",
         "isPopular": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/9AE08F58665BA319AF13E67B7C5BE986?width=172&amp;height=172"
@@ -2962,7 +2962,7 @@
         "id": "papa-johns-3643589542",
         "name": "Chicken Ranch  - Pepperoni  Flavor Pizza",
         "description": "Grilled Chicken, Tomatoes, Fresh Mushrooms, Ranch Sauce With Pepperoni Flavor",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/4D7A289BF5B28B78D6C1502EF585FB84?width=172&amp;height=172"
       },
@@ -2970,7 +2970,7 @@
         "id": "papa-johns-3643589547",
         "name": "Chicken Ranch - Smoky Flavor Pizza",
         "description": "Grilled Chicken, Tomatoes, Fresh Mushrooms, Ranch Sauce With Smoky Flavor",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/292C48D22DB58A2AA9268ACD11EF87DB?width=172&amp;height=172"
       },
@@ -2978,7 +2978,7 @@
         "id": "papa-johns-3643589538",
         "name": "Chicken Ranch - Spicy Korean Flavor Pizza",
         "description": "Grilled Chicken, Tomatoes, Fresh Mushrooms, Ranch Sauce With Spicy Korean Flavor",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "isSpicy": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/06FD02799EA76D9AFF08AECAC06243A2?width=172&amp;height=172"
@@ -2987,7 +2987,7 @@
         "id": "papa-johns-3643589540",
         "name": "Margherita Pizza",
         "description": "Mozzarella Cheese And Pizza Sauce",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "isPopular": true,
         "isVegetarian": true,
@@ -2997,7 +2997,7 @@
         "id": "papa-johns-3643589546",
         "name": "6 Cheese Pizza",
         "description": "Blend Of 6 Cheese, Emmental Cheese, Cheddar Cheese, Gouda Cheese, Romano Cheese, Mozzarella Cheese And Edam Cheese",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "isPopular": true,
         "isVegetarian": true,
@@ -3007,7 +3007,7 @@
         "id": "papa-johns-3643589536",
         "name": "Smoky Cheese Pizza",
         "description": "Smoked Veal, Smoked Cheese, Cheddar Cheese, Gouda Cheese, Onions And Creamy Sauce",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "isPopular": true,
         "isVegetarian": true,
@@ -3017,7 +3017,7 @@
         "id": "papa-johns-3643589537",
         "name": "3 Cheese X 2 Toppings",
         "description": "Blend Of 3 Cheese Types: Cheddar Cheese, Gouda Cheese And Mozzarella Cheese With 2 Free Toppings Of Meat Or Chicken Or Vegetables",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/DD53839CC22ED7C1D7CECABC91756DA8?width=172&amp;height=172"
       },
@@ -3025,7 +3025,7 @@
         "id": "papa-johns-3643589529",
         "name": "Spicy Chicken Ranch Pizza",
         "description": "Grilled Chicken, Spicy Jalapeno Slices, Tomatoes, Fresh Mushrooms And Ranch Sauce",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "isSpicy": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/837E73E1B3AEEB91558FD0A20EBE25B6?width=172&amp;height=172"
@@ -3034,7 +3034,7 @@
         "id": "papa-johns-3643589551",
         "name": "Spicy Pepperoni Ranch Pizza",
         "description": "Pepperoni, Jalapeno, Mozzarella Cheese And Ranch Sauce",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "isSpicy": true,
         "isVegetarian": true,
@@ -3044,7 +3044,7 @@
         "id": "papa-johns-3643589552",
         "name": "Smoky Chicken Ranch Pizza",
         "description": "Grilled Chicken, Chicken Sausage, Smoked Cheese, Onion, Green Pepper With Ranch Sauce",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/BACEEFA6D51F57412DCCACA275396B03?width=172&amp;height=172"
       },
@@ -3052,7 +3052,7 @@
         "id": "papa-johns-3643589533",
         "name": "Super Papa Pizza",
         "description": "Pepperoni, Italian Sausage, Smoked Veal, Fresh Mushrooms, Onions, Green Peppers And Black Olives Mozzarella Cheese With Pizza Sauce",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/B1A86E9920F307608649E8BEB435BE99?width=172&amp;height=172"
@@ -3061,7 +3061,7 @@
         "id": "papa-johns-3643589532",
         "name": "Pepperoni Pizza",
         "description": "Pepperoni And Mozzarella Cheese",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "isPopular": true,
         "isVegetarian": true,
@@ -3071,7 +3071,7 @@
         "id": "papa-johns-3643589539",
         "name": "Little italy Pizza",
         "description": "Pepperoni, Italian Sausage,Fresh Mushrooms, Black Olives And Oregano",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "isPopular": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/C769940F73E2ABD351F37203F1BC81FB?width=172&amp;height=172"
@@ -3080,7 +3080,7 @@
         "id": "papa-johns-3643589534",
         "name": "Cheese Burger Pizza",
         "description": "Italian Sausage, Tomatoes, Onions, Mozzarella Cheese And Burger Sauce.",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "isPopular": true,
         "isVegetarian": true,
@@ -3090,7 +3090,7 @@
         "id": "papa-johns-3643589531",
         "name": "Chicken BBQ Pizza",
         "description": "Grilled Chicken, Onions, Fresh Mushrooms And Barbecue Sauce",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "isPopular": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/2C5930956F03460DE79458BC2C15DCF2?width=172&amp;height=172"
@@ -3099,7 +3099,7 @@
         "id": "papa-johns-3643589541",
         "name": "Chicken Super Papa Pizza",
         "description": "Grilled Chicken, Chicken Sausage, Chicken Pepperoni, Fresh Mushrooms, Onions, Green Peppers And Black Olives With Pizza Sauce",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/5885A8FE4FE16C3F0EB9CED2691C1508?width=172&amp;height=172"
       },
@@ -3107,7 +3107,7 @@
         "id": "papa-johns-3643589548",
         "name": "Ranch Chicken Super Papa Pizza",
         "description": "Grilled Chicken, Chicken Sausage, Chicken Pepperoni, Fresh Mushrooms, Onions, Green Peppers And Black Olives With Ranch Sauce",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/73949ED26180CBAE56E4F85347C481B0?width=172&amp;height=172"
       },
@@ -3115,7 +3115,7 @@
         "id": "papa-johns-3643589549",
         "name": "Bacon & Spicy Ranch Chicken Poppers Pizza",
         "description": "Beef Bacon, Chicken Poppers, Onions, Jalapeno Pepper, Mozzarella Cheese With Ranch Sauce.",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "isSpicy": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/410896B8421696D18342BDA225F2A874?width=172&amp;height=172"
@@ -3124,7 +3124,7 @@
         "id": "papa-johns-3643589543",
         "name": "Bacon & BBQ Chicken Poppers Pizza",
         "description": "Beef Bacon, Chicken Poppers, Onions, Mozzarella Cheese, Ranch Sauce And Barbecue Sauce.",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/80811037060479709973D5B21D6D9F57?width=172&amp;height=172"
       },
@@ -3132,7 +3132,7 @@
         "id": "papa-johns-3643589530",
         "name": "Bacon & Spicy Buffalo Chicken Poppers Pizza",
         "description": "Beef Bacon, Chicken Poppers, Onions, Jalapeno Pepper, Mozzarella Cheese, Ranch Sauce And Buffalo Sauce.",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "isSpicy": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/ED16E9A65283E94DA3EB56068E2BAFBF?width=172&amp;height=172"
@@ -3141,7 +3141,7 @@
         "id": "papa-johns-3643589545",
         "name": "Garden Special Pizza",
         "description": "Tomatoes, Fresh Mushrooms, Green Peppers, Onions, Black Olives And Mozzarella Cheese With Pizza Sauce",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "isPopular": true,
         "isVegetarian": true,
@@ -3151,7 +3151,7 @@
         "id": "papa-johns-3643589535",
         "name": "Ranch Garden Special Pizza",
         "description": "Tomatoes, Fresh Mushroom, Onion, Green Pepper , Black Olives & Mozzarella Cheese With Ranch Sauce.",
-        "price": 0,
+        "price": null,
         "category": "Pizzas",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/72AD03E4C7295417C16690680AFF5A7D?width=172&amp;height=172"
@@ -3159,21 +3159,21 @@
       {
         "id": "papa-johns-3643589553",
         "name": "Half & Half  Medium Pizza",
-        "price": 0,
+        "price": null,
         "category": "Half & Half Pizzas",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/FF1316A7D14E01F6F92CA3B8C95CDC45?width=172&amp;height=172"
       },
       {
         "id": "papa-johns-3643589554",
         "name": "Half & Half Large Pizza",
-        "price": 0,
+        "price": null,
         "category": "Half & Half Pizzas",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/30DEF3E6AD593CC56C31F47B3D4E26FF?width=172&amp;height=172"
       },
       {
         "id": "papa-johns-3643589555",
         "name": "Half & Half Family Pizza",
-        "price": 0,
+        "price": null,
         "category": "Half & Half Pizzas",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/756D6CEB5DDB221FAC51F19F133E3BA9?width=172&amp;height=172"
       },
@@ -4233,7 +4233,7 @@
         "id": "pizza-hut-3681354095",
         "name": "Monday Offer",
         "description": "Buy Medium Pizza and get the second one for 29 EGP Only",
-        "price": 0,
+        "price": null,
         "category": "Monday Offer",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/A73B265558A4E7C7621F92F696FC090B?width=172&amp;height=172"
       },
@@ -7182,7 +7182,7 @@
         "id": "dunkin-3518093445",
         "name": "Cream Cheese Bagel+1 Donut+Spanish Latte Medium",
         "description": "̶2̶4̶8̶ ̶E̶G̶P̶\nTreat yourself to a savory Cream Cheese Bagel, a sweet Donut, and a rich, ice-cold Medium Spanish Latte.",
-        "price": 0,
+        "price": null,
         "category": "Summer Bundles",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/43A4255AD8061E0C166479D5FD72B224?width=172&amp;height=172"
@@ -7191,7 +7191,7 @@
         "id": "dunkin-3518093446",
         "name": "Egg N Cheese Wrap+1 Donut+Coffee Medium",
         "description": "̶2̶1̶5̶ ̶E̶G̶P̶\nFuel your day with a warm Egg & Cheese Wrap, a sweet Donut, and your choice of a Hot or Iced Coffee (Latte, Cappuccino, or Dunkin' Coffee).",
-        "price": 0,
+        "price": null,
         "category": "Summer Bundles",
         "isSpicy": true,
         "isVegetarian": true,
@@ -7261,7 +7261,7 @@
         "id": "dunkin-936531693",
         "name": "2 Donuts & Drink Large",
         "description": "2 Donuts of your choice with choice of your favorite Dunkin' coffee",
-        "price": 0,
+        "price": null,
         "category": "Drinks & Donuts Combos",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/42B768E9EA6C1ED5A3574FC9A8A3F633?width=172&amp;height=172"
       },
@@ -7269,7 +7269,7 @@
         "id": "dunkin-936531694",
         "name": "2 Donuts & Drink Medium",
         "description": "2 Donuts of your choice with choice of your favorite Dunkin' coffee",
-        "price": 0,
+        "price": null,
         "category": "Drinks & Donuts Combos",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/77ADDF279A6D3EE4BF92B9A3680BDDE6?width=172&amp;height=172"
       },
@@ -7277,7 +7277,7 @@
         "id": "dunkin-936531695",
         "name": "2 Donuts & Drink Small",
         "description": "2 Donuts of your choice with choice of your favorite Dunkin' coffee",
-        "price": 0,
+        "price": null,
         "category": "Drinks & Donuts Combos",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/337B2F2C7E476C946378F2A52A8E8AD4?width=172&amp;height=172"
       },
@@ -8117,7 +8117,7 @@
         "id": "dunkin-936531696",
         "name": "Beef Bacon N' Cheese Bagel Combo Large",
         "description": "Toasted Bagel with Beef Bacon, 1 Donut of your choice and a a choice of your favorite Dunkin' coffee",
-        "price": 0,
+        "price": null,
         "category": "Sandwiches Combos",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/Menuitems/A096378B5B17CC7D433FA078AA2A41D5?width=172&amp;height=172"
       },
@@ -8125,7 +8125,7 @@
         "id": "dunkin-936531697",
         "name": "Beef Bacon N' Cheese Bagel Combo Medium",
         "description": "Toasted Bagel with Beef Bacon, 1 Donut of your choice and a a choice of your favorite Dunkin' coffee",
-        "price": 0,
+        "price": null,
         "category": "Sandwiches Combos",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/9E7F01F4BCA6C2597A6C4278BC50F124?width=172&amp;height=172"
       },
@@ -8133,7 +8133,7 @@
         "id": "dunkin-936531698",
         "name": "Beef Bacon N' Cheese Bagel Combo Small",
         "description": "Toasted Bagel with Beef Bacon, 1 Donut of your choice and a a choice of your favorite Dunkin' coffee",
-        "price": 0,
+        "price": null,
         "category": "Sandwiches Combos",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/3728D87C426F4A06A4C354324C4F3B27?width=172&amp;height=172"
       },
@@ -8834,7 +8834,7 @@
         "id": "bazooka-3651773917",
         "name": "Flash Four Sandwich",
         "description": "4 single sandwiches (chicken or beef)",
-        "price": 352.00000183105465,
+        "price": 352,
         "category": "Offers",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/3DEEF3AC504B76EECA8E34C8954C1B75?width=172&amp;height=172"
       },
@@ -8850,7 +8850,7 @@
         "id": "bazooka-3518780573",
         "name": "Flash Elsaytara",
         "description": "3 pieces of chicken + rice + coleslaw + 1 bread",
-        "price": 199.1999969482422,
+        "price": 199.2,
         "category": "Offers",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/35F2F4C0E711F5647C76D423958AAD2C?width=172&amp;height=172"
       },
@@ -8866,7 +8866,7 @@
         "id": "bazooka-3518905563",
         "name": "Flash Combo Single🔥",
         "description": "1 Single beef or chicken sandwich + 1 single beef burger or 1 single chicken burger + 1 Drink + medium fries",
-        "price": 183.14999389648438,
+        "price": 183.15,
         "category": "Offers",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/F5B6C169711BDE2AE0D6C834F1ED30BA?width=172&amp;height=172"
       },
@@ -8882,7 +8882,7 @@
         "id": "bazooka-3518780575",
         "name": "El 2armsha Double",
         "description": "6 pieces of fried chicken + 2 coleslaw + 2 bread + 2 medium basmati rice",
-        "price": 379.8000030517578,
+        "price": 379.8,
         "category": "Offers",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/0D15D674B5A9309B56DFD8DD05179A09?width=172&amp;height=172"
       },
@@ -8898,7 +8898,7 @@
         "id": "bazooka-3518905541",
         "name": "Flash Secret",
         "description": "4 pieces + 1 bread",
-        "price": 220.1999969482422,
+        "price": 220.2,
         "category": "Offers",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/D858B6B510DBAE1623DF3B68B807BC08?width=172&amp;height=172"
       },
@@ -8923,7 +8923,7 @@
         "id": "bazooka-3518905547",
         "name": "Lamet El Sohab",
         "description": "9 chicken pieces, served with ,3 Medium Coleslaw, 3 bread",
-        "price": 520.2000122070312,
+        "price": 520.2,
         "category": "Offers",
         "isPopular": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/234D05320CEB26440193691FE2FAE3DD?width=172&amp;height=172"
@@ -8932,7 +8932,7 @@
         "id": "bazooka-3518905549",
         "name": "Combo Single",
         "description": "Single Sandwich + Combo (Fries + Drink)",
-        "price": 160.1999969482422,
+        "price": 160.2,
         "category": "Offers",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/A1BDFD35454AA842E97B3E85077F4BD2?width=172&amp;height=172"
       },
@@ -8948,7 +8948,7 @@
         "id": "bazooka-3518905553",
         "name": "Melok El Sa3ada 1",
         "description": "4 chicken pieces of your choice, served with small plain rice, medium coleslaw salad and Drink and bread",
-        "price": 274.8000030517578,
+        "price": 274.8,
         "category": "Offers",
         "isPopular": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/BA391AA9DB074149173157A3DB39F91D?width=172&amp;height=172"
@@ -8957,7 +8957,7 @@
         "id": "bazooka-3518905555",
         "name": "Combo El Sa3ada",
         "description": "Double beef sandwich or chicken sandwich, served with medium french fries and Drink",
-        "price": 229.8000030517578,
+        "price": 229.8,
         "category": "Offers",
         "isPopular": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/1678BA1194E2B5AB63473A4D9570468E?width=172&amp;height=172"
@@ -8975,7 +8975,7 @@
         "id": "bazooka-3518905559",
         "name": "fire Supreme Combo",
         "description": "Fire Super or Classic Super Sandwich + Drink + Fries",
-        "price": 154.8000030517578,
+        "price": 154.8,
         "category": "Offers",
         "isSpicy": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/A4E2A869786CBD63A66048628FE26C48?width=172&amp;height=172"
@@ -9712,7 +9712,7 @@
         "id": "willys-3262726451",
         "name": "Max 200g",
         "description": "Your Choice of Sandwich 200g served with Willy's soda and fries",
-        "price": 191.4000015258789,
+        "price": 191.4,
         "category": "Offers",
         "imageUrl": "https://images.deliveryhero.io/image/global-menu-service/HF_EG/vendor/646421/product/3189825328/963d1e68-a5c6-4db8-856f-22ca7bc1d67b.jpg?width=400&height=400&dpi=0.75?width=400&height=400&dpi=0.75?width=400&height=400&dpi=0.75?width=172&amp;height=172"
       },
@@ -10391,7 +10391,7 @@
         "id": "zooba-3450514094",
         "name": "Koshari",
         "description": "Rice, macaroni, brown lentils, chickpeas, tangy tomato sauce, crispy onions, dakka vinegar, aswani chili sauce.",
-        "price": 0,
+        "price": null,
         "category": "Mains",
         "isPopular": true,
         "isSpicy": true,
@@ -10456,7 +10456,7 @@
         "id": "zooba-3450514110",
         "name": "Ful plate",
         "description": "Dip made from fresh fava beans soaked overnight then slow-cooked for 12 hours daily; mashed with our own spice blend and drizzled with extra virgin olive oil.",
-        "price": 0,
+        "price": null,
         "category": "Ful",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/D0F793C8EB605F6336FB96C704E05716?width=172&amp;height=172"
       },
@@ -10464,7 +10464,7 @@
         "id": "zooba-3450514109",
         "name": "Ful sandwich",
         "description": "Sandwiches made from fresh fava beans soaked overnight then slow-cooked for 12 hours daily; mashed with our own spice blend and drizzled with extra virgin olive oil.",
-        "price": 0,
+        "price": null,
         "category": "Ful",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/0010D86E92C49D4D550A441C0F9817F8?width=172&amp;height=172"
       },
@@ -10472,7 +10472,7 @@
         "id": "zooba-3450514111",
         "name": "Taameya piece",
         "description": "Pieces prepared with our super-secret fava bean and herb mix made in-house all day long.",
-        "price": 0,
+        "price": null,
         "category": "Taameya",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/F1D570FE6FF0A564787EFA004A4A50A6?width=172&amp;height=172"
       },
@@ -10480,7 +10480,7 @@
         "id": "zooba-3450514113",
         "name": "Taameya sandwich",
         "description": "Prepared with our super-secret fava bean and herb mix made in-house all day long, with your choice of classic, eggplant, pickled lemon or spicy.",
-        "price": 0,
+        "price": null,
         "category": "Taameya",
         "isSpicy": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/8FB528EFBDF8FC6D79A982D0973498BF?width=172&amp;height=172"
@@ -10691,7 +10691,7 @@
         "id": "zooba-3450514138",
         "name": "Bread",
         "description": "Baladi Bread, whole wheat bread or crispy bread",
-        "price": 0,
+        "price": null,
         "category": "Sides",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/9976D06DE313E65C1CDEDC6CF20D8A51?width=172&amp;height=172"
       },
@@ -10851,7 +10851,7 @@
         "id": "el-dahan-3602977763",
         "name": "Large Mixed Grill Platter Offer",
         "description": "3 pieces of kofta, 3 pieces of shish tawook, and 2 pieces of kebab, served with rice, french fries or sauteed vegetables, salad, and bread.",
-        "price": 337.3999938964844,
+        "price": 337.4,
         "category": "Offers",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/mmw_638844687567634195?width=172&amp;height=172"
@@ -10860,7 +10860,7 @@
         "id": "el-dahan-3513683425",
         "name": "1/4 Grilled Kofta Offer",
         "description": "Served with Tahini Salad and Bread",
-        "price": 212.97000122070312,
+        "price": 212.97,
         "category": "Offers",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/WhatsApp_Image_20260729_a639209417187831292.jpeg?width=172&amp;height=172"
@@ -10869,7 +10869,7 @@
         "id": "el-dahan-3513687513",
         "name": "Kofta Meal Offer",
         "description": "1/4 Kilo of Grilled Kofta with Rice, French Fries, Tahini Salad and Bread",
-        "price": 232.4000015258789,
+        "price": 232.4,
         "category": "Offers",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/WhatsApp_Image_20260729_a639209416757992874.jpeg?width=172&amp;height=172"
@@ -10878,7 +10878,7 @@
         "id": "el-dahan-3513693932",
         "name": "Kofta and Molokhia Meal Offer",
         "description": "1/4 Grilled Kofta and Molokhia, served with Tahini Salad and Bread",
-        "price": 296.8000030517578,
+        "price": 296.8,
         "category": "Offers",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/WhatsApp_Image_20260729_a639209416486353348.jpeg?width=172&amp;height=172"
@@ -10887,7 +10887,7 @@
         "id": "el-dahan-3513694824",
         "name": "Shish Tawook Meal Offer",
         "description": "1/4 Kilo Shish Tawook, served with Basmati Rice, French Fries, Tahini Salad and Bread",
-        "price": 195.3000030517578,
+        "price": 195.3,
         "category": "Offers",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/WhatsApp_Image_20260729_a639209417750599829.jpeg?width=172&amp;height=172"
@@ -10914,7 +10914,7 @@
         "id": "el-dahan-3513698777",
         "name": "Grilled Half Chicken Meal Offer",
         "description": "Half Grilled Chicken Served With Basmati rice, French Fries, Tahini salad and Bread",
-        "price": 209.3000030517578,
+        "price": 209.3,
         "category": "Offers",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/WhatsApp_Image_20260729_a639209418454407935.jpeg?width=172&amp;height=172"
       },
@@ -10955,7 +10955,7 @@
         "id": "el-dahan-3114762378",
         "name": "Mix Grill",
         "description": "Served with salad and bread",
-        "price": 0,
+        "price": null,
         "category": "Grills By Kilo",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/20200617_Talabat_UAE_637475581475777309.jpg?width=172&amp;height=172"
@@ -10964,7 +10964,7 @@
         "id": "el-dahan-3114762389",
         "name": "Nefa",
         "description": "Served with salad and bread",
-        "price": 0,
+        "price": null,
         "category": "Grills By Kilo",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/mmw_638850964708725731?width=172&amp;height=172"
@@ -10973,7 +10973,7 @@
         "id": "el-dahan-3114762400",
         "name": "Baladi Sausage",
         "description": "Served with salad and bread",
-        "price": 0,
+        "price": null,
         "category": "Grills By Kilo",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/mmw_638850964426742328?width=172&amp;height=172"
@@ -10982,7 +10982,7 @@
         "id": "el-dahan-3114762411",
         "name": "Grilled Chicken Breasts",
         "description": "Served with 2 salads and bread",
-        "price": 0,
+        "price": null,
         "category": "Grills By Kilo",
         "isPopular": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/mmw_638850967068012611?width=172&amp;height=172"
@@ -10991,7 +10991,7 @@
         "id": "el-dahan-3114762424",
         "name": "Shish Tawook",
         "description": "Served with salad and bread.",
-        "price": 0,
+        "price": null,
         "category": "Grills By Kilo",
         "isPopular": true,
         "isVegetarian": true,
@@ -11001,7 +11001,7 @@
         "id": "el-dahan-3114762430",
         "name": "Kofta",
         "description": "Served with  salad and bread.",
-        "price": 0,
+        "price": null,
         "category": "Grills By Kilo",
         "isPopular": true,
         "isVegetarian": true,
@@ -11011,7 +11011,7 @@
         "id": "el-dahan-3114762437",
         "name": "Tarb",
         "description": "Served with salad and bread.",
-        "price": 0,
+        "price": null,
         "category": "Grills By Kilo",
         "isVegetarian": true,
         "imageUrl": "https://images.deliveryhero.io/image/global-menu-service/HF_EG/vendor/760858/product/2019058116/99f0ff9e-5dc3-428d-8718-42e667a383fa_enhanced.jpg?width=400&height=400&dpi=0.75?width=400&height=400&dpi=0.75?width=400&height=400&dpi=0.75?width=172&amp;height=172"
@@ -11020,7 +11020,7 @@
         "id": "el-dahan-3114762440",
         "name": "Mutton Kebab And Kofta",
         "description": "Served with salad and bread.",
-        "price": 0,
+        "price": null,
         "category": "Grills By Kilo",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/Kofta_and_kabab_637475567998950494.jpg?width=172&amp;height=172"
@@ -11029,7 +11029,7 @@
         "id": "el-dahan-3114762452",
         "name": "Veal Kebab And Kofta",
         "description": "Served with salad and bread.",
-        "price": 0,
+        "price": null,
         "category": "Grills By Kilo",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/Kofta_and_kabab_637475567941920201.jpg?width=172&amp;height=172"
@@ -11038,7 +11038,7 @@
         "id": "el-dahan-3114762462",
         "name": "Mutton Kebab",
         "description": "Served with salad and bread.",
-        "price": 0,
+        "price": null,
         "category": "Grills By Kilo",
         "isVegetarian": true,
         "imageUrl": "https://images.deliveryhero.io/image/global-menu-service/HF_EG/vendor/760858/product/2019058119/dd0487a9-cb16-4fe9-9f4b-9b8ae0473671_enhanced.jpg?width=400&height=400&dpi=0.75?width=400&height=400&dpi=0.75?width=400&height=400&dpi=0.75?width=172&amp;height=172"
@@ -11047,7 +11047,7 @@
         "id": "el-dahan-3114762464",
         "name": "Veal Kebab",
         "description": "Served with salad and bread.",
-        "price": 0,
+        "price": null,
         "category": "Grills By Kilo",
         "isVegetarian": true,
         "imageUrl": "https://images.deliveryhero.io/image/global-menu-service/HF_EG/vendor/760858/product/2019058120/813efbe9-7ce9-48be-aeac-7c94f33a076c_enhanced.jpg?width=400&height=400&dpi=0.75?width=400&height=400&dpi=0.75?width=400&height=400&dpi=0.75?width=172&amp;height=172"
@@ -11056,7 +11056,7 @@
         "id": "el-dahan-3114762469",
         "name": "Veal Ribs",
         "description": "Served with salad and bread.",
-        "price": 0,
+        "price": null,
         "category": "Grills By Kilo",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/mmw_638844680108896769?width=172&amp;height=172"
@@ -11065,7 +11065,7 @@
         "id": "el-dahan-3114762480",
         "name": "Mutton Ribs",
         "description": "Served with salad and bread.",
-        "price": 0,
+        "price": null,
         "category": "Grills By Kilo",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/mmw_638844681284730773?width=172&amp;height=172"
@@ -11074,7 +11074,7 @@
         "id": "el-dahan-3114762453",
         "name": "Grilled Kofta",
         "description": "Served with salad and bread",
-        "price": 0,
+        "price": null,
         "category": "Grills By Kilo",
         "isPopular": true,
         "isVegetarian": true,
@@ -11084,7 +11084,7 @@
         "id": "el-dahan-3114762376",
         "name": "Grilled Kebab - Lamb",
         "description": "Served With Salad And Bread",
-        "price": 0,
+        "price": null,
         "category": "Grilled Meat",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/mmw_638850962971983854?width=172&amp;height=172"
@@ -11093,7 +11093,7 @@
         "id": "el-dahan-3114762388",
         "name": "Grilled steak",
         "description": "fresh grilled steak from the finest cuts of meat, grilled over charcoal until golden brown on the outside and tender on the inside. served with grilled vegetables and a delicious sauce.",
-        "price": 0,
+        "price": null,
         "category": "Grilled Meat",
         "imageUrl": "https://images.deliveryhero.io/image/global-menu-service/HF_EG/vendor/608556/product/2980102073/0f6a3804-7d55-44d4-9b54-38607c263db3.jpg?width=172&amp;height=172"
       },
@@ -11101,7 +11101,7 @@
         "id": "el-dahan-3114762410",
         "name": "Grilled Liver",
         "description": "fresh liver grilled over charcoal with authentic oriental spices, served with onions, lemon, and hot bread.",
-        "price": 0,
+        "price": null,
         "category": "Grilled Meat",
         "isSpicy": true,
         "imageUrl": "https://images.deliveryhero.io/image/global-menu-service/HF_EG/vendor/608556/product/2980112057/a848f2f1-88a0-47ef-9dc4-46a7056f9772.jpg?width=172&amp;height=172"
@@ -11110,7 +11110,7 @@
         "id": "el-dahan-3114762420",
         "name": "Veal Kebab",
         "description": "Served with Salad and bread",
-        "price": 0,
+        "price": null,
         "category": "Grilled Meat",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/mmw_638850962010098486?width=172&amp;height=172"
@@ -11119,7 +11119,7 @@
         "id": "el-dahan-3114762431",
         "name": "Mutton Ribs",
         "description": "Served with salad and bread",
-        "price": 0,
+        "price": null,
         "category": "Grilled Meat",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/mmw_638850961643221013?width=172&amp;height=172"
@@ -11128,7 +11128,7 @@
         "id": "el-dahan-3114762446",
         "name": "Veal Ribs",
         "description": "Served with salad and bread",
-        "price": 0,
+        "price": null,
         "category": "Grilled Meat",
         "isPopular": true,
         "isVegetarian": true,
@@ -11138,7 +11138,7 @@
         "id": "el-dahan-3114762470",
         "name": "Kebab And Kofta - Lamb",
         "description": "Served With Salad And Bread",
-        "price": 0,
+        "price": null,
         "category": "Grilled Meat",
         "isPopular": true,
         "isVegetarian": true,
@@ -11148,7 +11148,7 @@
         "id": "el-dahan-3114762479",
         "name": "Kebab And Kofta - Veal",
         "description": "Kebab And Kofta Veal Served With Salad And Bread",
-        "price": 0,
+        "price": null,
         "category": "Grilled Meat",
         "isPopular": true,
         "isVegetarian": true,
@@ -11158,7 +11158,7 @@
         "id": "el-dahan-3114762492",
         "name": "Grilled Tarb",
         "description": "Served with salad and bread",
-        "price": 0,
+        "price": null,
         "category": "Grilled Meat",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/mmw_638850965818610598?width=172&amp;height=172"
@@ -11167,7 +11167,7 @@
         "id": "el-dahan-3114762499",
         "name": "Mutton Liver",
         "description": "Served with salads and bread.",
-        "price": 0,
+        "price": null,
         "category": "Grilled Meat",
         "isVegetarian": true,
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/mmw_638850964879560701?width=172&amp;height=172"
@@ -11176,7 +11176,7 @@
         "id": "el-dahan-3114762434",
         "name": "Shish Tawook",
         "description": "Served with 2 salads of your choice and bread",
-        "price": 0,
+        "price": null,
         "category": "Grilled Chicken",
         "isPopular": true,
         "isVegetarian": true,
@@ -12991,7 +12991,7 @@
         "id": "paul-2045396118",
         "name": "Soft Drink",
         "description": "Sip on the refreshing bliss of our Soft Drink, a sparkling elixir crafted with a symphony of flavors to quench your thirst and tantalize your taste buds.",
-        "price": 0,
+        "price": null,
         "category": "Water And Soft Drinks",
         "imageUrl": "https://talabat.dhmedia.io/image/talabat/MenuItems/mmw_638143037836615920?width=172&amp;height=172"
       },
@@ -13360,7 +13360,7 @@
         "id": "mcdonalds-1884499838",
         "name": "Ketchup",
         "description": "Unleash a burst of tangy, tomato goodness with our exquisite ketchup, a tantalizing companion that adds the perfect zing to every bite.",
-        "price": 0,
+        "price": null,
         "category": "Sauces",
         "imageUrl": "https://images.deliveryhero.io/image/global-menu-service/HF_EG/vendor/765043/product/1884499838/fe6ee5f7-0817-467d-b2cb-bbb4a6674968_original.jpg?width=172&amp;height=172"
       },

@@ -19,6 +19,7 @@ import { useFaculty } from '../hooks/useFaculty';
 import { useFavorites } from '../hooks/useFavorites';
 import { useStudentName } from '../hooks/useStudentName';
 import { useUrlParam } from '../hooks/useUrlParam';
+import SurpriseButton from './SurpriseButton';
 import { formatRating, priceInfo } from '@/lib/format';
 import { campusDistanceLabel, haversineMeters, mapsDirectionsUrl } from '@/lib/geo';
 import { DEFAULT_FILTERS, filterVenues, sortVenues, type Filters, type SortKey } from '@/lib/filters';
@@ -256,6 +257,14 @@ export default function VenueList({ initialVenues }: VenueListProps) {
           onSortChange={setSort}
           onReset={() => setFilters({ ...DEFAULT_FILTERS, query: filters.query })}
         />
+
+        {/*
+          Sits with the filters because it picks from the filtered list — the
+          adjacency is the explanation for why the result respects the filters.
+        */}
+        <div className="mt-2 flex justify-end">
+          <SurpriseButton venues={visible} onPick={setActiveId} />
+        </div>
       </div>
 
       {/* Spotlight — a calm way to surface what is actually good. */}

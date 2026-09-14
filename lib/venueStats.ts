@@ -5,6 +5,7 @@ import { getInMemoryReviewStats, getInMemoryTopDishes } from './inMemoryReviews'
 import { VENUES } from './venues';
 import { FUE_CAMPUS, haversineMeters, mapsDirectionsUrl, mapsPinUrl } from './geo';
 import { getCachedWikipediaLogo } from './wikipediaLogos';
+import { isOpenAt } from './hours';
 import type { VenueWithStats } from './types';
 
 /**
@@ -175,6 +176,9 @@ export async function getVenuesWithStats(): Promise<VenueWithStats[]> {
       mapsUrl: mapsPinUrl(venue),
       directionsUrl: mapsDirectionsUrl(venue),
       topDishes: combinedDishes,
+      // Evaluated on the server so the list can be filtered without shipping a
+      // parser to the client. ISR revalidates every 30s, so this stays current.
+      openState: isOpenAt(venue.openingHours),
     };
   });
 }

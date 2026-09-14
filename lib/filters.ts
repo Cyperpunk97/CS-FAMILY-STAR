@@ -26,6 +26,14 @@ export interface Filters {
   walkableOnly: boolean;
   onCampusOnly: boolean;
   favoritesOnly: boolean;
+  /**
+   * Show only venues known to be open.
+   *
+   * Venues with unknown hours are excluded while this is on, because the filter
+   * promises "open now" and we cannot honestly claim that of them. The UI says how
+   * many were hidden rather than letting them vanish silently.
+   */
+  openNowOnly: boolean;
 }
 
 export const DEFAULT_FILTERS: Filters = {
@@ -36,6 +44,7 @@ export const DEFAULT_FILTERS: Filters = {
   walkableOnly: false,
   onCampusOnly: false,
   favoritesOnly: false,
+  openNowOnly: false,
 };
 
 /** How many filters are active, for the badge on the Filters button. */
@@ -46,7 +55,8 @@ export function activeFilterCount(filters: Filters): number {
     (filters.minRating > 0 ? 1 : 0) +
     (filters.walkableOnly ? 1 : 0) +
     (filters.onCampusOnly ? 1 : 0) +
-    (filters.favoritesOnly ? 1 : 0)
+    (filters.favoritesOnly ? 1 : 0) +
+    (filters.openNowOnly ? 1 : 0)
   );
 }
 
@@ -82,9 +92,25 @@ export function filterVenues(
     if (filters.onCampusOnly && !venue.isOnCampus) return false;
     if (filters.walkableOnly && venue.distanceMeters > WALKABLE_METERS) return false;
     if (filters.favoritesOnly && !favorites.has(venue.id)) return false;
+    if (filters.openNowOnly && venue.openState !== 'open') return false;
 
     return true;
   });
+}
+
+/**
+ * How many venues the "open now" filter is hiding purely because their hours are
+ * unknown, as opposed to being genuinely closed.
+ *
+ * The UI shows this so a student understands the list is incomplete rather than
+ * concluding nothing is open. With no hours data at all, that count is every venue.
+ */
+export function unknownHoursHiddenCount(
+  venues: VenueWithStats[],
+  filters: Filters
+): number {
+  if (!filters.openNowOnly) return 0;
+  return venues.filter((v) => v.openState === 'unknown').length;
 }
 
 export function sortVenues(venues: VenueWithStats[], sort: SortKey): VenueWithStats[] {

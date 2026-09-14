@@ -144,3 +144,33 @@ body {
   outline-offset: 2px;
   border-radius: 6px;
 }
+
+/*
+ * Right-to-left support.
+ *
+ * `dir="rtl"` on <html> flips text direction and default alignment, but Tailwind's
+ * physical utilities (`ml-2`, `left-3`, `text-right`) are absolute and stay put.
+ * Components are being migrated to logical equivalents (`ms-2`, `start-3`,
+ * `text-end`) as they are touched; until that is finished these rules catch the
+ * cases where a stranded physical utility is actively misleading rather than merely
+ * imperfect.
+ *
+ * Icons that encode direction — chevrons, back arrows — must mirror, or "next" points
+ * backwards. Logos and photographs must not.
+ */
+[dir='rtl'] .rtl-mirror {
+  transform: scaleX(-1);
+}
+
+/* Arabic renders short at Geist's metrics; a touch more line height keeps the
+   descenders in Arabic script from colliding with the line below. */
+[dir='rtl'] {
+  line-height: 1.7;
+}
+
+/* Numerals and prices stay left-to-right even inside an Arabic sentence, otherwise
+   "٨٥ EGP" can reorder into nonsense at a bidi boundary. */
+[dir='rtl'] .ltr-nums {
+  direction: ltr;
+  unicode-bidi: isolate;
+}

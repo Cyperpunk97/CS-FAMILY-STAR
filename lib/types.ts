@@ -6,6 +6,8 @@
  * from here so a change to the API shape is a compile error, not a runtime bug.
  */
 
+import type { OpenState } from './hours';
+
 export const CATEGORIES = ['Cafe', 'Restaurant', 'Fast Food'] as const;
 export type Category = (typeof CATEGORIES)[number];
 
@@ -57,6 +59,14 @@ export interface Venue {
   logoHeight: number | null;
   signatureDish?: string | null;
   isOnCampus?: boolean;
+  /**
+   * OSM `opening_hours` syntax, or null when nobody has supplied real hours.
+   *
+   * Null is the default and means "unknown" everywhere in the UI — never "open".
+   * Hours are not invented for the same reason phone numbers are not: sending a
+   * student to a closed shop is worse than telling them to check.
+   */
+  openingHours?: string | null;
 }
 
 /** An individual food or beverage item in a venue's menu. */
@@ -65,7 +75,15 @@ export interface MenuItem {
   name: string;
   nameAr?: string;
   description?: string;
-  price: number; // in EGP
+  /**
+   * Price in EGP, or `null` when the item has no fixed price — grills sold by the
+   * kilo, for example, which Talabat lists without one.
+   *
+   * This must not be `0`. The parser used to write `Number(it.price) || 0`, which
+   * made "priced by weight" indistinguishable from "free", and the UI rendered 25
+   * of El Dahan's grills as "0 EGP".
+   */
+  price: number | null;
   category: string; // e.g. "Main Dishes", "Pastas", "Coffee & Espresso", "Sandwiches", "Bakery & Sweets", "Combos", "Drinks"
   isPopular?: boolean;
   isStudentDeal?: boolean;
@@ -104,6 +122,8 @@ export interface VenueWithStats extends Venue {
   directionsUrl: string;
   /** Top crowd-recommended or signature dishes. */
   topDishes?: string[];
+  /** Evaluated server-side against Africa/Cairo at render time. */
+  openState: OpenState;
 }
 
 export interface Review {

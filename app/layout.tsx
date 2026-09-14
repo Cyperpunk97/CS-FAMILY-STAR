@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
+import SkipLink from "./components/SkipLink";
+import LanguageToggle from "./components/LanguageToggle";
 
 /**
  * Only one family is loaded now. Geist_Mono was downloaded and preloaded on every
@@ -45,15 +47,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${geistSans.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      dir="ltr"
+      suppressHydrationWarning
+      className={`${geistSans.variable} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col">
-        {/* First tab stop, so keyboard users can jump the header and filters. */}
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-xl focus:bg-brand-700 focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
-        >
-          Skip to content
-        </a>
+        <SkipLink />
+
+        {/*
+          Mounted once here rather than per page: it is also what syncs
+          `<html lang>` and `<html dir>` when the language changes.
+        */}
+        <div className="mx-auto flex w-full max-w-2xl justify-end px-4 pt-3 sm:px-6">
+          <LanguageToggle />
+        </div>
+
         <div id="main" className="flex flex-1 flex-col">
           {children}
         </div>

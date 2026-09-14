@@ -11,6 +11,8 @@ interface ContactInfo {
   logoWidth?: number;
   logoHeight?: number;
   signatureDish?: string;
+  /** OSM `opening_hours` syntax. Per-branch, so usually set via CONTACTS_BY_ID. */
+  openingHours?: string;
 }
 
 /**
@@ -168,7 +170,7 @@ const CATALOG: CatalogEntry[] = [
   { id: 'p90-zooba', name: 'Zooba - New Cairo', brand: 'Zooba', vicinity: '90th Street Promenade, New Cairo', category: 'Restaurant', lat: 30.0215, lng: 31.4930, coordSource: 'approx', priceTier: 2, isOnCampus: false },
   { id: 'p90-auntie-annes', name: "Auntie Anne's - Point 90 Mall", brand: "Auntie Anne's", vicinity: 'Point 90 Mall, Cinema Level, New Cairo', category: 'Cafe', lat: 30.0187, lng: 31.4991, coordSource: 'approx', priceTier: 1, isOnCampus: false },
   { id: 'p90-dipndip', name: 'Dipndip - Point 90 Mall', brand: 'Dipndip', vicinity: 'Point 90 Mall, 1st Floor, New Cairo', category: 'Cafe', lat: 30.0185, lng: 31.4988, coordSource: 'approx', priceTier: 2, isOnCampus: false },
-  { id: 'p90-el-dahan', name: 'El Dahan Grills - New Cairo', brand: 'El Dahan', vicinity: '90th Street East, New Cairo', category: 'Restaurant', lat: 30.0220, lng: 31.4925, coordSource: 'approx', priceTier: 2, isOnCampus: false },
+  { id: 'p90-el-dahan', name: 'El Dahan Grills - New Cairo', brand: 'El Dahan', vicinity: '90th Street East, New Cairo', category: 'Restaurant', lat: 30.0220, lng: 31.4925, coordSource: 'approx', priceTier: 3, isOnCampus: false },
   { id: 'p90-manousha', name: "Man'ousha Street - Point 90", brand: "Man'ousha Street", vicinity: 'Point 90 Area Promenade, New Cairo', category: 'Fast Food', lat: 30.0190, lng: 31.4970, coordSource: 'approx', priceTier: 1, isOnCampus: false },
 ];
 
@@ -189,6 +191,8 @@ export const VENUES: Venue[] = CATALOG.map((v) => {
     logoWidth: contact.logoWidth ?? null,
     logoHeight: contact.logoHeight ?? null,
     signatureDish: contact.signatureDish ?? null,
+    // No venue has verified hours yet. `npm run osm:contacts` prints real ones.
+    openingHours: contact.openingHours ?? v.openingHours ?? null,
   };
 });
 

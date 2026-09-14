@@ -187,17 +187,21 @@ async function main() {
     .map((el) => {
       const tags = el.tags ?? {};
       const phone = tags.phone ?? tags['contact:phone'] ?? tags['contact:mobile'] ?? null;
+      // Harvested verbatim. The app's parser refuses anything it cannot fully
+      // understand, so passing through an exotic expression is safe: it becomes
+      // "hours unknown" rather than a wrong answer.
+      const openingHours = tags.opening_hours ?? null;
       const website = tags.website ?? tags['contact:website'] ?? null;
       const name = tags['name:en'] ?? tags.name ?? '';
       const lat = el.lat ?? el.center?.lat;
       const lng = el.lon ?? el.center?.lon;
 
-      if (!name || (!phone && !website) || lat == null || lng == null) return null;
-      return { name, key: normalise(name), phone, website, lat, lng };
+      if (!name || (!phone && !website && !openingHours) || lat == null || lng == null) return null;
+      return { name, key: normalise(name), phone, website, openingHours, lat, lng };
     })
     .filter(Boolean);
 
-  console.error(`${withContacts.length} of them have a phone or website.\n`);
+  console.error(`${withContacts.length} of them have a phone, website or opening hours.\n`);
 
   const matches = [];
   for (const venue of catalog) {
@@ -222,13 +226,16 @@ async function main() {
   console.log('// ─────────────────────────────────────────────────────────────');
   console.log('// Candidate contacts from OpenStreetMap. REVIEW EACH ONE, then');
   console.log('// paste the ones you trust into CONTACTS_BY_ID in lib/venues.ts.');
-  console.log('// OSM is volunteer-maintained: numbers can be stale or wrong.');
+  console.log('// OSM is volunteer-maintained: numbers and hours can be stale or wrong.');
+  console.log('// Opening hours the app cannot parse simply show as "hours unknown".');
   console.log('// ─────────────────────────────────────────────────────────────');
 
   for (const { venue, best } of matches.sort((a, b) => a.venue.id.localeCompare(b.venue.id))) {
     const fields = [];
     if (best.phone) fields.push(`phone: '${best.phone.replace(/'/g, "\\'")}'`);
     if (best.website) fields.push(`menuUrl: '${best.website.replace(/'/g, "\\'")}'`);
+    if (best.openingHours)
+      fields.push(`openingHours: '${best.openingHours.replace(/'/g, "\\'")}'`);
 
     console.log(
       `  '${venue.id}': { ${fields.join(', ')} },` +
