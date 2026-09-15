@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    <radialGradient id="tonnyBg" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="60%" stop-color="#172554"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </radialGradient>
+    <linearGradient id="tonnyYellow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FEF08A"/>
+      <stop offset="50%" stop-color="#FACC15"/>
+      <stop offset="100%" stop-color="#EAB308"/>
+    </linearGradient>
+    <filter id="tonnyShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Circular Navy Blue Emblem -->
+  <circle cx="120" cy="120" r="112" fill="url(#tonnyBg)" stroke="url(#tonnyYellow)" stroke-width="3.5"/>
+  <circle cx="120" cy="120" r="104" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.25"/>
+
+  <!-- Chef Hat & Street Food Grill Iconography -->
+  <g filter="url(#tonnyShadow)">
+    <!-- Chef Hat Base & Pouf -->
+    <path d="M102 70 L138 70 L136 78 L104 78 Z" fill="url(#tonnyYellow)"/>
+    <path d="M102 70 C94 70, 92 56, 102 50 C98 40, 114 36, 120 44 C126 36, 142 40, 138 50 C148 56, 146 70, 138 70 Z" 
+          fill="#FFFFFF" stroke="url(#tonnyYellow)" stroke-width="1.5"/>
+    
+    <!-- Crossed Spatula / Fork Line Accents -->
+    <path d="M84 96 L156 96" stroke="url(#tonnyYellow)" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="120" cy="96" r="4" fill="#EF4444"/>
+    <circle cx="94" cy="96" r="2" fill="#FFFFFF"/>
+    <circle cx="146" cy="96" r="2" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Typography -->
+  <g text-anchor="middle">
+    <!-- UNCLE Wordmark -->
+    <text x="120" y="136" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Impact', 'Segoe UI Black', sans-serif" 
+          font-size="28" font-weight="900" fill="#FFFFFF" letter-spacing="4" filter="url(#tonnyShadow)">
+      UNCLE
+    </text>
+
+    <!-- TONNY Yellow Ribbon Banner -->
+    <rect x="46" y="146" width="148" height="34" rx="17" fill="url(#tonnyYellow)" filter="url(#tonnyShadow)"/>
+    <text x="120" y="171" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Impact', 'Segoe UI Black', sans-serif" 
+          font-size="24" font-weight="900" fill="#172554" letter-spacing="4">
+      TONNY
+    </text>
+
+    <!-- Subtitle: STREET FOOD & BURGERS -->
+    <text x="120" y="202" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+          font-size="8.5" font-weight="800" fill="#93C5FD" letter-spacing="3">
+      STREET FOOD &amp; BURGERS
+    </text>
+    <text x="120" y="217" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+          font-size="7" font-weight="600" fill="#CBD5E1" letter-spacing="2">
+      FUE FOOD COURT • CAIRO
+    </text>
+  </g>
+</svg>

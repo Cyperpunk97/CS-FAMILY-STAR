@@ -69,7 +69,7 @@ function VenueCardImpl({ venue, index, isFavorite, onOpen, onToggleFavorite }: V
     <article
       // --i drives the staggered entrance; the utility caps the delay.
       style={{ '--i': index } as React.CSSProperties}
-      className="stagger group relative flex items-center gap-1 rounded-[--radius-card] border border-hairline bg-card pe-2.5 transition duration-200 hover:border-brand-200 hover:shadow-[0_2px_16px_-4px_rgb(87_26_26/0.13)] cursor-pointer"
+      className="stagger group relative flex items-center gap-1 rounded-[--radius-card] border border-hairline bg-card pe-2.5 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-[0_6px_20px_-4px_rgb(87_26_26/0.12),0_2px_6px_-2px_rgb(0_0_0/0.04)] active:translate-y-0 active:shadow-sm cursor-pointer"
       onClick={() => onOpen(venue)}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -202,7 +202,7 @@ function VenueCardImpl({ venue, index, isFavorite, onOpen, onToggleFavorite }: V
       </div>
 
       <ChevronRight
-        className="pointer-events-none h-4 w-4 shrink-0 text-ink-faint transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-brand-600"
+        className="pointer-events-none h-4 w-4 shrink-0 text-ink-faint transition-all duration-200 ease-out group-hover:translate-x-1 group-hover:text-brand-600 rtl-mirror"
         aria-hidden="true"
       />
     </article>

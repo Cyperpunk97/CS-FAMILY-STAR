@@ -53,7 +53,7 @@ export default function VenueAvatar({
 
   return (
     <div
-      className="relative shrink-0 overflow-hidden rounded-2xl ring-1 ring-ink/10"
+      className="relative shrink-0 overflow-hidden rounded-2xl ring-1 ring-ink/10 transition-transform duration-200 ease-out group-hover:scale-105"
       style={{
         width: box,
         height: box,

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    <radialGradient id="bwBg" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#1F2937"/>
+      <stop offset="100%" stop-color="#030712"/>
+    </radialGradient>
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="50%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <filter id="bwGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Circular Matte Black Badge -->
+  <circle cx="120" cy="120" r="110" fill="url(#bwBg)" stroke="url(#goldAccent)" stroke-width="4"/>
+  <circle cx="120" cy="120" r="102" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.25"/>
+
+  <!-- Top Crown / Wings Emblem Accent -->
+  <g filter="url(#bwGlow)">
+    <!-- Left Wing -->
+    <path d="M72 68 Q92 56 108 72 Q92 68 76 78 Z" fill="url(#goldAccent)"/>
+    <!-- Right Wing -->
+    <path d="M168 68 Q148 56 132 72 Q148 68 164 78 Z" fill="url(#goldAccent)"/>
+    <!-- Center Star -->
+    <polygon points="120,54 123,62 131,62 125,67 127,75 120,70 113,75 115,67 109,62 117,62" fill="#FBBF24"/>
+  </g>
+
+  <!-- Bold Monogram B&W -->
+  <g text-anchor="middle">
+    <text x="120" y="132" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Impact', 'Segoe UI Black', sans-serif" 
+          font-size="52" font-weight="900" fill="#FFFFFF" letter-spacing="3" filter="url(#bwGlow)">
+      B&amp;W
+    </text>
+
+    <!-- Gold Divider Bar -->
+    <rect x="65" y="146" width="110" height="3" rx="1.5" fill="url(#goldAccent)"/>
+
+    <!-- Subtitle: BURGERS & WINGS -->
+    <text x="120" y="170" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+          font-size="12" font-weight="800" fill="url(#goldAccent)" letter-spacing="3">
+      BURGERS &amp; WINGS
+    </text>
+
+    <!-- Bottom Arc / Established -->
+    <text x="120" y="196" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+          font-size="8.5" font-weight="700" fill="#9CA3AF" letter-spacing="3.5">
+      NEW CAIRO • CRUNCH &amp; SIZZLE
+    </text>
+  </g>
+</svg>

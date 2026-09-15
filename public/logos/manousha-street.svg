@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    <radialGradient id="manoushaBg" cx="50%" cy="38%" r="62%">
+      <stop offset="0%" stop-color="#064E3B"/>
+      <stop offset="60%" stop-color="#065F46"/>
+      <stop offset="100%" stop-color="#022C22"/>
+    </radialGradient>
+    <linearGradient id="flatbreadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FEF08A"/>
+      <stop offset="50%" stop-color="#FDE047"/>
+      <stop offset="100%" stop-color="#CA8A04"/>
+    </linearGradient>
+    <filter id="manoushaShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Circular Forest Green & Gold Badge -->
+  <circle cx="120" cy="120" r="112" fill="url(#manoushaBg)" stroke="#F59E0B" stroke-width="3"/>
+  <circle cx="120" cy="120" r="104" fill="none" stroke="#6EE7B7" stroke-width="1.2" stroke-opacity="0.4"/>
+
+  <!-- Woodfire Flatbread with Za'atar & Olive Herbs Motif -->
+  <g filter="url(#manoushaShadow)">
+    <!-- Round Warm Flatbread with crimped crust edge -->
+    <ellipse cx="120" cy="74" rx="46" ry="30" fill="url(#flatbreadGrad)" stroke="#B45309" stroke-width="2"/>
+    
+    <!-- Zaatar & Olive Oil Green Herb Swirls -->
+    <ellipse cx="120" cy="74" rx="34" ry="20" fill="#365314" stroke="#4D7C0F" stroke-width="1.5" stroke-opacity="0.8"/>
+    <circle cx="110" cy="70" r="2.5" fill="#A3E635"/>
+    <circle cx="128" cy="76" r="2" fill="#A3E635"/>
+    <circle cx="118" cy="80" r="1.5" fill="#FEF08A"/>
+    <circle cx="134" cy="68" r="2" fill="#FEF08A"/>
+
+    <!-- Steam Waves -->
+    <path d="M106 38 Q102 30 106 24" stroke="#A7F3D0" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <path d="M120 36 Q116 28 120 22" stroke="#A7F3D0" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <path d="M134 38 Q130 30 134 24" stroke="#A7F3D0" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- Typography -->
+  <g text-anchor="middle">
+    <!-- English Script: Man'ousha -->
+    <text x="120" y="142" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+          font-size="25" font-weight="900" fill="#FFFFFF" letter-spacing="2" filter="url(#manoushaShadow)">
+      MAN'OUSHA
+    </text>
+
+    <!-- Gold Accent Tag: STREET -->
+    <rect x="74" y="152" width="92" height="22" rx="4" fill="#F59E0B"/>
+    <text x="120" y="167" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+          font-size="12" font-weight="900" fill="#022C22" letter-spacing="3">
+      STREET
+    </text>
+
+    <!-- Arabic Subtitle: منقوشة وزعتر -->
+    <text x="120" y="196" font-family="'Amiri', 'Cairo', 'Segoe UI', Tahoma, sans-serif" 
+          font-size="16" font-weight="700" fill="#A7F3D0" letter-spacing="1">
+      فرن و مناقيش ساخنة
+    </text>
+
+    <!-- Subtitle: LEVANTINE BAKERY -->
+    <text x="120" y="214" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+          font-size="7.5" font-weight="700" fill="#FDE68A" letter-spacing="2">
+      WOOD-FIRED FLATBREADS
+    </text>
+  </g>
+</svg>

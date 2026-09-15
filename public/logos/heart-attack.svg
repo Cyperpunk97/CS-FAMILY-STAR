@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    <radialGradient id="haBg" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="60%" stop-color="#991B1B"/>
+      <stop offset="100%" stop-color="#450A0A"/>
+    </radialGradient>
+    <linearGradient id="cheeseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FDE047"/>
+      <stop offset="50%" stop-color="#FACC15"/>
+      <stop offset="100%" stop-color="#EAB308"/>
+    </linearGradient>
+    <filter id="haGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Circle Badge with Warning Notch Rim -->
+  <circle cx="120" cy="120" r="112" fill="#0A0A0A"/>
+  <circle cx="120" cy="120" r="106" fill="url(#haBg)" stroke="#FACC15" stroke-width="3"/>
+  <circle cx="120" cy="120" r="99" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.3"/>
+
+  <!-- EKG Heart Pulse Graphic with Flame Accent -->
+  <g filter="url(#haGlow)">
+    <!-- Heart Shape Contour in Background -->
+    <path d="M120 54 C104 36, 76 44, 76 68 C76 88, 98 102, 120 114 C142 102, 164 88, 164 68 C164 44, 136 36, 120 54 Z" 
+          fill="#7F1D1D" stroke="#EF4444" stroke-width="2" stroke-opacity="0.6"/>
+
+    <!-- Sharp EKG Pulse Line across center -->
+    <path d="M60 84 L88 84 L96 70 L104 98 L114 56 L124 104 L132 76 L140 88 L146 84 L180 84" 
+          fill="none" stroke="url(#cheeseGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Flame Burst at peak -->
+    <path d="M114 44 C118 48, 120 53, 114 56 C110 52, 110 47, 114 44 Z" fill="#FEF08A"/>
+  </g>
+
+  <!-- Typography -->
+  <g text-anchor="middle">
+    <!-- HEART Wordmark -->
+    <text x="120" y="148" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Impact', 'Segoe UI Black', sans-serif" 
+          font-size="34" font-weight="900" fill="#FFFFFF" letter-spacing="3" filter="url(#haGlow)">
+      HEART
+    </text>
+
+    <!-- ATTACK Yellow Banner Box -->
+    <rect x="52" y="156" width="136" height="32" rx="6" fill="#FACC15" filter="url(#haGlow)"/>
+    <text x="120" y="179" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Impact', 'Segoe UI Black', sans-serif" 
+          font-size="24" font-weight="900" fill="#18181B" letter-spacing="4">
+      ATTACK
+    </text>
+
+    <!-- Tagline -->
+    <text x="120" y="206" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+          font-size="8.5" font-weight="800" fill="#FEF08A" letter-spacing="3">
+      CRISPY FRIED CHICKEN
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    <radialGradient id="minceBg" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#1C1917"/>
+      <stop offset="100%" stop-color="#0C0A09"/>
+    </radialGradient>
+    <linearGradient id="bunGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <filter id="minceShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Circular Charcoal Canvas -->
+  <circle cx="120" cy="120" r="112" fill="url(#minceBg)" stroke="#44403C" stroke-width="2"/>
+  <circle cx="120" cy="120" r="105" fill="none" stroke="#F59E0B" stroke-width="2" stroke-dasharray="3,3" stroke-opacity="0.6"/>
+
+  <!-- Minimalist Artisanal Burger Line Art Group -->
+  <g filter="url(#minceShadow)" stroke-linecap="round">
+    <!-- Top Bun Arc -->
+    <path d="M84 68 C84 48, 156 48, 156 68 Z" fill="url(#bunGrad)"/>
+    <!-- Sesame Seeds -->
+    <circle cx="106" cy="58" r="1.5" fill="#FFFFFF"/>
+    <circle cx="120" cy="54" r="1.5" fill="#FFFFFF"/>
+    <circle cx="134" cy="59" r="1.5" fill="#FFFFFF"/>
+
+    <!-- Melted Cheese Layer (Golden Wave) -->
+    <path d="M80 74 L160 74 L148 82 L136 76 L124 84 L110 76 L98 82 Z" fill="#FACC15"/>
+
+    <!-- Charbroiled Beef Patty -->
+    <rect x="82" y="84" width="76" height="11" rx="5.5" fill="#78350F" stroke="#92400E" stroke-width="1"/>
+
+    <!-- Bottom Bun -->
+    <path d="M86 99 C86 104, 154 104, 154 99 Z" fill="url(#bunGrad)"/>
+  </g>
+
+  <!-- Wordmark & Typography -->
+  <g text-anchor="middle">
+    <!-- MINCE Display Text -->
+    <text x="120" y="146" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Didot', 'Playfair Display', Georgia, serif" 
+          font-size="34" font-weight="900" fill="#FFFFFF" letter-spacing="6" filter="url(#minceShadow)">
+      MINCE
+    </text>
+
+    <!-- Subtitle Bar -->
+    <rect x="70" y="156" width="100" height="2" fill="#F59E0B"/>
+    
+    <!-- BURGER Text -->
+    <text x="120" y="174" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+          font-size="11" font-weight="800" fill="#FACC15" letter-spacing="4">
+      BURGER
+    </text>
+
+    <text x="120" y="196" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+          font-size="7.5" font-weight="600" fill="#A8A29E" letter-spacing="3">
+      EST. 2011 • GOURMET MEAT
+    </text>
+  </g>
+</svg>
