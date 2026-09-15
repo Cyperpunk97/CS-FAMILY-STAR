@@ -1,7 +1,6 @@
 import { getMenuForRestaurant } from './menus';
 import { VENUES } from './venues';
 import type { CoordSource, MenuItem, VenueWithStats } from './types';
-import type { MenuItem, VenueWithStats } from './types';
 
 /**
  * Search across every dish on every menu.
