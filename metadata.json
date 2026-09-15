@@ -1,0 +1,6 @@
+{
+  "name": "CS Family Star",
+  "description": "Student ratings, prices, distances, and outing memories for cafes, restaurants and campus spots around the Future University in Egypt in New Cairo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
