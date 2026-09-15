@@ -172,7 +172,6 @@ create policy "anyone may upload a review image"
   on storage.objects for insert
   to anon, authenticated
   with check (bucket_id = 'review-images');
-
 -- ─────────────────────────────────────────────────────────────────────────────
 -- 7. Study-spot attributes
 --
