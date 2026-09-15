@@ -64,7 +64,7 @@ export default function MenuModal({ venue, open, onClose }: MenuModalProps) {
 
   // Talabat Extractor state
   const [showTalabatExtractor, setShowTalabatExtractor] = useState(false);
-  const [talabatInput, setTalabatInput] = useState(venue.brand || venue.name);
+  const [talabatInput, setTalabatInput] = useState(venue.name);
   const [isExtracting, setIsExtracting] = useState(false);
   const [talabatError, setTalabatError] = useState<string | null>(null);
   const [extractedPreview, setExtractedPreview] = useState<RestaurantMenu | null>(null);

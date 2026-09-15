@@ -186,6 +186,36 @@ export const BRAND_ALIASES: Record<string, string> = {
   'paul-point-90': 'paul',
 };
 
+/**
+ * Venue-specific identity takes precedence over free-text matching.
+ *
+ * A brand can have several branches in Talabat, while the app's venue catalog
+ * already knows which branch the student opened. Keeping this mapping explicit
+ * prevents a Point 90 venue from accidentally receiving another branch's menu
+ * when Talabat changes its search ordering.
+ */
+const TALABAT_VENUE_CONFIG: Record<string, { brandKey: string; searchName: string }> = {
+  'fue-costa-campus': { brandKey: 'costa-coffee', searchName: 'Costa Coffee FUE Campus' },
+  'fue-cilantro': { brandKey: 'cilantro', searchName: 'Cilantro FUE Campus' },
+  'fue-tbs-campus': { brandKey: 'tbs', searchName: 'TBS FUE Campus' },
+  'fue-cinnabon-campus': { brandKey: 'cinnabon', searchName: 'Cinnabon FUE Campus' },
+  'fue-buffalo-campus': { brandKey: 'buffalo-burger', searchName: 'Buffalo Burger FUE Campus' },
+  'fue-koshary-campus': { brandKey: 'koshary-tahrir', searchName: 'Koshary El Tahrir FUE Campus' },
+  'fue-dunkin-campus': { brandKey: 'dunkin', searchName: 'Dunkin FUE Campus' },
+  'p90-mcdonalds': { brandKey: 'mcdonalds', searchName: "McDonald's Point 90 Mall" },
+  'p90-kfc': { brandKey: 'kfc', searchName: 'KFC Point 90 Mall' },
+  'p90-hardees': { brandKey: 'hardees', searchName: "Hardee's Point 90 Mall" },
+  'p90-pizza-hut': { brandKey: 'pizza-hut', searchName: 'Pizza Hut Point 90 Mall' },
+  'p90-papa-johns': { brandKey: 'papa-johns', searchName: "Papa John's Point 90 Mall" },
+  'p90-starbucks': { brandKey: 'starbucks', searchName: 'Starbucks Point 90 Mall' },
+  'p90-costa': { brandKey: 'costa-coffee', searchName: 'Costa Coffee Point 90 Mall' },
+  'p90-paul': { brandKey: 'paul', searchName: 'Paul Point 90 Mall' },
+  'p90-bazooka': { brandKey: 'bazooka', searchName: 'Bazooka Point 90' },
+  'p90-willys-kitchen': { brandKey: 'willys', searchName: "Willy's Kitchen Point 90" },
+  'p90-zooba': { brandKey: 'zooba', searchName: 'Zooba New Cairo' },
+  'p90-el-dahan': { brandKey: 'el-dahan', searchName: 'El Dahan New Cairo' },
+};
+
 function normalizeRestaurantText(input: string): string {
   return input
     .toLowerCase()
@@ -408,11 +438,14 @@ export async function extractTalabatMenuByName(
 }> {
   const rawQuery = name.trim();
   const query = normalizeRestaurantText(rawQuery);
+  const venueConfig = options?.venueId ? TALABAT_VENUE_CONFIG[options.venueId] : undefined;
+  const queryKey = BRAND_ALIASES[query] || null;
   const normalizedKey =
-    BRAND_ALIASES[query] ||
+    queryKey ||
+    venueConfig?.brandKey ||
     BRAND_ALIASES[normalizeRestaurantText(options?.venueId || '')] ||
     null;
-  const matchQuery = normalizedKey || rawQuery;
+  const matchQuery = queryKey ? rawQuery : venueConfig?.searchName || normalizedKey || rawQuery;
 
   // 1. Check local pre-extracted dataset if live scraping is not forced
   if (!options?.forceLive && normalizedKey) {
