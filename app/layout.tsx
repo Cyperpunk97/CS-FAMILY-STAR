@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import SkipLink from "./components/SkipLink";
-import LanguageToggle from "./components/LanguageToggle";
 
 /**
  * Only one family is loaded now. Geist_Mono was downloaded and preloaded on every
@@ -55,14 +54,6 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col">
         <SkipLink />
-
-        {/*
-          Mounted once here rather than per page: it is also what syncs
-          `<html lang>` and `<html dir>` when the language changes.
-        */}
-        <div className="mx-auto flex w-full max-w-2xl justify-end px-4 pt-3 sm:px-6">
-          <LanguageToggle />
-        </div>
 
         <div id="main" className="flex flex-1 flex-col">
           {children}

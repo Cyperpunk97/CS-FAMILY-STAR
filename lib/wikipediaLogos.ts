@@ -68,7 +68,7 @@ export const WORLDWIDE_RESTAURANT_CONFIG: Record<
   },
   Starbucks: {
     wikiTitle: 'Starbucks',
-    localLogo: { url: '/logos/starbucks.png', width: 330, height: 36 },
+    localLogo: { url: '/logos/starbucks.svg', width: 240, height: 240 },
     preferredFile: 'Starbucks Corporation Logo 2011.svg',
   },
   'Costa Coffee': {

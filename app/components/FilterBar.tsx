@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useId, useRef, useState } from 'react';
-import { Clock, Dices, Footprints, GraduationCap, Heart, RotateCcw, Search, SlidersHorizontal, X } from 'lucide-react';
+import { Clock, Dices, Footprints, GraduationCap, Heart, RotateCcw, Scale, Search, SlidersHorizontal, X } from 'lucide-react';
 import { CATEGORIES, type Category, type PriceTier } from '@/lib/types';
 import { useTranslate } from '../hooks/useLocale';
 import {
@@ -23,6 +23,8 @@ interface FilterBarProps {
   /** Picks a random spot from the filtered list. Omitted means no dice is shown. */
   onSurprise?: () => void;
   surpriseDisabled?: boolean;
+  onCompare?: () => void;
+  compareDisabled?: boolean;
 }
 
 const CATEGORY_TABS: (Category | 'All')[] = ['All', ...CATEGORIES];
@@ -41,9 +43,9 @@ const RATING_STEPS: { value: Filters['minRating']; label: string }[] = [
 ];
 
 function chip(active: boolean) {
-  return `rounded-full px-3.5 py-1.5 text-xs font-bold transition duration-200 active:scale-95 ${
+  return `rounded-full px-3 py-1.5 text-xs font-bold transition duration-200 active:scale-95 ${
     active
-      ? 'bg-brand-700 text-white shadow-sm shadow-brand-900/20'
+      ? 'bg-brand-700 text-white shadow-2xs shadow-brand-900/20'
       : 'border border-hairline bg-card text-ink-soft hover:border-brand-200 hover:text-brand-700'
   }`;
 }
@@ -75,6 +77,8 @@ export default function FilterBar({
   onReset,
   onSurprise,
   surpriseDisabled = false,
+  onCompare,
+  compareDisabled = false,
 }: FilterBarProps) {
   const { t } = useTranslate();
   const [panelOpen, setPanelOpen] = useState(false);
@@ -110,52 +114,49 @@ export default function FilterBar({
   }
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-2.5">
       {/* Search input, with "surprise me" as part of the same control. */}
       <div className="flex items-center gap-2">
         <div className="relative min-w-0 flex-1">
-        <label htmlFor={searchId} className="sr-only">
-          {t('filter.searchLabel')}
-        </label>
-        <Search
-          className="pointer-events-none absolute start-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-faint"
-          aria-hidden="true"
-        />
-        <input
-          ref={searchInputRef}
-          id={searchId}
-          type="search"
-          value={filters.query}
-          onChange={(e) => set('query', e.target.value)}
-          placeholder={t('filter.searchPlaceholder')}
-          className="w-full rounded-2xl border border-hairline bg-card py-2.5 ps-10 pe-10 text-sm font-medium text-ink placeholder:text-ink-faint shadow-2xs transition duration-200 hover:border-brand-200 focus:border-brand-500 focus:bg-card focus:shadow-md focus:shadow-brand-900/5 focus:outline-none"
-        />
-        {filters.query ? (
-          <button
-            type="button"
-            onClick={() => {
-              set('query', '');
-              searchInputRef.current?.focus();
-            }}
-            aria-label="Clear search"
-            className="absolute end-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-ink-faint transition hover:bg-surface hover:text-ink"
-          >
-            <X className="h-4 w-4" aria-hidden="true" />
-          </button>
-        ) : (
-          <kbd
+          <label htmlFor={searchId} className="sr-only">
+            {t('filter.searchLabel')}
+          </label>
+          <Search
+            className="pointer-events-none absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-faint"
             aria-hidden="true"
-            className="pointer-events-none absolute end-3 top-1/2 hidden -translate-y-1/2 rounded-md border border-hairline bg-surface px-1.5 py-0.5 text-xs font-bold text-ink-faint sm:block"
-          >
-            /
-          </kbd>
-        )}
+          />
+          <input
+            ref={searchInputRef}
+            id={searchId}
+            type="search"
+            value={filters.query}
+            onChange={(e) => set('query', e.target.value)}
+            placeholder={t('filter.searchPlaceholder')}
+            className="h-10 w-full rounded-xl border border-hairline bg-card py-2 ps-9 pe-9 text-xs sm:text-sm font-medium text-ink placeholder:text-ink-faint shadow-2xs transition duration-200 hover:border-brand-200 focus:border-brand-500 focus:bg-card focus:shadow-md focus:shadow-brand-900/5 focus:outline-none"
+          />
+          {filters.query ? (
+            <button
+              type="button"
+              onClick={() => {
+                set('query', '');
+                searchInputRef.current?.focus();
+              }}
+              aria-label="Clear search"
+              className="absolute end-2.5 top-1/2 -translate-y-1/2 rounded-full p-1 text-ink-faint transition hover:bg-surface hover:text-ink"
+            >
+              <X className="h-4 w-4" aria-hidden="true" />
+            </button>
+          ) : (
+            <kbd
+              aria-hidden="true"
+              className="pointer-events-none absolute end-2.5 top-1/2 hidden -translate-y-1/2 rounded-md border border-hairline bg-surface px-1.5 py-0.5 text-[10px] font-bold text-ink-faint sm:block"
+            >
+              /
+            </kbd>
+          )}
         </div>
 
-        {/*
-          Picking at random is a way of searching — "I do not know what I want" — so
-          it belongs with the search box rather than floating as its own button.
-        */}
+        {/* Surprise Dice Picker */}
         {onSurprise && (
           <button
             type="button"
@@ -163,7 +164,7 @@ export default function FilterBar({
             disabled={surpriseDisabled}
             aria-label={t('search.surprise')}
             title={t('search.surprise')}
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-hairline bg-card text-ink-soft shadow-2xs transition hover:border-brand-200 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 disabled:cursor-not-allowed disabled:opacity-40"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-hairline bg-card text-ink-soft shadow-2xs transition hover:border-brand-200 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 disabled:cursor-not-allowed disabled:opacity-40 active:scale-95"
           >
             <Dices className="h-4 w-4" aria-hidden="true" />
           </button>
@@ -171,22 +172,22 @@ export default function FilterBar({
       </div>
 
       {/* Category rail & Quick Location Mode */}
-      <div className="scrollbar-none -mx-1 flex items-center gap-2 overflow-x-auto px-1 py-0.5">
+      <div className="scrollbar-none -mx-4 flex items-center gap-1.5 overflow-x-auto px-4 py-0.5">
         <button
           type="button"
           onClick={() => set('onCampusOnly', !filters.onCampusOnly)}
           aria-pressed={filters.onCampusOnly}
-          className={`shrink-0 inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-bold transition duration-200 active:scale-95 ${
+          className={`shrink-0 inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-bold transition duration-200 active:scale-95 ${
             filters.onCampusOnly
-              ? 'bg-emerald-700 text-white shadow-sm shadow-emerald-900/20'
-              : 'border border-emerald-300/80 bg-emerald-50/60 text-emerald-900 hover:bg-emerald-100 hover:border-emerald-400'
+              ? 'bg-emerald-700 text-white shadow-2xs shadow-emerald-900/20'
+              : 'border border-emerald-300/80 bg-emerald-50/70 text-emerald-900 hover:bg-emerald-100 hover:border-emerald-400'
           }`}
         >
           <GraduationCap className="h-3.5 w-3.5" />
-          🎓 On-Campus Only
+          <span>🎓 On-Campus</span>
         </button>
 
-        <div className="h-4 w-px bg-hairline shrink-0 my-auto" />
+        <div className="h-3.5 w-px bg-hairline shrink-0 my-auto" />
 
         {CATEGORY_TABS.map((cat) => (
           <button
@@ -201,44 +202,68 @@ export default function FilterBar({
         ))}
       </div>
 
-      {/* Sort, Filters, and Count */}
-      <div className="flex items-center gap-2">
-        <label htmlFor={sortId} className="sr-only">
-          {t('sort.label')}
-        </label>
-        <select
-          id={sortId}
-          value={sort}
-          onChange={(e) => onSortChange(e.target.value as SortKey)}
-          className="min-w-0 rounded-full border border-hairline bg-card px-3 py-1.5 text-xs font-bold text-ink-soft shadow-sm transition hover:border-brand-200 focus:border-brand-400"
-        >
-          {SORT_OPTIONS.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+      {/* Sort, Filters Toggle, Compare, and Result Count Toolbar */}
+      <div className="flex items-center justify-between gap-1.5 pt-0.5">
+        <div className="flex items-center gap-1.5 min-w-0">
+          <label htmlFor={sortId} className="sr-only">
+            {t('sort.label')}
+          </label>
+          <select
+            id={sortId}
+            value={sort}
+            onChange={(e) => onSortChange(e.target.value as SortKey)}
+            className="h-8 max-w-[125px] sm:max-w-none rounded-lg border border-hairline bg-card px-2 text-xs font-bold text-ink shadow-2xs transition focus:border-brand-400 focus:outline-none"
+          >
+            {SORT_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
 
-        <button
-          type="button"
-          onClick={() => setPanelOpen((open) => !open)}
-          aria-expanded={panelOpen}
-          aria-controls={panelId}
-          className={`${chip(activeCount > 0 || panelOpen)} inline-flex shrink-0 items-center gap-1.5`}
-        >
-          <SlidersHorizontal className="h-3.5 w-3.5" aria-hidden="true" />
-          {t('filter.title')}
-          {activeCount > 0 && (
-            <span className="rounded-full bg-white/25 px-1.5 text-xs leading-4">
-              {activeCount}
-            </span>
+          <button
+            type="button"
+            onClick={() => setPanelOpen((open) => !open)}
+            aria-expanded={panelOpen}
+            aria-controls={panelId}
+            className={`inline-flex h-8 items-center gap-1 rounded-lg px-2.5 text-xs font-bold transition active:scale-95 ${
+              activeCount > 0 || panelOpen
+                ? 'bg-brand-700 text-white shadow-2xs'
+                : 'border border-hairline bg-card text-ink-soft hover:text-ink'
+            }`}
+          >
+            <SlidersHorizontal className="h-3.5 w-3.5" aria-hidden="true" />
+            <span className="hidden xs:inline">{t('filter.title')}</span>
+            <span className="xs:hidden">Filters</span>
+            {activeCount > 0 && (
+              <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-white/25 px-1 text-[10px] leading-none">
+                {activeCount}
+              </span>
+            )}
+          </button>
+        </div>
+
+        <div className="flex items-center gap-1.5 shrink-0">
+          {onCompare && (
+            <button
+              type="button"
+              onClick={onCompare}
+              disabled={compareDisabled}
+              className="inline-flex h-8 items-center gap-1 rounded-lg border border-hairline bg-card px-2.5 text-xs font-bold text-ink-soft shadow-2xs transition hover:bg-surface hover:text-ink disabled:cursor-not-allowed disabled:opacity-40 active:scale-95"
+              title="Compare spots side-by-side"
+            >
+              <Scale className="h-3.5 w-3.5" aria-hidden="true" />
+              <span className="hidden sm:inline">{t('compare.title')}</span>
+              <span className="sm:hidden">Compare</span>
+            </button>
           )}
-        </button>
 
-        <p className="ms-auto shrink-0 text-xs text-ink-faint" aria-live="polite">
-          <span className="font-bold text-ink">{resultCount}</span>
-          {resultCount !== totalCount && ` / ${totalCount}`}
-        </p>
+          <span className="text-xs font-semibold text-ink-faint whitespace-nowrap">
+            <strong className="text-ink font-bold">{resultCount}</strong>
+            <span className="hidden xs:inline"> spots</span>
+            {resultCount !== totalCount && `/${totalCount}`}
+          </span>
+        </div>
       </div>
 
       {/* Active filters, removable one by one. */}

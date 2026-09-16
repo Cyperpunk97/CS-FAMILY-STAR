@@ -69,7 +69,7 @@ function VenueCardImpl({ venue, index, isFavorite, onOpen, onToggleFavorite }: V
     <article
       // --i drives the staggered entrance; the utility caps the delay.
       style={{ '--i': index } as React.CSSProperties}
-      className="stagger group relative flex items-center gap-1 rounded-[--radius-card] border border-hairline bg-card pe-2.5 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-[0_6px_20px_-4px_rgb(87_26_26/0.12),0_2px_6px_-2px_rgb(0_0_0/0.04)] active:translate-y-0 active:shadow-sm cursor-pointer"
+      className="stagger group relative flex items-center gap-1 rounded-[--radius-card] border border-hairline bg-card pe-2.5 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand-300 hover:shadow-[0_8px_24px_-4px_rgb(87_26_26/0.12),0_2px_8px_-2px_rgb(0_0_0/0.04)] active:translate-y-0 active:scale-[0.99] active:shadow-sm cursor-pointer"
       onClick={() => onOpen(venue)}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -84,23 +84,25 @@ function VenueCardImpl({ venue, index, isFavorite, onOpen, onToggleFavorite }: V
       aria-label={`View details for ${venue.name}`}
     >
       <div className="flex min-w-0 flex-1 items-center gap-3 py-3 ps-3 text-start">
-        <VenueAvatar venue={venue} />
+        <div className="transition-transform duration-300 ease-out group-hover:scale-105 shrink-0">
+          <VenueAvatar venue={venue} />
+        </div>
 
         <span className="min-w-0 flex-1">
           <span className="flex items-center gap-2">
-            <span className="min-w-0 truncate text-[0.95rem] font-bold leading-snug text-ink transition-colors group-hover:text-brand-700">
+            <span className="min-w-0 truncate text-[0.95rem] font-bold leading-snug text-ink transition-colors duration-200 group-hover:text-brand-700">
               {venue.name}
             </span>
 
             {venue.isOnCampus && (
-              <span className="shrink-0 rounded-md bg-emerald-50 px-1.5 py-0.5 text-xs font-bold text-emerald-800 border border-emerald-200">
+              <span className="shrink-0 rounded-md bg-emerald-50 px-1.5 py-0.5 text-xs font-bold text-emerald-800 border border-emerald-200 transition-colors group-hover:bg-emerald-100/80">
                 {t('venue.onCampusShort')}
               </span>
             )}
 
             {rated ? (
               <span className="flex shrink-0 items-center gap-0.5 text-sm font-bold text-ink">
-                <Star className="h-3.5 w-3.5 fill-star text-star" aria-hidden="true" />
+                <Star className="h-3.5 w-3.5 fill-star text-star transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" aria-hidden="true" />
                 {formatRating(venue.averageRating)}
               </span>
             ) : (

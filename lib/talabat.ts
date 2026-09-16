@@ -79,6 +79,7 @@ export const BRAND_ALIASES: Record<string, string> = {
   // Costa
   costa: 'costa-coffee',
   'costa coffee': 'costa-coffee',
+  'costa-coffee': 'costa-coffee',
   'fue-costa-campus': 'costa-coffee',
   'costa-coffee-point-90': 'costa-coffee',
   'costa point 90': 'costa-coffee',
@@ -88,17 +89,20 @@ export const BRAND_ALIASES: Record<string, string> = {
   cilantro: 'cilantro',
   'fue-cilantro': 'cilantro',
   'cilantro cafe': 'cilantro',
+  'cilantro-point-90': 'cilantro',
 
   // Starbucks
   starbucks: 'starbucks',
   'starbucks coffee': 'starbucks',
   'starbucks-point-90': 'starbucks',
+  'starbucks point 90': 'starbucks',
 
   // McDonalds
   mcdonalds: 'mcdonalds',
   "mcdonald's": 'mcdonalds',
   mcd: 'mcdonalds',
   'mcdonalds-point-90': 'mcdonalds',
+  'mcdonalds point 90': 'mcdonalds',
 
   // Papa Johns
   papajohns: 'papa-johns',
@@ -106,6 +110,7 @@ export const BRAND_ALIASES: Record<string, string> = {
   "papa john's": 'papa-johns',
   "papa john's pizza": 'papa-johns',
   'papa-johns-pizza': 'papa-johns',
+  'papa-johns': 'papa-johns',
   'papa-johns-point-90': 'papa-johns',
 
   // Hardees
@@ -116,11 +121,13 @@ export const BRAND_ALIASES: Record<string, string> = {
   // Pizza Hut
   pizzahut: 'pizza-hut',
   'pizza hut': 'pizza-hut',
+  'pizza-hut': 'pizza-hut',
   'pizza-hut-point-90': 'pizza-hut',
 
   // KFC
   kfc: 'kfc',
   'kentucky fried chicken': 'kfc',
+  kentucky: 'kfc',
   'kfc-point-90': 'kfc',
 
   // Buffalo Burger
@@ -141,6 +148,7 @@ export const BRAND_ALIASES: Record<string, string> = {
   tahrir: 'koshary-tahrir',
   'koshary el tahrir': 'koshary-tahrir',
   'koshary tahrir': 'koshary-tahrir',
+  'koshary-tahrir': 'koshary-tahrir',
   'fue-koshary-campus': 'koshary-tahrir',
   'koshary-el-tahrir-point-90': 'koshary-tahrir',
 
@@ -148,12 +156,15 @@ export const BRAND_ALIASES: Record<string, string> = {
   dunkin: 'dunkin',
   "dunkin'": 'dunkin',
   'dunkin donuts': 'dunkin',
+  'dunkin-donuts': 'dunkin',
   'fue-dunkin-campus': 'dunkin',
   'dunkin-point-90': 'dunkin',
 
   // Cinnabon
   cinnabon: 'cinnabon',
   'cinnabon bakery': 'cinnabon',
+  'cinnabon & seattle\'s best': 'cinnabon',
+  'cinnabon and seattles best': 'cinnabon',
   'fue-cinnabon-campus': 'cinnabon',
   'cinnabon-point-90': 'cinnabon',
 
@@ -177,6 +188,7 @@ export const BRAND_ALIASES: Record<string, string> = {
   dahan: 'el-dahan',
   'el dahan': 'el-dahan',
   eldahan: 'el-dahan',
+  'el-dahan': 'el-dahan',
   'el-dahan-point-90': 'el-dahan',
 
   // Paul
@@ -184,114 +196,52 @@ export const BRAND_ALIASES: Record<string, string> = {
   'paul bakery': 'paul',
   'paul bakery & restaurant': 'paul',
   'paul-point-90': 'paul',
+
+  // Burger King
+  'burger-king': 'burger-king',
+  'burger king': 'burger-king',
+  'burgerking': 'burger-king',
+
+  // Chilis
+  chilis: 'chilis',
+  "chili's": 'chilis',
+
+  // Fuddruckers
+  fuddruckers: 'fuddruckers',
+
+  // Arby's
+  arbys: 'arbys',
+  "arby's": 'arbys',
+
+  // Baskin Robbins
+  'baskin-robbins': 'baskin-robbins',
+  'baskin robbins': 'baskin-robbins',
+  'baskin': 'baskin-robbins',
+
+  // Second Cup
+  'second-cup': 'second-cup',
+  'second cup': 'second-cup',
+
+  // Smashburger
+  'smash-burger': 'smash-burger',
+  'smashburger': 'smash-burger',
+  'smash burger': 'smash-burger',
+
+  // Heart Attack
+  'heart-attack': 'heart-attack',
+  'heart attack': 'heart-attack',
+
+  // Auntie Anne's
+  'auntie-annes': 'auntie-annes',
+  'auntie anne': 'auntie-annes',
+  "auntie anne's": 'auntie-annes',
+  'auntie annes': 'auntie-annes',
+
+  // Abou Shakra
+  'abou-shakra': 'abou-shakra',
+  'abou shakra': 'abou-shakra',
+  'abu shakra': 'abou-shakra',
 };
-
-/**
- * Venue-specific identity takes precedence over free-text matching.
- *
- * A brand can have several branches in Talabat, while the app's venue catalog
- * already knows which branch the student opened. Keeping this mapping explicit
- * prevents a Point 90 venue from accidentally receiving another branch's menu
- * when Talabat changes its search ordering.
- */
-const TALABAT_VENUE_CONFIG: Record<string, { brandKey: string; searchName: string }> = {
-  'fue-costa-campus': { brandKey: 'costa-coffee', searchName: 'Costa Coffee FUE Campus' },
-  'fue-cilantro': { brandKey: 'cilantro', searchName: 'Cilantro FUE Campus' },
-  'fue-tbs-campus': { brandKey: 'tbs', searchName: 'TBS FUE Campus' },
-  'fue-cinnabon-campus': { brandKey: 'cinnabon', searchName: 'Cinnabon FUE Campus' },
-  'fue-buffalo-campus': { brandKey: 'buffalo-burger', searchName: 'Buffalo Burger FUE Campus' },
-  'fue-koshary-campus': { brandKey: 'koshary-tahrir', searchName: 'Koshary El Tahrir FUE Campus' },
-  'fue-dunkin-campus': { brandKey: 'dunkin', searchName: 'Dunkin FUE Campus' },
-  'p90-mcdonalds': { brandKey: 'mcdonalds', searchName: "McDonald's Point 90 Mall" },
-  'p90-kfc': { brandKey: 'kfc', searchName: 'KFC Point 90 Mall' },
-  'p90-hardees': { brandKey: 'hardees', searchName: "Hardee's Point 90 Mall" },
-  'p90-pizza-hut': { brandKey: 'pizza-hut', searchName: 'Pizza Hut Point 90 Mall' },
-  'p90-papa-johns': { brandKey: 'papa-johns', searchName: "Papa John's Point 90 Mall" },
-  'p90-starbucks': { brandKey: 'starbucks', searchName: 'Starbucks Point 90 Mall' },
-  'p90-costa': { brandKey: 'costa-coffee', searchName: 'Costa Coffee Point 90 Mall' },
-  'p90-paul': { brandKey: 'paul', searchName: 'Paul Point 90 Mall' },
-  'p90-bazooka': { brandKey: 'bazooka', searchName: 'Bazooka Point 90' },
-  'p90-willys-kitchen': { brandKey: 'willys', searchName: "Willy's Kitchen Point 90" },
-  'p90-zooba': { brandKey: 'zooba', searchName: 'Zooba New Cairo' },
-  'p90-el-dahan': { brandKey: 'el-dahan', searchName: 'El Dahan New Cairo' },
-};
-
-function normalizeRestaurantText(input: string): string {
-  return input
-    .toLowerCase()
-    .replace(/[’'`]/g, '')
-    .replace(/&/g, ' and ')
-    .replace(/[^a-z0-9\u0600-\u06ff]+/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-function restaurantTokens(input: string): string[] {
-  return normalizeRestaurantText(input).split(' ').filter(Boolean);
-}
-
-/**
- * Scores a Talabat result against the requested restaurant.
- *
- * Talabat search results often include nearby branches and similarly named
- * restaurants. Returning the first result made a query such as "Paul" depend
- * on Talabat's ordering rather than on the user's request.
- */
-function scoreRestaurantMatch(
-  query: string,
-  candidate: { name?: string; brand?: string; slug?: string }
-): number {
-  const queryText = normalizeRestaurantText(query);
-  const queryTokens = restaurantTokens(query);
-  if (!queryText || queryTokens.length === 0) return 0;
-
-  const fields = [candidate.name, candidate.brand, candidate.slug]
-    .filter((value): value is string => Boolean(value))
-    .map(normalizeRestaurantText)
-    .filter(Boolean);
-  if (fields.length === 0) return 0;
-
-  let best = 0;
-  for (const field of fields) {
-    const fieldTokens = new Set(field.split(' '));
-    const matchedTokens = queryTokens.filter((token) => fieldTokens.has(token)).length;
-    const allTokensMatch = matchedTokens === queryTokens.length;
-
-    if (field === queryText) best = Math.max(best, 100);
-    else if (field.startsWith(`${queryText} `) || field.endsWith(` ${queryText}`)) {
-      best = Math.max(best, 90);
-    } else if (allTokensMatch) {
-      best = Math.max(best, 80 + matchedTokens);
-    } else if (field.includes(queryText)) {
-      best = Math.max(best, 60);
-    } else if (matchedTokens > 0) {
-      best = Math.max(best, (matchedTokens / queryTokens.length) * 40);
-    }
-  }
-
-  return best;
-}
-
-function pickBestRestaurant<T extends { name?: string; brand?: string; slug?: string }>(
-  query: string,
-  candidates: T[]
-): T | null {
-  let best: T | null = null;
-  let bestScore = 0;
-
-  for (const candidate of candidates) {
-    const score = scoreRestaurantMatch(query, candidate);
-    if (score > bestScore) {
-      best = candidate;
-      bestScore = score;
-    }
-  }
-
-  // A partial token match is not enough to silently load the wrong menu.
-  // For example, "coffee" matches several brands and must not pick whichever
-  // one Talabat happened to return first.
-  return bestScore >= 80 ? best : null;
-}
 
 export interface CachedTalabatRestaurant {
   restaurantId: string;
@@ -419,8 +369,43 @@ export function transformTalabatMenu(
 }
 
 /**
+ * Normalizes a restaurant name by stripping common branch noise (campus, point 90, etc.)
+ */
+function cleanSearchQuery(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/^fue[\s-_]+/g, '')
+    .replace(/[\s-_]+(campus|point[\s-_]*90|branch|egypt|cairo|restaurant|cafe)$/g, '')
+    .replace(/[^a-z0-9\s]/g, '')
+    .trim();
+}
+
+/**
+ * Calculates a match score (0-100) between a query and a candidate brand/name.
+ */
+function scoreMatch(query: string, candidate: string): number {
+  if (!query || !candidate) return 0;
+  const q = cleanSearchQuery(query);
+  const c = cleanSearchQuery(candidate);
+  if (!q || !c) return 0;
+
+  if (q === c) return 100;
+  if (c.startsWith(q) || q.startsWith(c)) return 85;
+  if (c.includes(q) || q.includes(c)) return 70;
+
+  const qTokens = q.split(/\s+/).filter(Boolean);
+  const cTokens = c.split(/\s+/).filter(Boolean);
+  const matches = qTokens.filter((token) => cTokens.some((ct) => ct.includes(token) || token.includes(ct)));
+  if (matches.length > 0) {
+    return Math.round((matches.length / Math.max(qTokens.length, cTokens.length)) * 60);
+  }
+
+  return 0;
+}
+
+/**
  * Extracts a real menu by restaurant name or brand.
- * 1. Checks cached pre-extracted Talabat menus database.
+ * 1. Checks cached pre-extracted Talabat menus database using scored matching.
  * 2. If not found or if forced, attempts dynamic live search & hydration from Talabat Egypt.
  */
 export async function extractTalabatMenuByName(
@@ -436,24 +421,22 @@ export async function extractTalabatMenuByName(
   isLiveScraped?: boolean;
   error?: string;
 }> {
-  const rawQuery = name.trim();
-  const query = normalizeRestaurantText(rawQuery);
-  const venueConfig = options?.venueId ? TALABAT_VENUE_CONFIG[options.venueId] : undefined;
-  const queryKey = BRAND_ALIASES[query] || null;
-  const normalizedKey =
-    queryKey ||
-    venueConfig?.brandKey ||
-    BRAND_ALIASES[normalizeRestaurantText(options?.venueId || '')] ||
-    null;
-  const matchQuery = queryKey ? rawQuery : venueConfig?.searchName || normalizedKey || rawQuery;
+  const query = name.trim().toLowerCase();
+  const cleanedQuery = cleanSearchQuery(name);
+  const venueId = (options?.venueId || '').toLowerCase();
 
-  // 1. Check local pre-extracted dataset if live scraping is not forced
-  if (!options?.forceLive && normalizedKey) {
-    const cached = typedCachedData[normalizedKey];
+  // 1. Check alias dictionary
+  const aliasKey =
+    BRAND_ALIASES[query] ||
+    BRAND_ALIASES[cleanedQuery] ||
+    (venueId ? BRAND_ALIASES[venueId] : null);
+
+  if (!options?.forceLive && aliasKey) {
+    const cached = typedCachedData[aliasKey];
     if (cached && Array.isArray(cached.items) && cached.items.length > 0) {
       const cloned: RestaurantMenu = {
         restaurantId: options?.venueId || cached.restaurantId,
-        restaurantName: cached.restaurantName,
+        restaurantName: name || cached.restaurantName,
         currency: cached.currency || 'EGP',
         lastUpdated: cached.lastUpdated,
         note: `Extracted from Talabat.com Egypt (${cached.items.length} items verified)`,
@@ -470,34 +453,38 @@ export async function extractTalabatMenuByName(
     }
   }
 
-  // 2. Direct fuzzy match against cached dataset brand names
+  // 2. Direct scored match against cached dataset
   if (!options?.forceLive) {
-    const cachedEntries = Object.entries(typedCachedData);
-    const bestCached = pickBestRestaurant(
-      matchQuery,
-      cachedEntries.map(([key, cached]) => ({
-        key,
-        cached,
-        name: cached.restaurantName,
-        brand: cached.brand,
-      }))
-    );
+    let bestScore = 0;
+    let bestCached: CachedTalabatRestaurant | null = null;
 
-    if (bestCached) {
-      const cached = bestCached.cached;
+    for (const [key, cached] of Object.entries(typedCachedData)) {
+      const nameScore = scoreMatch(name, cached.restaurantName);
+      const brandScore = cached.brand ? scoreMatch(name, cached.brand) : 0;
+      const keyScore = scoreMatch(name, key);
+      const score = Math.max(nameScore, brandScore, keyScore);
+
+      if (score > bestScore) {
+        bestScore = score;
+        bestCached = cached;
+      }
+    }
+
+    if (bestCached && bestScore >= 50 && Array.isArray(bestCached.items) && bestCached.items.length > 0) {
       const cloned: RestaurantMenu = {
-        restaurantId: options?.venueId || cached.restaurantId,
-        restaurantName: cached.restaurantName,
-        currency: cached.currency || 'EGP',
-        lastUpdated: cached.lastUpdated,
-        note: `Extracted from Talabat.com Egypt (${cached.items.length} items verified)`,
-        categories: [...cached.categories],
-        items: cached.items.map((it: MenuItem) => ({ ...it })),
+        restaurantId: options?.venueId || bestCached.restaurantId,
+        restaurantName: name || bestCached.restaurantName,
+        currency: bestCached.currency || 'EGP',
+        lastUpdated: bestCached.lastUpdated,
+        note: `Extracted from Talabat.com Egypt (${bestCached.items.length} items verified)`,
+        categories: [...bestCached.categories],
+        items: bestCached.items.map((it: MenuItem) => ({ ...it })),
       };
+
       return {
         success: true,
         menu: cloned,
-        sourceUrl: cached.sourceUrl,
+        sourceUrl: bestCached.sourceUrl,
         isLiveScraped: false,
       };
     }
@@ -505,7 +492,7 @@ export async function extractTalabatMenuByName(
 
   // 3. Fallback: Search Talabat Egypt dynamically via website
   try {
-    const searchUrl = `https://www.talabat.com/egypt/restaurants?searchTerm=${encodeURIComponent(name)}`;
+    const searchUrl = `https://www.talabat.com/egypt/restaurants?searchTerm=${encodeURIComponent(cleanedQuery || name)}`;
     const searchRes = await fetch(searchUrl, {
       signal: AbortSignal.timeout(MENU_FETCH_TIMEOUT_MS),
       headers: {
@@ -519,33 +506,22 @@ export async function extractTalabatMenuByName(
       const matchNext = html.match(/<script id="__NEXT_DATA__" type="application\/json">([\s\S]*?)<\/script>/);
       if (matchNext && matchNext[1]) {
         const json = JSON.parse(matchNext[1]);
-        const vendors =
+        const vendors: Array<{ id: number | string; name?: string; slug?: string }> =
           json.props?.pageProps?.restaurants ||
           json.props?.pageProps?.initialState?.restaurants ||
           [];
 
         if (Array.isArray(vendors) && vendors.length > 0) {
-          const vendorCandidates = vendors.filter(
-            (vendor): vendor is {
-              id: number | string;
-              name: string;
-              brand?: string;
-              slug?: string;
-            } =>
-              vendor &&
-              (typeof vendor.id === 'number' || typeof vendor.id === 'string') &&
-              typeof vendor.name === 'string'
-          );
-          const topVendor = pickBestRestaurant(matchQuery, vendorCandidates);
-          if (!topVendor) {
-            return {
-              success: false,
-              error: `Talabat returned no reliable match for "${name}". Try the exact restaurant name or URL.`,
-            };
-          }
+          // Sort vendors by relevance to query
+          const sortedVendors = [...vendors].sort((a, b) => {
+            const scoreA = scoreMatch(name, a.name || '');
+            const scoreB = scoreMatch(name, b.name || '');
+            return scoreB - scoreA;
+          });
+
+          const topVendor = sortedVendors[0];
           const vendorId = topVendor.id;
-          const slug =
-            topVendor.slug || normalizeRestaurantText(topVendor.name).replace(/\s+/g, '-');
+          const slug = topVendor.slug || (topVendor.name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
           // Attempt hydration using Cairo area IDs
           for (const aid of DEFAULT_CAIRO_AIDS) {

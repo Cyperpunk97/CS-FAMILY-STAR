@@ -45,7 +45,7 @@ const CONTACTS_BY_BRAND: Record<string, ContactInfo> = {
   'Pizza Hut': { logoUrl: '/logos/pizza-hut.png', logoWidth: 330, logoHeight: 278, signatureDish: 'Stuffed Crust Super Supreme Pizza' },
   'Second Cup': { logoUrl: '/logos/second-cup.webp', logoWidth: 330, logoHeight: 69, signatureDish: 'Caramel Corretto Frappé' },
   'Smash Burger': { logoUrl: '/logos/smash-burger.jpg', logoWidth: 200, logoHeight: 100, signatureDish: 'Classic Double Smash with SmashFries' },
-  Starbucks: { logoUrl: '/logos/starbucks.png', logoWidth: 330, logoHeight: 36, signatureDish: 'Iced Caramel Macchiato & White Mocha' },
+  Starbucks: { logoUrl: '/logos/starbucks.svg', logoWidth: 240, logoHeight: 240, signatureDish: 'Iced Caramel Macchiato & White Mocha' },
   'TBS (The Bakery Shop)': { logoUrl: '/logos/tbs.png', logoWidth: 386, logoHeight: 96, signatureDish: 'Almond Butter Croissant & Halloumi Focaccia' },
   'Texas Chicken': { logoUrl: '/logos/texas-chicken.png', logoWidth: 200, logoHeight: 100, signatureDish: 'Spicy 3pc Combo with Honey Butter Biscuits' },
   'Buffalo Burger': { logoUrl: '/logos/buffalo-burger.svg', logoWidth: 226, logoHeight: 48, signatureDish: 'Shiitake Mushroom Burger & Cheesy Fries' },

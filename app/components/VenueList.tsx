@@ -1,7 +1,6 @@
 'use client';
 
 import { useCallback, useMemo, useRef, useState } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { Compass, RotateCw, SearchX, Star, Trophy, UserCheck, UserPlus } from 'lucide-react';
 import AppNavigation from './AppNavigation';
@@ -19,7 +18,6 @@ import { useFaculty } from '../hooks/useFaculty';
 import { useFavorites } from '../hooks/useFavorites';
 import { useStudentName } from '../hooks/useStudentName';
 import { useUrlParam } from '../hooks/useUrlParam';
-import { Scale } from 'lucide-react';
 import { pickSurprise } from '@/lib/surprise';
 import DishResults from './DishResults';
 import CompareModal from './CompareModal';
@@ -63,10 +61,6 @@ export default function VenueList({ initialVenues }: VenueListProps) {
 
   /**
    * Re-pull stats after a review is posted or when manually revalidated.
-   *
-   * Deliberately keeps the current list when the refresh fails. The previous
-   * version called `setRestaurants([])` in its catch, so one flaky request wiped
-   * the entire page.
    */
   const refreshVenues = useCallback(async () => {
     setIsRevalidating(true);
@@ -133,9 +127,6 @@ export default function VenueList({ initialVenues }: VenueListProps) {
 
   /**
    * Picks a random spot from what is currently on screen.
-   *
-   * Filtered, not the whole catalog: if someone has set "walking distance" and a
-   * budget, a surprise 3 km away is not a surprise, it is a bug.
    */
   const handleSurprise = useCallback(() => {
     const picked = pickSurprise(visible, lastSurpriseId.current);
@@ -155,115 +146,108 @@ export default function VenueList({ initialVenues }: VenueListProps) {
 
   return (
     <>
-      {/* Top Application Navigation Menu */}
-      <div className="mb-4 flex items-center justify-between border-b border-hairline/60 pb-3">
+      {/* Top Application Navigation Bar */}
+      <div className="mb-4">
         <AppNavigation />
-        <Link
-          href="/memories?new=true"
-          className="inline-flex items-center gap-1 rounded-full bg-amber-100/80 px-3 py-1.5 text-xs font-bold text-amber-900 transition hover:bg-amber-200"
-        >
-          <span>Share outing</span>
-          <span>📸</span>
-        </Link>
       </div>
 
-      <header className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="min-w-0">
-          <h1 className="flex items-center gap-2 text-[1.35rem] font-black tracking-tight text-brand-900">
-            <Star className="h-5 w-5 shrink-0 fill-red-800 text-red-800" aria-hidden="true" />
-            <span>CS Family Star</span>
-          </h1>
-          <p className="mt-0.5 flex items-center gap-1.5 text-xs text-ink-soft">
+      <header className="mb-4 space-y-2.5">
+        {/* Row 1: Brand & User Profile / Refresh */}
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-900 ring-1 ring-brand-200/60 shadow-2xs">
+              <Star className="h-4 w-4 fill-red-800 text-red-800" aria-hidden="true" />
+            </div>
+            <div className="min-w-0">
+              <h1 className="text-lg sm:text-xl font-black tracking-tight text-brand-900 leading-tight truncate">
+                CS Family Star
+              </h1>
+              <p className="text-[11px] sm:text-xs text-ink-soft truncate">
+                <span className="font-semibold text-brand-900">FUE Campus</span> · Food Guide &amp; Ratings
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1.5 shrink-0">
             <button
               type="button"
-              onClick={() => setFueInfoOpen(true)}
-              className="group inline-flex items-center gap-1 text-start font-semibold text-brand-900 underline decoration-brand-200/80 underline-offset-2 transition hover:text-brand-700 hover:decoration-brand-400"
-              title="Learn about Future University in Egypt (FUE)"
+              onClick={openNameModal}
+              className="inline-flex h-8 items-center gap-1.5 rounded-full border border-hairline bg-card px-2.5 text-xs font-bold text-ink-soft shadow-2xs transition hover:border-brand-200 hover:text-brand-700 active:scale-95"
             >
-              <Image
-                src="/logos/fue-logo.png"
-                alt="FUE Logo"
-                width={13}
-                height={16}
-                className="h-3.5 w-auto object-contain transition-transform duration-200 group-hover:scale-110"
-              />
-              <span>Future University in Egypt</span>
+              {studentName ? (
+                <>
+                  <UserCheck className="h-3.5 w-3.5 text-brand-600 shrink-0" aria-hidden="true" />
+                  <span className="max-w-[5.5rem] truncate sm:max-w-[7.5rem]">{studentName}</span>
+                </>
+              ) : (
+                <>
+                  <UserPlus className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                  <span>{t('name.add')}</span>
+                </>
+              )}
             </button>
-            <span className="text-ink-faint">· campus food guide</span>
-          </p>
+
+            <button
+              type="button"
+              onClick={refreshVenues}
+              disabled={isRevalidating}
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-hairline bg-card text-ink-soft shadow-2xs transition hover:border-brand-200 hover:text-brand-700 active:scale-95 disabled:opacity-60"
+              title="Refresh ratings & reviews"
+              aria-label="Refresh ratings and reviews"
+            >
+              <RotateCw
+                className={`h-3.5 w-3.5 ${isRevalidating ? 'animate-spin text-brand-600' : ''}`}
+                aria-hidden="true"
+              />
+            </button>
+          </div>
         </div>
 
-        <div className="flex items-center gap-2 flex-wrap sm:justify-end">
-          {/* About FUE University Info Button with University Logo */}
-          <button
-            type="button"
-            onClick={() => setFueInfoOpen(true)}
-            className="group inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#0b2545]/20 bg-white px-3 py-1.5 text-xs font-bold text-[#0b2545] shadow-2xs transition hover:border-[#0b2545]/40 hover:bg-[#0b2545]/5 active:scale-95"
-            title="About Future University in Egypt (FUE)"
-            aria-label="About Future University in Egypt"
-          >
-            <Image
-              src="/logos/fue-logo.png"
-              alt="FUE University Crest"
-              width={16}
-              height={20}
-              className="h-4 w-auto object-contain transition-transform duration-200 group-hover:scale-110"
-            />
-            <span className="font-extrabold text-[#0b2545]">About FUE</span>
-          </button>
-
+        {/* Row 2: Origin Faculty selector + About FUE + Ranks */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          {/* Walking Origin Selector */}
           <button
             type="button"
             onClick={() => setFacultyModalOpen(true)}
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-brand-200/90 bg-brand-50/70 px-3 py-1.5 text-xs font-bold text-brand-900 shadow-2xs transition hover:bg-brand-100 hover:border-brand-300 active:scale-95"
+            className="sm:col-span-1 inline-flex h-9 items-center justify-between rounded-xl border border-brand-200/90 bg-brand-50/80 px-3 text-xs font-bold text-brand-900 shadow-2xs transition hover:bg-brand-100 hover:border-brand-300 active:scale-[0.98]"
             title="Choose your faculty building to get walking times tailored to you"
           >
-            <Compass className="h-3.5 w-3.5 text-brand-700" aria-hidden="true" />
-            <span className="text-ink-soft font-medium">From:</span>
-            <span className="max-w-[8.5rem] truncate sm:max-w-none">{faculty.shortName}</span>
+            <div className="flex items-center gap-1.5 truncate">
+              <Compass className="h-3.5 w-3.5 text-brand-700 shrink-0" aria-hidden="true" />
+              <span className="text-ink-soft font-normal">From:</span>
+              <span className="truncate font-bold">{faculty.shortName}</span>
+            </div>
+            <span className="text-brand-600 text-[11px] font-bold ms-1 shrink-0">Change ›</span>
           </button>
 
-          <button
-            type="button"
-            onClick={() => setLeaderboardOpen(true)}
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-amber-300/80 bg-amber-50/80 px-3 py-1.5 text-xs font-bold text-amber-900 shadow-sm transition hover:bg-amber-100 hover:border-amber-400 active:scale-95"
-            title="View Top Campus Reviewers Leaderboard"
-          >
-            <Trophy className="h-3.5 w-3.5 text-amber-600" aria-hidden="true" />
-            <span className="inline">Ranks</span>
-          </button>
+          {/* Quick info buttons */}
+          <div className="grid grid-cols-2 gap-2 sm:col-span-2">
+            <button
+              type="button"
+              onClick={() => setFueInfoOpen(true)}
+              className="inline-flex h-9 items-center justify-center gap-1.5 rounded-xl border border-[#0b2545]/20 bg-white px-2.5 text-xs font-bold text-[#0b2545] shadow-2xs transition hover:bg-[#0b2545]/5 active:scale-[0.98]"
+              title="About Future University in Egypt (FUE)"
+            >
+              <Image
+                src="/logos/fue-logo.png"
+                alt="FUE Crest"
+                width={14}
+                height={17}
+                className="h-3.5 w-auto object-contain"
+              />
+              <span className="font-extrabold text-[#0b2545] truncate">About FUE</span>
+            </button>
 
-          <button
-            type="button"
-            onClick={openNameModal}
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-hairline bg-card px-3 py-1.5 text-xs font-bold text-ink-soft shadow-sm transition hover:border-brand-200 hover:text-brand-700 active:scale-95"
-          >
-            {studentName ? (
-              <>
-                <UserCheck className="h-3.5 w-3.5 text-brand-600" aria-hidden="true" />
-                <span className="max-w-[7.5rem] truncate">{studentName}</span>
-              </>
-            ) : (
-              <>
-                <UserPlus className="h-3.5 w-3.5" aria-hidden="true" />
-                {t('name.add')}
-              </>
-            )}
-          </button>
-
-          <button
-            type="button"
-            onClick={refreshVenues}
-            disabled={isRevalidating}
-            className="inline-flex shrink-0 items-center justify-center rounded-full border border-hairline bg-card p-1.5 text-xs font-bold text-ink-soft shadow-sm transition hover:border-brand-200 hover:text-brand-700 active:scale-95 disabled:opacity-60"
-            title="Refresh ratings & reviews"
-            aria-label="Refresh ratings and reviews"
-          >
-            <RotateCw
-              className={`h-3.5 w-3.5 ${isRevalidating ? 'animate-spin text-brand-600' : ''}`}
-              aria-hidden="true"
-            />
-          </button>
+            <button
+              type="button"
+              onClick={() => setLeaderboardOpen(true)}
+              className="inline-flex h-9 items-center justify-center gap-1.5 rounded-xl border border-amber-300/80 bg-amber-50/80 px-2.5 text-xs font-bold text-amber-900 shadow-2xs transition hover:bg-amber-100 hover:border-amber-400 active:scale-[0.98]"
+              title="View Top Campus Reviewers Leaderboard"
+            >
+              <Trophy className="h-3.5 w-3.5 text-amber-600 shrink-0" aria-hidden="true" />
+              <span className="truncate">Top Reviewers</span>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -271,7 +255,7 @@ export default function VenueList({ initialVenues }: VenueListProps) {
         Sticky search and filters. The negative inset plus padding lets the blurred
         backdrop bleed to the page edges while the controls stay on the content grid.
       */}
-      <div className="sticky top-0 z-30 -mx-4 border-b border-hairline/60 bg-surface/85 px-4 pb-2.5 pt-2 backdrop-blur-md sm:-mx-6 sm:px-6">
+      <div className="sticky top-0 z-30 -mx-4 border-b border-hairline/60 bg-surface/90 px-4 pb-2.5 pt-2 backdrop-blur-md sm:-mx-6 sm:px-6">
         <FilterBar
           filters={filters}
           sort={sort}
@@ -282,23 +266,9 @@ export default function VenueList({ initialVenues }: VenueListProps) {
           onReset={() => setFilters({ ...DEFAULT_FILTERS, query: filters.query })}
           onSurprise={handleSurprise}
           surpriseDisabled={visible.length === 0}
+          onCompare={() => setCompareOpen(true)}
+          compareDisabled={visible.length < 2}
         />
-
-        {/*
-          Sits with the filters because it picks from the filtered list — the
-          adjacency is the explanation for why the result respects the filters.
-        */}
-        <div className="mt-2 flex justify-end">
-          <button
-            type="button"
-            onClick={() => setCompareOpen(true)}
-            disabled={visible.length < 2}
-            className="inline-flex min-h-11 items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-bold text-ink-soft ring-1 ring-hairline transition hover:bg-surface hover:text-ink disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            <Scale className="h-3.5 w-3.5" aria-hidden="true" />
-            {t('compare.title')}
-          </button>
-        </div>
 
         {/*
           Opening the sheet moves focus into a dialog, so without this a screen
@@ -310,10 +280,7 @@ export default function VenueList({ initialVenues }: VenueListProps) {
       </div>
 
       {/*
-        Dishes matching the same search box that filters the venue list. Given the
-        full enriched list rather than the filtered one: the venue filters answer
-        "where should I go", and narrowing "who has koshary" by them would hide the
-        answer the student actually asked for. Renders nothing when no dish matches.
+        Dishes matching the same search box that filters the venue list.
       */}
       <DishResults query={filters.query} venues={enrichedVenues} onOpenVenue={setActiveId} />
 

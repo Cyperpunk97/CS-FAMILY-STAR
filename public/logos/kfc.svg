@@ -1,72 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" fill="none">
   <defs>
-    <!-- Drop Shadow for layered elements -->
-    <filter id="kfcShadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-opacity="0.3"/>
-    </filter>
+    <clipPath id="kfcClip">
+      <rect width="240" height="240" rx="44" />
+    </clipPath>
   </defs>
 
-  <!-- Outer Rounded Square Container -->
-  <rect x="8" y="8" width="224" height="224" rx="42" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <g clip-path="url(#kfcClip)">
+    <!-- KFC Bucket Signature Red Base -->
+    <rect width="240" height="240" fill="#E4002B" />
 
-  <!-- Iconic KFC Red & White Vertical Stripes (Bucket Motif) -->
-  <clipPath id="innerClip">
-    <rect x="12" y="12" width="216" height="216" rx="38"/>
-  </clipPath>
+    <!-- Center White Vertical Stripe -->
+    <rect x="66" y="0" width="108" height="240" fill="#FFFFFF" />
 
-  <g clip-path="url(#innerClip)">
-    <!-- Base Red Background -->
-    <rect x="12" y="12" width="216" height="216" fill="#A3080C"/>
+    <!-- Left and Right Red Stripes are formed by the #E4002B background -->
 
-    <!-- Left Red Stripe (matches KFC bucket: Red / White / Red) -->
-    <!-- White Center Panel -->
-    <rect x="68" y="12" width="104" height="216" fill="#FFFFFF"/>
-    <!-- Red outer side stripes are already the base red -->
-    <rect x="12" y="12" width="56" height="216" fill="#A3080C"/>
-    <rect x="172" y="12" width="56" height="216" fill="#A3080C"/>
-
-    <!-- Colonel Sanders Icon Silhouette in White Center -->
-    <g transform="translate(120, 84)" filter="url(#kfcShadow)">
-      <!-- Face contour & hair -->
-      <!-- White Hair & Brow -->
-      <path d="M-28 -34 C-34 -14 -32 4 -28 14 C-24 24 -14 36 0 38 C14 36 24 24 28 14 C32 4 34 -14 28 -34 C20 -44 -20 -44 -28 -34 Z" fill="#000000"/>
-      <!-- Inner white face -->
-      <path d="M-24 -24 C-28 -8 -26 4 -22 14 C-18 22 -10 32 0 34 C10 32 18 22 22 14 C26 4 28 -8 24 -24 C18 -34 -18 -34 -24 -24 Z" fill="#FFFFFF"/>
-
-      <!-- Glasses -->
-      <rect x="-22" y="-14" width="16" height="12" rx="3" fill="#000000"/>
-      <rect x="6" y="-14" width="16" height="12" rx="3" fill="#000000"/>
-      <rect x="-19" y="-12" width="10" height="8" rx="2" fill="#FFFFFF"/>
-      <rect x="9" y="-12" width="10" height="8" rx="2" fill="#FFFFFF"/>
-      <line x1="-6" y1="-8" x2="6" y2="-8" stroke="#000000" stroke-width="2.5"/>
-
-      <!-- Eyes -->
-      <circle cx="-14" cy="-8" r="2" fill="#000000"/>
-      <circle cx="14" cy="-8" r="2" fill="#000000"/>
-
-      <!-- Smile lines -->
-      <path d="M-6 2 Q0 6 6 2" stroke="#000000" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-
-      <!-- Classic White Goatee / Mustache -->
-      <!-- Mustache -->
-      <path d="M-18 8 Q-10 14 0 10 Q10 14 18 8 Q10 18 0 14 Q-10 18 -18 8 Z" fill="#FFFFFF" stroke="#000000" stroke-width="1.2"/>
-      <!-- Beard/Goatee -->
-      <path d="M-10 15 Q0 28 10 15 Q6 32 0 34 Q-6 32 -10 15 Z" fill="#FFFFFF" stroke="#000000" stroke-width="1.2"/>
-
-      <!-- String Bowtie -->
-      <path d="M-14 36 L14 36 L10 42 L-10 42 Z" fill="#000000"/>
-      <path d="M-6 42 L-12 56 L-3 53 L-4 42 Z" fill="#000000"/>
-      <path d="M6 42 L12 56 L3 53 L4 42 Z" fill="#000000"/>
+    <!-- Authentic Official KFC Wordmark (Yum! Brands Vector) -->
+    <!-- Scaled and centered precisely across the center white stripe -->
+    <g transform="translate(26, 88.5) scale(0.198)">
+      <path
+        d="M381.4691 289.3961h120.2116c7.6645 0 10.085-6.0542 6.051-13.3194-5.2442-9.2832-6.4543-16.5485-1.2102-45.2056l3.2272-19.7773h75.0314c6.8577 0 11.295-3.6327 12.5052-10.4941l9.6814-53.6817c1.2101-7.6688-2.8237-12.5122-10.8915-12.5122h-72.611l8.0678-46.82h56.0718c28.2375 0 35.4986 4.4398 43.5666 12.1087 6.4543 6.0542 13.312 4.4398 14.9256-3.229l13.312-77.0917c1.6136-7.6688-2.8238-12.5122-10.8916-12.5122H412.9341c-7.6645 0-10.085 6.0543-6.051 13.3194 5.2442 9.2833 6.4543 16.5484 1.2102 45.2057L370.9809 276.884c-1.6136 7.6689 2.4204 12.5122 10.4882 12.5122zm-375.5598 0h138.7676c7.6646 0 10.085-6.0542 6.051-13.3194-5.2442-9.2832-6.4543-16.5485-1.2102-45.2056l13.7155-79.1097 31.4648 91.2184c11.6983 34.7115 27.4307 46.4165 62.1226 46.4165h88.3434c10.085 0 10.8915-10.0906 3.6305-14.934s-13.7155-12.9158-20.5732-29.868L279.4106 124.719l77.4517-80.3207c10.8916-10.8978 22.1866-18.163 29.0444-22.199 8.0678-5.2471 6.0509-15.3378-2.4205-15.3378h-135.137c-7.6646 0-10.085 6.0543-6.051 13.3194 5.2441 9.2833 4.8408 16.5484-19.7664 42.7839l-53.6514 56.9106 9.6815-54.4888c5.2441-28.6571 8.8746-35.9222 17.346-45.2057 6.4542-7.2651 6.0509-13.3194-1.6137-13.3194H55.5269c-7.6645 0-9.6815 6.0543-5.6474 13.3194 5.244 9.2833 6.4542 16.5484 1.21 45.2057L22.0452 230.871c-5.2441 28.657-8.8746 35.9222-17.346 45.2056-6.4542 7.2652-6.4542 13.3194 1.2102 13.3194m803.5612 6.8617c25.4138 0 62.5262-5.6508 81.4856-14.5303 13.7154-6.458 15.7323-8.476 17.346-15.7412l17.346-98.4836c.8067-4.8433-1.6137-7.6688-6.4543-7.6688-12.5052 0-40.3394 35.5187-89.1501 35.5187-36.3056 0-57.6854-22.6028-52.4413-51.6636 4.8409-27.8498 30.658-49.2418 64.1396-49.2418 39.1293 0 75.0314 34.7113 85.1163 34.7113 3.6306 0 6.051-2.018 6.4543-4.8433l16.5391-92.0257c.8068-5.247-1.6136-7.2651-8.8746-11.3013C923.6311 12.1085 891.7631 0 840.5319 0c-98.428 0-176.2831 56.9106-192.419 141.6711-17.7493 91.622 49.6175 154.587 161.3576 154.587z"
+        fill="#000000"
+      />
     </g>
 
-    <!-- Bold Red KFC Wordmark on White Ground -->
-    <g transform="translate(120, 192)" text-anchor="middle" filter="url(#kfcShadow)">
-      <!-- Drop subtle background pill for contrast against stripes -->
-      <rect x="-72" y="-34" width="144" height="42" rx="8" fill="#A3080C"/>
-      <text x="0" y="-4" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Impact', 'Segoe UI Black', Arial Black, sans-serif" 
-            font-size="34" font-weight="900" fill="#FFFFFF" font-style="italic" letter-spacing="3">
-        KFC
-      </text>
-    </g>
+    <!-- Subtle border overlay for crisp contrast -->
+    <rect x="0.5" y="0.5" width="239" height="239" rx="43.5" fill="none" stroke="#E2E8F0" stroke-width="1" stroke-opacity="0.6" />
   </g>
 </svg>

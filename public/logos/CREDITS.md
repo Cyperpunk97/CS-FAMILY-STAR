@@ -32,5 +32,5 @@ Delete any file here you are not comfortable shipping, and remove its entry from
 | `pizza-hut.png` | Pizza Hut | [Q191615](https://www.wikidata.org/wiki/Q191615) | Public domain | Yum! Brands | [Commons](https://commons.wikimedia.org/wiki/File:Pizza_Hut_2025.svg) |
 | `second-cup.webp` | Second Cup | [Q862180](https://www.wikidata.org/wiki/Q862180) | CC BY-SA 4.0 | JosquinFrascadore | [Commons](https://commons.wikimedia.org/wiki/File:Second-cup-logo-1.webp) |
 | `smash-burger.jpg` | Smash Burger | [Q7544258](https://www.wikidata.org/wiki/Q7544258) | Fair use / trademark | Smashburger Franchising LLC | [Commons](https://commons.wikimedia.org/wiki/File:Smashburgerlogo.jpg) |
-| `starbucks.png` | Starbucks | [Q37158](https://www.wikidata.org/wiki/Q37158) | Public domain | Unknown authorUnknown author | [Commons](https://commons.wikimedia.org/wiki/File:Starbucks_coffee_wordmark.png) |
+| `starbucks.svg` | Starbucks | [Q37158](https://www.wikidata.org/wiki/Q37158) | Public domain | Starbucks Corporation | [Commons](https://en.wikipedia.org/wiki/File:Starbucks_Corporation_Logo_2011.svg) |
 | `texas-chicken.png` | Texas Chicken | [Q1089906](https://www.wikidata.org/wiki/Q1089906) | Public domain | Church's Texas Chicken | [Commons](https://commons.wikimedia.org/wiki/File:Churchs-logo.svg) |
