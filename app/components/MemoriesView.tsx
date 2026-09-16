@@ -21,6 +21,7 @@ import {
 import AppNavigation from './AppNavigation';
 import AddMemoryModal from './AddMemoryModal';
 import FueInfoModal from './FueInfoModal';
+import LeaderboardModal from './LeaderboardModal';
 import { Memory, MEMORY_MOODS, MemoryMood } from '@/lib/memories';
 import { VENUES_BY_ID } from '@/lib/venues';
 import { useTranslate } from '../hooks/useLocale';
@@ -40,6 +41,7 @@ export default function MemoriesView({ initialMemories }: MemoriesViewProps) {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isAddModalOpen, setIsAddModalOpen] = useState(initialOpenNew);
   const [isFueInfoOpen, setIsFueInfoOpen] = useState(false);
+  const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false);
   const [cheeredIds, setCheeredIds] = useState<Set<string>>(() => {
     if (typeof window !== 'undefined') {
       try {
@@ -166,7 +168,10 @@ export default function MemoriesView({ initialMemories }: MemoriesViewProps) {
     <div className="flex flex-1 flex-col">
       {/* Top Application Navigation Menu */}
       <div className="mb-6 flex items-center justify-between gap-3 border-b border-amber-200/50 pb-4">
-        <AppNavigation memoriesCount={memories.length} />
+        <AppNavigation
+          memoriesCount={memories.length}
+          onOpenLeaderboard={() => setIsLeaderboardOpen(true)}
+        />
 
         <div className="flex items-center gap-2">
           <button
@@ -221,7 +226,7 @@ export default function MemoriesView({ initialMemories }: MemoriesViewProps) {
             </div>
 
             <h1 className="mt-2 text-2xl font-black tracking-tight text-amber-950 sm:text-3xl">
-              Outing Memories 📸✨
+              Outing Memories 📸
             </h1>
 
             <p className="mt-1.5 text-xs leading-relaxed text-amber-900/80 sm:text-sm">
@@ -536,6 +541,12 @@ export default function MemoriesView({ initialMemories }: MemoriesViewProps) {
       <FueInfoModal
         open={isFueInfoOpen}
         onClose={() => setIsFueInfoOpen(false)}
+      />
+
+      {/* Leaderboard Modal */}
+      <LeaderboardModal
+        isOpen={isLeaderboardOpen}
+        onClose={() => setIsLeaderboardOpen(false)}
       />
     </div>
   );

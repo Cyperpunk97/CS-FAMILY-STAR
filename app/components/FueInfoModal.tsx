@@ -111,51 +111,51 @@ export default function FueInfoModal({ open, onClose, onSelectFaculty }: FueInfo
       size="xl"
       variant="dialog"
     >
-      <div className="flex max-h-[85vh] flex-col overflow-hidden rounded-2xl bg-surface text-ink">
-        {/* Top Header Hero with FUE Brand Identity */}
-        <div className="relative overflow-hidden border-b border-hairline/80 bg-gradient-to-br from-[#071b30] via-[#0b2545] to-[#123863] px-6 py-6 text-white sm:px-8">
+      <div className="flex h-full max-h-[92dvh] sm:max-h-[88vh] flex-col overflow-hidden bg-surface text-ink">
+        {/* Top Header Hero with FUE Brand Identity - shrink-0 ensures it is never squished */}
+        <div className="relative shrink-0 overflow-hidden border-b border-hairline/80 bg-gradient-to-br from-[#071b30] via-[#0b2545] to-[#123863] p-4 sm:px-8 sm:py-6 text-white">
           {/* Subtle geometric background pattern */}
           <div
-            className="pointer-events-none absolute -end-16 -top-16 h-64 w-64 rounded-full bg-red-600/10 blur-2xl"
+            className="pointer-events-none absolute -end-16 -top-16 h-64 w-64 rounded-full bg-red-600/15 blur-2xl"
             aria-hidden="true"
           />
           <div
-            className="pointer-events-none absolute -start-16 bottom-0 h-48 w-48 rounded-full bg-blue-500/15 blur-2xl"
+            className="pointer-events-none absolute -start-16 bottom-0 h-48 w-48 rounded-full bg-blue-500/20 blur-2xl"
             aria-hidden="true"
           />
 
-          <div className="relative flex items-start justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <div className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white p-2 shadow-lg shadow-black/20 ring-2 ring-white/20">
+          <div className="relative flex items-start justify-between gap-3 sm:gap-4">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+              <div className="relative flex h-16 w-16 sm:h-20 sm:w-20 shrink-0 items-center justify-center rounded-2xl bg-white p-2 sm:p-2.5 shadow-xl shadow-black/25 ring-2 ring-white/30">
                 <Image
                   src="/logos/fue-logo.png"
                   alt="Future University in Egypt Logo"
-                  width={56}
-                  height={64}
+                  width={80}
+                  height={80}
                   className="h-full w-full object-contain"
                   priority
                 />
               </div>
 
-              <div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="rounded-full bg-red-600/90 px-2.5 py-0.5 text-xs font-extrabold uppercase tracking-wider text-white shadow-xs">
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                  <span className="rounded-full bg-red-600 px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs">
                     {t('fue.est')}
                   </span>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-amber-400/20 px-2.5 py-0.5 text-xs font-bold text-amber-300 ring-1 ring-amber-400/30">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-amber-400/20 px-2.5 py-0.5 text-[11px] font-bold text-amber-300 ring-1 ring-amber-400/30">
                     <Sparkles className="h-2.5 w-2.5" />
                     {t('fue.qs')}
                   </span>
-                  <span className="rounded-full bg-blue-500/20 px-2.5 py-0.5 text-xs font-bold text-blue-200 ring-1 ring-blue-400/30">
+                  <span className="rounded-full bg-blue-500/25 px-2.5 py-0.5 text-[11px] font-bold text-blue-200 ring-1 ring-blue-400/30">
                     {t('fue.accredited')}
                   </span>
                 </div>
 
-                <h2 className="mt-1.5 text-xl font-black tracking-tight text-white sm:text-2xl">
+                <h2 className="mt-1 text-lg font-black tracking-tight text-white sm:text-2xl">
                   {t('fue.name')}
                 </h2>
-                <p className="text-xs font-semibold text-blue-200/90">
-                  جامعة المستقبل بمصر · New Cairo, Egypt
+                <p className="text-xs font-semibold text-blue-200/90 truncate">
+                  جامعة المستقبل بمصر · New Cairo Campus
                 </p>
               </div>
             </div>
@@ -163,7 +163,7 @@ export default function FueInfoModal({ open, onClose, onSelectFaculty }: FueInfo
             <button
               type="button"
               onClick={onClose}
-              className="rounded-xl bg-white/10 p-2 text-white/80 transition hover:bg-white/20 hover:text-white"
+              className="shrink-0 rounded-xl bg-white/10 p-2 text-white/80 transition hover:bg-white/20 hover:text-white active:scale-95"
               aria-label="Close modal"
             >
               <X className="h-5 w-5" />
@@ -171,28 +171,28 @@ export default function FueInfoModal({ open, onClose, onSelectFaculty }: FueInfo
           </div>
 
           {/* Quick stats pills */}
-          <div className="mt-5 grid grid-cols-2 gap-2 text-xs sm:grid-cols-4">
-            <div className="flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2 backdrop-blur-xs ring-1 ring-white/10">
+          <div className="mt-3.5 sm:mt-5 grid grid-cols-2 gap-2 text-xs sm:grid-cols-4">
+            <div className="flex items-center gap-2 rounded-xl bg-white/10 px-2.5 py-1.5 sm:px-3 sm:py-2 backdrop-blur-xs ring-1 ring-white/15">
               <Landmark className="h-4 w-4 text-amber-400 shrink-0" />
-              <div>
-                <span className="block text-xs font-medium text-blue-200/70">Founded</span>
-                <span className="font-bold text-white">Decree 254/2006</span>
+              <div className="min-w-0 truncate">
+                <span className="block text-[10px] sm:text-xs font-medium text-blue-200/80">Founded</span>
+                <span className="font-bold text-white text-xs truncate block">Decree 254/2006</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2 backdrop-blur-xs ring-1 ring-white/10">
+            <div className="flex items-center gap-2 rounded-xl bg-white/10 px-2.5 py-1.5 sm:px-3 sm:py-2 backdrop-blur-xs ring-1 ring-white/15">
               <GraduationCap className="h-4 w-4 text-emerald-400 shrink-0" />
-              <div>
-                <span className="block text-xs font-medium text-blue-200/70">Faculties</span>
-                <span className="font-bold text-white">6 Accredited</span>
+              <div className="min-w-0 truncate">
+                <span className="block text-[10px] sm:text-xs font-medium text-blue-200/80">Faculties</span>
+                <span className="font-bold text-white text-xs truncate block">6 Accredited</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2 backdrop-blur-xs ring-1 ring-white/10">
+            <div className="flex items-center gap-2 rounded-xl bg-white/10 px-2.5 py-1.5 sm:px-3 sm:py-2 backdrop-blur-xs ring-1 ring-white/15">
               <MapPin className="h-4 w-4 text-red-400 shrink-0" />
-              <div>
-                <span className="block text-xs font-medium text-blue-200/70">Location</span>
-                <span className="font-bold text-white">New Cairo (90th St)</span>
+              <div className="min-w-0 truncate">
+                <span className="block text-[10px] sm:text-xs font-medium text-blue-200/80">Location</span>
+                <span className="font-bold text-white text-xs truncate block">90th St, New Cairo</span>
               </div>
             </div>
 
@@ -200,19 +200,19 @@ export default function FueInfoModal({ open, onClose, onSelectFaculty }: FueInfo
               href="https://www.fue.edu.eg/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between rounded-xl bg-red-600/90 px-3 py-2 font-bold text-white shadow-sm transition hover:bg-red-500"
+              className="group flex items-center justify-between rounded-xl bg-red-600 px-2.5 py-1.5 sm:px-3 sm:py-2 font-bold text-white shadow-sm transition hover:bg-red-500"
             >
-              <div className="truncate">
-                <span className="block text-xs font-medium text-red-100">Official Portal</span>
-                <span className="truncate">fue.edu.eg</span>
+              <div className="truncate min-w-0">
+                <span className="block text-[10px] sm:text-xs font-medium text-red-100">Official Portal</span>
+                <span className="truncate block text-xs">fue.edu.eg</span>
               </div>
-              <ExternalLink className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
+              <ExternalLink className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
             </a>
           </div>
         </div>
 
         {/* Scrollable Content Body */}
-        <div className="flex-1 space-y-6 overflow-y-auto px-6 py-6 sm:px-8">
+        <div className="flex-1 space-y-6 overflow-y-auto px-4 py-5 sm:px-8 sm:py-6">
           {/* Section 1: About FUE */}
           <section className="rounded-2xl border border-hairline bg-card p-5 shadow-xs">
             <div className="flex items-center gap-2 text-brand-900">
@@ -437,7 +437,7 @@ export default function FueInfoModal({ open, onClose, onSelectFaculty }: FueInfo
         </div>
 
         {/* Footer Actions */}
-        <div className="flex items-center justify-between border-t border-hairline/80 bg-surface-sunken/60 px-6 py-3 sm:px-8">
+        <div className="shrink-0 flex items-center justify-between border-t border-hairline/80 bg-surface-sunken/60 px-4 py-3 sm:px-8">
           <p className="text-xs text-ink-faint">
             Future University in Egypt (FUE) · Institutional Information
           </p>

@@ -2,22 +2,25 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Sparkles, Utensils } from 'lucide-react';
+import { Camera, Trophy, Utensils } from 'lucide-react';
 import LanguageToggle from './LanguageToggle';
 
 interface AppNavigationProps {
   className?: string;
   memoriesCount?: number;
+  onOpenLeaderboard?: () => void;
 }
 
 /**
  * Unified top application bar combining:
  * 1. Primary section switcher (Food Guide / Outing Memories)
- * 2. Language switcher (English / Arabic)
+ * 2. Campus leaderboard cup
+ * 3. Language switcher (English / Arabic)
  */
 export default function AppNavigation({
   className = '',
   memoriesCount,
+  onOpenLeaderboard,
 }: AppNavigationProps) {
   const pathname = usePathname();
   const isMemories = pathname === '/memories';
@@ -51,33 +54,46 @@ export default function AppNavigation({
             href="/memories"
             className={`relative flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-bold transition-all sm:px-3.5 sm:py-1.5 ${
               isMemories
-                ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-2xs shadow-amber-500/20'
+                ? 'bg-amber-600 text-white shadow-2xs shadow-amber-600/20'
                 : 'text-ink-soft hover:text-amber-900 hover:bg-amber-50/70'
             }`}
             aria-current={isMemories ? 'page' : undefined}
           >
-            <Sparkles
+            <Camera
               className={`h-3.5 w-3.5 transition-transform ${
-                isMemories ? 'text-amber-100 animate-pulse' : 'text-amber-600'
+                isMemories ? 'text-white' : 'text-amber-700'
               }`}
               aria-hidden="true"
             />
             <span className="whitespace-nowrap">Memories</span>
-            <span
-              className={`rounded-full px-1.5 py-0.2 text-[10px] font-bold ${
-                isMemories
-                  ? 'bg-white/25 text-white'
-                  : 'bg-amber-100 text-amber-900'
-              }`}
-            >
-              {typeof memoriesCount === 'number' ? memoriesCount : '✨'}
-            </span>
+            {typeof memoriesCount === 'number' && (
+              <span
+                className={`rounded-full px-1.5 py-0.2 text-[10px] font-bold ${
+                  isMemories
+                    ? 'bg-white/25 text-white'
+                    : 'bg-amber-100 text-amber-900'
+                }`}
+              >
+                {memoriesCount}
+              </span>
+            )}
           </Link>
         </div>
       </nav>
 
-      {/* Right Side Actions: Language Toggle */}
+      {/* Right Side Actions: Leaderboard Cup + Language Toggle */}
       <div className="flex items-center gap-1.5 shrink-0">
+        {onOpenLeaderboard && (
+          <button
+            type="button"
+            onClick={onOpenLeaderboard}
+            className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-amber-300/80 bg-amber-50/80 text-amber-900 shadow-2xs transition hover:bg-amber-100 hover:border-amber-400 active:scale-95"
+            title="Top Campus Reviewers Leaderboard"
+            aria-label="Top Campus Reviewers Leaderboard"
+          >
+            <Trophy className="h-4 w-4 text-amber-600 shrink-0" aria-hidden="true" />
+          </button>
+        )}
         <LanguageToggle />
       </div>
     </div>

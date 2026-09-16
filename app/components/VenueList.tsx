@@ -2,7 +2,7 @@
 
 import { useCallback, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
-import { Compass, RotateCw, SearchX, Star, Trophy, UserCheck, UserPlus } from 'lucide-react';
+import { Compass, RotateCw, SearchX, Star, UserCheck, UserPlus } from 'lucide-react';
 import AppNavigation from './AppNavigation';
 import FacultyModal from './FacultyModal';
 import FilterBar from './FilterBar';
@@ -148,7 +148,7 @@ export default function VenueList({ initialVenues }: VenueListProps) {
     <>
       {/* Top Application Navigation Bar */}
       <div className="mb-4">
-        <AppNavigation />
+        <AppNavigation onOpenLeaderboard={() => setLeaderboardOpen(true)} />
       </div>
 
       <header className="mb-4 space-y-2.5">
@@ -203,13 +203,13 @@ export default function VenueList({ initialVenues }: VenueListProps) {
           </div>
         </div>
 
-        {/* Row 2: Origin Faculty selector + About FUE + Ranks */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+        {/* Row 2: Origin Faculty selector + About FUE */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {/* Walking Origin Selector */}
           <button
             type="button"
             onClick={() => setFacultyModalOpen(true)}
-            className="sm:col-span-1 inline-flex h-9 items-center justify-between rounded-xl border border-brand-200/90 bg-brand-50/80 px-3 text-xs font-bold text-brand-900 shadow-2xs transition hover:bg-brand-100 hover:border-brand-300 active:scale-[0.98]"
+            className="inline-flex h-9 items-center justify-between rounded-xl border border-brand-200/90 bg-brand-50/80 px-3 text-xs font-bold text-brand-900 shadow-2xs transition hover:bg-brand-100 hover:border-brand-300 active:scale-[0.98]"
             title="Choose your faculty building to get walking times tailored to you"
           >
             <div className="flex items-center gap-1.5 truncate">
@@ -220,34 +220,22 @@ export default function VenueList({ initialVenues }: VenueListProps) {
             <span className="text-brand-600 text-[11px] font-bold ms-1 shrink-0">Change ›</span>
           </button>
 
-          {/* Quick info buttons */}
-          <div className="grid grid-cols-2 gap-2 sm:col-span-2">
-            <button
-              type="button"
-              onClick={() => setFueInfoOpen(true)}
-              className="inline-flex h-9 items-center justify-center gap-1.5 rounded-xl border border-[#0b2545]/20 bg-white px-2.5 text-xs font-bold text-[#0b2545] shadow-2xs transition hover:bg-[#0b2545]/5 active:scale-[0.98]"
-              title="About Future University in Egypt (FUE)"
-            >
-              <Image
-                src="/logos/fue-logo.png"
-                alt="FUE Crest"
-                width={14}
-                height={17}
-                className="h-3.5 w-auto object-contain"
-              />
-              <span className="font-extrabold text-[#0b2545] truncate">About FUE</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setLeaderboardOpen(true)}
-              className="inline-flex h-9 items-center justify-center gap-1.5 rounded-xl border border-amber-300/80 bg-amber-50/80 px-2.5 text-xs font-bold text-amber-900 shadow-2xs transition hover:bg-amber-100 hover:border-amber-400 active:scale-[0.98]"
-              title="View Top Campus Reviewers Leaderboard"
-            >
-              <Trophy className="h-3.5 w-3.5 text-amber-600 shrink-0" aria-hidden="true" />
-              <span className="truncate">Top Reviewers</span>
-            </button>
-          </div>
+          {/* About FUE */}
+          <button
+            type="button"
+            onClick={() => setFueInfoOpen(true)}
+            className="inline-flex h-9 items-center justify-center gap-1.5 rounded-xl border border-[#0b2545]/20 bg-white px-2.5 text-xs font-bold text-[#0b2545] shadow-2xs transition hover:bg-[#0b2545]/5 active:scale-[0.98]"
+            title="About Future University in Egypt (FUE)"
+          >
+            <Image
+              src="/logos/fue-logo.png"
+              alt="FUE Crest"
+              width={14}
+              height={17}
+              className="h-3.5 w-auto object-contain"
+            />
+            <span className="font-extrabold text-[#0b2545] truncate">About FUE</span>
+          </button>
         </div>
       </header>
 

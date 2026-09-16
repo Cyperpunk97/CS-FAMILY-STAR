@@ -195,7 +195,7 @@ export default function AddMemoryModal({
     <Modal
       open={open}
       onClose={onClose}
-      title="Share an Outing Memory ✨"
+      title="Share an Outing Memory 📸"
       subtitle="Capture your laughs, celebrations, and late-night campus food runs with fellow students."
       variant="dialog"
       size="lg"
@@ -403,7 +403,7 @@ export default function AddMemoryModal({
                   maxLength={60}
                   value={photoCaption}
                   onChange={(e) => setPhotoCaption(e.target.value)}
-                  placeholder="Optional photo caption (e.g. table laughs ✨)"
+                  placeholder="Optional photo caption (e.g. table laughs)"
                   className="w-full rounded-lg border border-hairline bg-white px-2.5 py-1.5 text-xs text-ink placeholder:text-ink-faint focus:outline-none"
                 />
               </div>

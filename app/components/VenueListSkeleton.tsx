@@ -104,15 +104,13 @@ export function FilterBarSkeleton() {
         ))}
       </div>
 
-      {/* Secondary filter chips & sort bar */}
+      {/* Toolbar: Filters Toggle, Compare & Count */}
       <div className="flex items-center justify-between gap-2 pt-0.5">
-        <div className="flex items-center gap-1.5">
-          <div className="h-7 w-12 rounded-lg skeleton" />
-          <div className="h-7 w-12 rounded-lg skeleton" />
-          <div className="h-7 w-12 rounded-lg skeleton" />
-          <div className="h-7 w-16 rounded-lg skeleton" />
+        <div className="flex items-center gap-2">
+          <div className="h-8.5 w-20 rounded-xl skeleton" />
+          <div className="h-8.5 w-24 rounded-xl skeleton" />
         </div>
-        <div className="h-7 w-24 rounded-lg skeleton" />
+        <div className="h-5 w-14 rounded-md skeleton" />
       </div>
     </div>
   );

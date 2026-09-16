@@ -1,9 +1,10 @@
 'use client';
 
 import { useEffect, useId, useRef, useState } from 'react';
-import { Clock, Dices, Footprints, GraduationCap, Heart, RotateCcw, Scale, Search, SlidersHorizontal, X } from 'lucide-react';
+import { ArrowUpDown, Clock, Dices, Footprints, GraduationCap, Heart, MapPin, RotateCcw, Scale, Search, SlidersHorizontal, Sparkles, Star, X } from 'lucide-react';
 import { CATEGORIES, type Category, type PriceTier } from '@/lib/types';
 import { useTranslate } from '../hooks/useLocale';
+import { type MessageKey } from '@/lib/i18n';
 import {
   SORT_OPTIONS,
   WALKABLE_METERS,
@@ -85,10 +86,10 @@ export default function FilterBar({
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const searchId = useId();
-  const sortId = useId();
   const panelId = useId();
 
   const activeCount = activeFilterCount(filters);
+  const totalActive = activeCount + (sort !== 'nearest' ? 1 : 0);
 
   // Press "/" to jump to search.
   useEffect(() => {
@@ -202,63 +203,45 @@ export default function FilterBar({
         ))}
       </div>
 
-      {/* Sort, Filters Toggle, Compare, and Result Count Toolbar */}
-      <div className="flex items-center justify-between gap-1.5 pt-0.5">
-        <div className="flex items-center gap-1.5 min-w-0">
-          <label htmlFor={sortId} className="sr-only">
-            {t('sort.label')}
-          </label>
-          <select
-            id={sortId}
-            value={sort}
-            onChange={(e) => onSortChange(e.target.value as SortKey)}
-            className="h-8 max-w-[125px] sm:max-w-none rounded-lg border border-hairline bg-card px-2 text-xs font-bold text-ink shadow-2xs transition focus:border-brand-400 focus:outline-none"
-          >
-            {SORT_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-
+      {/* Filters Toggle, Compare, and Result Count Toolbar */}
+      <div className="flex items-center justify-between gap-2 pt-0.5">
+        <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={() => setPanelOpen((open) => !open)}
             aria-expanded={panelOpen}
             aria-controls={panelId}
-            className={`inline-flex h-8 items-center gap-1 rounded-lg px-2.5 text-xs font-bold transition active:scale-95 ${
-              activeCount > 0 || panelOpen
-                ? 'bg-brand-700 text-white shadow-2xs'
-                : 'border border-hairline bg-card text-ink-soft hover:text-ink'
+            className={`inline-flex h-8.5 shrink-0 items-center gap-1.5 rounded-xl px-3 text-xs font-bold transition active:scale-95 ${
+              totalActive > 0 || panelOpen
+                ? 'bg-brand-800 text-white shadow-xs'
+                : 'border border-hairline bg-card text-ink-soft hover:text-ink hover:border-brand-300'
             }`}
           >
             <SlidersHorizontal className="h-3.5 w-3.5" aria-hidden="true" />
-            <span className="hidden xs:inline">{t('filter.title')}</span>
-            <span className="xs:hidden">Filters</span>
-            {activeCount > 0 && (
-              <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-white/25 px-1 text-[10px] leading-none">
-                {activeCount}
+            <span>{t('filter.title')}</span>
+            {totalActive > 0 && (
+              <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-white/25 px-1 text-[10px] font-extrabold leading-none">
+                {totalActive}
               </span>
             )}
           </button>
-        </div>
 
-        <div className="flex items-center gap-1.5 shrink-0">
           {onCompare && (
             <button
               type="button"
               onClick={onCompare}
               disabled={compareDisabled}
-              className="inline-flex h-8 items-center gap-1 rounded-lg border border-hairline bg-card px-2.5 text-xs font-bold text-ink-soft shadow-2xs transition hover:bg-surface hover:text-ink disabled:cursor-not-allowed disabled:opacity-40 active:scale-95"
+              className="inline-flex h-8.5 shrink-0 items-center gap-1.5 rounded-xl border border-hairline bg-card px-3 text-xs font-bold text-ink-soft shadow-2xs transition hover:bg-surface hover:text-ink disabled:cursor-not-allowed disabled:opacity-40 active:scale-95"
               title="Compare spots side-by-side"
             >
-              <Scale className="h-3.5 w-3.5" aria-hidden="true" />
-              <span className="hidden sm:inline">{t('compare.title')}</span>
-              <span className="sm:hidden">Compare</span>
+              <Scale className="h-3.5 w-3.5 text-brand-700" aria-hidden="true" />
+              <span>{t('compare.title')}</span>
             </button>
           )}
+        </div>
 
-          <span className="text-xs font-semibold text-ink-faint whitespace-nowrap">
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="text-xs font-semibold text-ink-faint whitespace-nowrap px-1">
             <strong className="text-ink font-bold">{resultCount}</strong>
             <span className="hidden xs:inline"> spots</span>
             {resultCount !== totalCount && `/${totalCount}`}
@@ -266,9 +249,15 @@ export default function FilterBar({
         </div>
       </div>
 
-      {/* Active filters, removable one by one. */}
-      {activeCount > 0 && (
+      {/* Active filters & active sort, removable one by one. */}
+      {(activeCount > 0 || sort !== 'nearest') && (
         <div className="flex flex-wrap items-center gap-1.5">
+          {sort !== 'nearest' && (
+            <FilterPill
+              label={`Sort: ${t(`sort.${sort}` as MessageKey) || sort}`}
+              onRemove={() => onSortChange('nearest')}
+            />
+          )}
           {filters.onCampusOnly && (
             <FilterPill label="🎓 On-Campus Only" onRemove={() => set('onCampusOnly', false)} />
           )}
@@ -299,7 +288,10 @@ export default function FilterBar({
           )}
           <button
             type="button"
-            onClick={onReset}
+            onClick={() => {
+              onReset();
+              onSortChange('nearest');
+            }}
             className="ms-1 inline-flex items-center gap-1 text-xs font-bold text-ink-faint transition hover:text-brand-700"
           >
             <RotateCcw className="h-3 w-3" aria-hidden="true" />
@@ -308,12 +300,39 @@ export default function FilterBar({
         </div>
       )}
 
-      {/* Advanced filters */}
+      {/* Advanced filters & Sorting Panel directly under Filters */}
       {panelOpen && (
         <div
           id={panelId}
           className="animate-expand space-y-4 rounded-2xl border border-hairline bg-card p-4 shadow-sm"
         >
+          {/* Section 1: Sorting Options (Merged directly under Filters) */}
+          <fieldset>
+            <legend className="mb-2 flex items-center gap-1.5 text-xs font-bold text-ink">
+              <ArrowUpDown className="h-3.5 w-3.5 text-brand-700" aria-hidden="true" />
+              <span>{t('sort.label')}</span>
+            </legend>
+            <div className="flex flex-wrap gap-2">
+              {SORT_OPTIONS.map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  onClick={() => onSortChange(option.value as SortKey)}
+                  aria-pressed={sort === option.value}
+                  className={`${chip(sort === option.value)} inline-flex items-center gap-1.5`}
+                >
+                  {option.value === 'nearest' && <MapPin className="h-3 w-3 opacity-80" />}
+                  {option.value === 'rating' && <Star className="h-3 w-3 opacity-80 fill-current" />}
+                  {option.value === 'reviews' && <Sparkles className="h-3 w-3 opacity-80" />}
+                  <span>{t(`sort.${option.value}` as MessageKey) || option.label}</span>
+                </button>
+              ))}
+            </div>
+          </fieldset>
+
+          <div className="h-px bg-hairline/70" />
+
+          {/* Section 2: Location & Campus */}
           <fieldset>
             <legend className="mb-2 text-xs font-bold text-ink">Location & Campus</legend>
             <div className="flex flex-wrap gap-2">

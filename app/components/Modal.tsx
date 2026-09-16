@@ -71,7 +71,7 @@ const SIZES = {
   sm: 'sm:max-w-sm',
   md: 'sm:max-w-md',
   lg: 'sm:max-w-xl',
-  xl: 'sm:max-w-2xl',
+  xl: 'sm:max-w-2xl md:max-w-3xl lg:max-w-4xl',
 } as const;
 
 export default function Modal({
@@ -163,8 +163,8 @@ export default function Modal({
         tabIndex={-1}
         className={`flex w-full flex-col overflow-hidden bg-card shadow-2xl outline-none ${SIZES[size]} ${
           isSheet
-            ? 'h-[88dvh] max-h-[92dvh] animate-sheet-up rounded-t-3xl sm:h-auto sm:max-h-[90dvh] sm:animate-rise sm:rounded-3xl'
-            : 'max-h-[90dvh] animate-rise rounded-t-3xl sm:rounded-3xl'
+            ? 'h-[90dvh] max-h-[94dvh] animate-sheet-up rounded-t-3xl sm:h-auto sm:max-h-[90dvh] sm:animate-rise sm:rounded-3xl'
+            : 'h-[92dvh] sm:h-auto max-h-[94dvh] sm:max-h-[90dvh] animate-rise rounded-t-3xl sm:rounded-3xl'
         }`}
       >
         {/* Drag affordance — signals "this sheet can be dismissed" on touch. */}

@@ -3,11 +3,11 @@ import type { Category, PriceTier, VenueWithStats } from './types';
 /** Sorting and filtering, kept as pure functions so the UI stays presentational. */
 
 export const SORT_OPTIONS = [
-  { value: 'nearest', label: 'Nearest to campus' },
-  { value: 'rating', label: 'Top rated' },
-  { value: 'reviews', label: 'Most reviewed' },
-  { value: 'cheapest', label: 'Cheapest first' },
-  { value: 'priciest', label: 'Most expensive' },
+  { value: 'nearest', label: 'Nearest to Campus' },
+  { value: 'rating', label: 'Top Rated' },
+  { value: 'reviews', label: 'Most Reviewed' },
+  { value: 'cheapest', label: 'Cheapest First' },
+  { value: 'priciest', label: 'Most Expensive' },
   { value: 'name', label: 'Name (A–Z)' },
 ] as const;
 

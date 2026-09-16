@@ -338,7 +338,7 @@ export default function VenueSheet({
                   key={idx}
                   className="inline-flex items-center gap-1 rounded-xl border border-amber-200/90 bg-card px-2.5 py-1 text-xs font-semibold text-ink shadow-2xs"
                 >
-                  <span className="text-amber-600">✨</span>
+                  <Flame className="h-3 w-3 text-amber-500 shrink-0" />
                   <span>{dish.name}</span>
                   {dish.count > 1 && (
                     <span className="rounded-full bg-amber-100 px-1.5 py-0.2 text-xs font-extrabold text-amber-900">

@@ -62,11 +62,11 @@ const en = {
   'filter.resultCount': '{count} spots',
 
   'sort.label': 'Sort by',
-  'sort.nearest': 'Nearest to campus',
-  'sort.rating': 'Top rated',
-  'sort.reviews': 'Most reviewed',
-  'sort.cheapest': 'Cheapest first',
-  'sort.priciest': 'Most expensive',
+  'sort.nearest': 'Nearest to Campus',
+  'sort.rating': 'Top Rated',
+  'sort.reviews': 'Most Reviewed',
+  'sort.cheapest': 'Cheapest First',
+  'sort.priciest': 'Most Expensive',
   'sort.name': 'Name (A–Z)',
 
   'venue.call': 'Call',
