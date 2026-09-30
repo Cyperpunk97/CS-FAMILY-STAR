@@ -87,14 +87,19 @@ export default function Modal({
   const mounted = useMounted();
   const panelRef = useRef<HTMLDivElement>(null);
   const restoreFocusTo = useRef<HTMLElement | null>(null);
+  const onCloseRef = useRef(onClose);
   const titleId = useId();
   const descId = useId();
+
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         event.stopPropagation();
-        onClose();
+        onCloseRef.current();
         return;
       }
 
@@ -122,7 +127,7 @@ export default function Modal({
         first.focus();
       }
     },
-    [onClose]
+    []
   );
 
   useEffect(() => {
